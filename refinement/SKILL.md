@@ -1,3 +1,4 @@
+<!-- Source: https://github.com/xxthunder/my-agentic-skills/tree/develop/refinement -->
 ---
 name: refinement
 description: "Start a backlog refinement session to discuss the project mission, review backlog items, prioritize work, and align on next steps. Also bootstraps the backlog structure in greenfield projects. Trigger with: 'another refinement session', 'let's refine', 'refinement time', 'backlog refinement', or similar requests to discuss project direction and priorities."
