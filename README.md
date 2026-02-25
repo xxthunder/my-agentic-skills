@@ -4,11 +4,23 @@ Reusable [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skills fo
 
 ## Installation
 
-Clone into your user-level Claude Code skills directory:
+Pick whichever approach fits your workflow:
+
+**Option A — Clone as your user-level skills directory** (all skills, all projects):
 
 ```bash
 git clone git@github.com:xxthunder/my-agentic-skills.git ~/.claude/skills
 ```
+
+**Option B — Clone anywhere and symlink/copy what you need**:
+
+```bash
+git clone git@github.com:xxthunder/my-agentic-skills.git ~/my-agentic-skills
+# symlink a single skill into a project
+ln -s ~/my-agentic-skills/refinement .claude/skills/refinement
+```
+
+**Option C — Copy individual skills** directly into any project's `.claude/skills/` directory — no clone required.
 
 Skills placed in `~/.claude/skills/` are automatically available in all projects. Project-level skills (`.claude/skills/`) take precedence when names overlap.
 
