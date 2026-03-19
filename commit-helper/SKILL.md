@@ -68,6 +68,7 @@ Component affected (project-specific, e.g., `api`, `auth`, `cli`, `test`).
 - Lowercase
 - No period at the end
 - Max 50 characters
+- If a JIRA or GitHub or any other backlog issue with a known id is associated, place the issue ID in parentheses at the end: `<type>(<scope>): <description> (<ISSUE-ID>)`
 
 ### Body (Optional)
 
@@ -86,7 +87,7 @@ Component affected (project-specific, e.g., `api`, `auth`, `cli`, `test`).
 ### Simple Feature
 
 ```
-feat: add input validation function
+feat: add input validation function (<ISSUE-ID>)
 
 Add validateInput() to check user-supplied values.
 Returns false for null or empty strings.
@@ -97,7 +98,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### Bug Fix
 
 ```
-fix: handle names with spaces in lookup
+fix: handle names with spaces in lookup (<ISSUE-ID>)
 
 Properly quote name parameter to support values containing spaces.
 
@@ -108,7 +109,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### Refactoring
 
 ```
-refactor: consolidate error handling in utils
+refactor: consolidate error handling in utils (<ISSUE-ID>)
 
 Extract common error handling pattern into helper function.
 No behavior change.
@@ -119,7 +120,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### Multiple Changes
 
 ```
-feat(api): add silent mode to command executor
+feat(api): add silent mode to command executor (<ISSUE-ID>)
 
 - Suppresses console output when silent flag is used
 - Useful for background operations
@@ -133,14 +134,12 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 When AI assists with the code, add co-author:
 
 ```
-feat: add new feature
+feat: add new feature (<ISSUE-ID>)
 
 Description of feature.
 
 Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ```
-
-For GitHub Copilot:
 ```
 Co-Authored-By: GitHub Copilot <noreply@github.com>
 ```
@@ -165,7 +164,7 @@ Using heredoc for proper formatting:
 
 ```bash
 git commit -m "$(cat <<'EOF'
-feat: add new feature
+feat: add new feature (<ISSUE-ID>)
 
 Detailed description of the feature.
 
@@ -202,7 +201,7 @@ git add src/validation.ext test/validation.test.ext
 
 # 5. Commit
 git commit -m "$(cat <<'EOF'
-feat: add input validation helper
+feat: add input validation helper (<ISSUE-ID>)
 
 Add validateInput function for common input validation patterns.
 
@@ -221,7 +220,7 @@ EOF
 # 4. Stage and commit
 git add src/validation.ext test/validation.test.ext
 git commit -m "$(cat <<'EOF'
-fix: handle null input in validation
+fix: handle null input in validation (<ISSUE-ID>)
 
 Add null check before string operations to prevent null reference error.
 
@@ -235,14 +234,14 @@ EOF
 
 ```bash
 git add README.md
-git commit -m "docs: update installation instructions"
+git commit -m "docs: update installation instructions (<ISSUE-ID>)"
 ```
 
 ### Test Updates
 
 ```bash
 git add test/validation.test.ext
-git commit -m "test: add coverage for edge cases"
+git commit -m "test: add coverage for edge cases (<ISSUE-ID>)"
 ```
 
 ## Commit Message Templates

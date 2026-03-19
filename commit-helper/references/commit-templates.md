@@ -7,7 +7,7 @@ Collection of commit message templates for common scenarios.
 ### New Function
 
 ```
-feat(pslib): add <FunctionName> function
+feat(pslib): add <FunctionName> function (<ISSUE-ID>)
 
 <Brief description of what the function does>
 
@@ -19,7 +19,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### New Script
 
 ```
-feat: add <script-name> utility
+feat: add <script-name> utility (<ISSUE-ID>)
 
 <Description of what the script does>
 
@@ -31,7 +31,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### New Feature with Multiple Files
 
 ```
-feat: implement <feature-name>
+feat: implement <feature-name> (<ISSUE-ID>)
 
 - <Key change 1>
 - <Key change 2>
@@ -47,7 +47,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### Simple Bug Fix
 
 ```
-fix: <brief description of fix>
+fix: <brief description of fix> (<ISSUE-ID>)
 
 <What was wrong>
 <How it's fixed>
@@ -59,7 +59,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### Bug Fix with Test
 
 ```
-fix: handle <edge-case> in <function-name>
+fix: handle <edge-case> in <function-name> (<ISSUE-ID>)
 
 <Description of the bug>
 <How the fix works>
@@ -72,7 +72,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### Critical Bug Fix
 
 ```
-fix: resolve critical <issue> in <component>
+fix: resolve critical <issue> in <component> (<ISSUE-ID>)
 
 ISSUE: <Description of critical problem>
 FIX: <How it's resolved>
@@ -87,7 +87,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### Code Cleanup
 
 ```
-refactor: simplify <function-name> logic
+refactor: simplify <function-name> logic (<ISSUE-ID>)
 
 <What was simplified>
 <Why it's better>
@@ -99,7 +99,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### Extract Function
 
 ```
-refactor: extract <new-function> from <old-function>
+refactor: extract <new-function> from <old-function> (<ISSUE-ID>)
 
 Extracted common logic into reusable function.
 No behavior change.
@@ -110,7 +110,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### Consolidate
 
 ```
-refactor: consolidate <pattern> across <files>
+refactor: consolidate <pattern> across <files> (<ISSUE-ID>)
 
 - Unified <pattern> implementation
 - Removed duplication
@@ -124,7 +124,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### Update README
 
 ```
-docs: update <section> in README
+docs: update <section> in README (<ISSUE-ID>)
 
 <What was updated and why>
 ```
@@ -132,7 +132,7 @@ docs: update <section> in README
 ### Add Documentation
 
 ```
-docs: add <documentation-type> for <component>
+docs: add <documentation-type> for <component> (<ISSUE-ID>)
 
 <What documentation was added>
 ```
@@ -140,7 +140,7 @@ docs: add <documentation-type> for <component>
 ### Fix Documentation
 
 ```
-docs: fix <incorrect-information> in <file>
+docs: fix <incorrect-information> in <file> (<ISSUE-ID>)
 
 <What was wrong>
 <What's correct now>
@@ -151,7 +151,7 @@ docs: fix <incorrect-information> in <file>
 ### Add Tests
 
 ```
-test: add <type> tests for <component>
+test: add <type> tests for <component> (<ISSUE-ID>)
 
 <What's being tested>
 <Coverage improvement>
@@ -162,7 +162,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### Improve Test Coverage
 
 ```
-test: improve coverage for <component>
+test: improve coverage for <component> (<ISSUE-ID>)
 
 - Added edge case tests
 - Added error condition tests
@@ -174,7 +174,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### Fix Flaky Test
 
 ```
-test: fix flaky <test-name>
+test: fix flaky <test-name> (<ISSUE-ID>)
 
 <Why it was flaky>
 <How it's fixed>
@@ -187,7 +187,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### Update Dependencies
 
 ```
-chore: update <dependency> to <version>
+chore: update <dependency> to <version> (<ISSUE-ID>)
 
 <Reason for update>
 <Any breaking changes>
@@ -196,7 +196,7 @@ chore: update <dependency> to <version>
 ### Build System
 
 ```
-chore: update build configuration
+chore: update build configuration (<ISSUE-ID>)
 
 <What changed in build system>
 ```
@@ -204,7 +204,7 @@ chore: update build configuration
 ### Maintenance
 
 ```
-chore: cleanup <unused-code/files>
+chore: cleanup <unused-code/files> (<ISSUE-ID>)
 
 Removed unused <what> that's no longer needed.
 ```
@@ -214,7 +214,7 @@ Removed unused <what> that's no longer needed.
 ### GitHub Actions
 
 ```
-ci: update test workflow
+ci: update test workflow (<ISSUE-ID>)
 
 <What changed in CI>
 <Why the change>
@@ -223,7 +223,7 @@ ci: update test workflow
 ### Add CI Step
 
 ```
-ci: add <new-step> to workflow
+ci: add <new-step> to workflow (<ISSUE-ID>)
 
 <Description of new CI step>
 <Why it's needed>
@@ -234,7 +234,7 @@ ci: add <new-step> to workflow
 ### Formatting
 
 ```
-style: format <files> with <tool>
+style: format <files> with <tool> (<ISSUE-ID>)
 
 No functional changes.
 ```
@@ -242,7 +242,7 @@ No functional changes.
 ### Code Style
 
 ```
-style: apply consistent naming in <component>
+style: apply consistent naming in <component> (<ISSUE-ID>)
 
 No functional changes.
 ```
@@ -252,7 +252,7 @@ No functional changes.
 ### Optimization
 
 ```
-perf: optimize <function-name> performance
+perf: optimize <function-name> performance (<ISSUE-ID>)
 
 <What was slow>
 <How it's optimized>
@@ -266,7 +266,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### Breaking API Change
 
 ```
-feat: change <function> signature
+feat: change <function> signature (<ISSUE-ID>)
 
 BREAKING CHANGE: <Function> now requires <new-parameter>
 
@@ -279,7 +279,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### Removal
 
 ```
-refactor: remove deprecated <function>
+refactor: remove deprecated <function> (<ISSUE-ID>)
 
 BREAKING CHANGE: Removed <function>
 
@@ -294,7 +294,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### Example 1: Feature
 
 ```
-feat(wsl): add Get-WslDistroType function
+feat(wsl): add Get-WslDistroType function (<ISSUE-ID>)
 
 Returns the Linux distribution type (ubuntu, debian, alpine, etc.)
 for a given WSL distribution name.
@@ -305,7 +305,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### Example 2: Bug Fix
 
 ```
-fix(wsl): ensure WSL distributions are stopped before integration tests
+fix(wsl): ensure WSL distributions are stopped before integration tests (<ISSUE-ID>)
 
 WSL integration tests now properly stop all running WSL distributions
 before executing to prevent test interference.
@@ -317,7 +317,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### Example 3: Refactor
 
 ```
-refactor(testrunner): improve robustness and PS 5.1 compatibility
+refactor(testrunner): improve robustness and PS 5.1 compatibility (<ISSUE-ID>)
 
 - Remove PowerShell 6.0+ specific features
 - Add better error handling for missing modules
@@ -329,7 +329,7 @@ Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
 ### Example 4: Install
 
 ```
-refactor(install): consolidate installers into tools/install directory
+refactor(install): consolidate installers into tools/install directory (<ISSUE-ID>)
 
 Moved all tool-specific installers from bin/ to tools/install/ for
 better organization and discoverability.
