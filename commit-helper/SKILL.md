@@ -1,7 +1,9 @@
 ---
 name: commit-helper
-description: Guide conventional commit creation with mandatory pre-commit checks. Use when: (1) Creating commits, (2) Running pre-commit checks, (3) Following conventional commit format, (4) Ensuring tests pass before commit, (5) Co-authoring with AI (Claude Code).
+description: "Guide conventional commit creation with mandatory pre-commit checks. Use when: (1) Creating commits, (2) Running pre-commit checks, (3) Following conventional commit format, (4) Ensuring tests pass before commit, (5) Co-authoring with AI (Claude Code)."
 ---
+
+<!-- Source: https://github.com/xxthunder/my-agentic-skills/tree/develop/commit-helper -->
 
 # Commit Helper
 
