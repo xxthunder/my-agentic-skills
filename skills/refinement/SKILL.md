@@ -4,7 +4,7 @@ description: "Start a backlog refinement session to discuss the project mission,
 user_invocable: true
 ---
 
-<!-- Source: https://github.com/xxthunder/my-agentic-skills/tree/develop/refinement -->
+<!-- Source: https://github.com/xxthunder/xxthunder-dev-skills/tree/develop/skills/refinement -->
 
 # Refinement Session
 

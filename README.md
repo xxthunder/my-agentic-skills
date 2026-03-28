@@ -1,44 +1,60 @@
-# Claude Code Skills
+# Claude Code Skills Plugin
 
-Reusable [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skills for use across projects.
+Reusable [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skills packaged as a plugin for use across projects.
 
 ## Installation
 
-Pick whichever approach fits your workflow:
+### As a Plugin (recommended)
 
-**Option A — Clone as your user-level skills directory** (all skills, all projects):
-
-```bash
-git clone git@github.com:xxthunder/my-agentic-skills.git ~/.claude/skills
-```
-
-**Option B — Clone anywhere and symlink/copy what you need**:
+Install via the Claude Code CLI:
 
 ```bash
-git clone git@github.com:xxthunder/my-agentic-skills.git ~/my-agentic-skills
-# symlink a single skill into a project
-ln -s ~/my-agentic-skills/refinement .claude/skills/refinement
+# Add as a marketplace
+claude plugin marketplace add https://github.com/xxthunder/xxthunder-dev-skills.git
+
+# Install the plugin
+claude plugin install xxthunder-dev-skills
 ```
 
-**Option C — Copy individual skills** directly into any project's `.claude/skills/` directory — no clone required.
+Or test locally:
 
-Skills placed in `~/.claude/skills/` are automatically available in all projects. Project-level skills (`.claude/skills/`) take precedence when names overlap.
+```bash
+claude --plugin-dir /path/to/xxthunder-dev-skills
+```
+
+### With claude-code-action (GitHub)
+
+```yaml
+- uses: anthropics/claude-code-action@v1
+  with:
+    plugin_marketplaces: |
+      https://github.com/xxthunder/xxthunder-dev-skills.git
+    plugins: |
+      xxthunder-dev-skills
+    anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+```
+
+### Manual (legacy)
+
+Copy individual skill directories from `skills/` into your project's `.claude/skills/` directory.
 
 ## Skills
 
 | Skill | Description |
 |---|---|
+| **commit-helper** | Conventional commit creation with mandatory pre-commit checks |
 | **refinement** | Interactive backlog refinement sessions — review project state, prioritize work, add new items, discuss architecture |
 | **retrospective** | Incident-driven learning — captures lessons from unmet expectations and encodes them into project guidelines |
-| **skill-creator** | Guide for creating new Claude Code skills with proper structure, progressive disclosure, and bundled resources |
+| **tdd-workflow** | Test-driven development workflow following Red-Green-Refactor principles |
 
 ## Usage
 
 Skills trigger automatically based on conversation context, or can be invoked explicitly:
 
+- **Commit Helper**: triggered when creating commits
 - **Refinement**: "let's refine", "backlog refinement", "what should we work on next?"
 - **Retrospective**: "I'm not happy with...", "that's wrong", "why did you...?"
-- **Skill Creator**: "create a new skill", "update this skill"
+- **TDD Workflow**: triggered when implementing features, fixing bugs, or refactoring
 
 ## License
 

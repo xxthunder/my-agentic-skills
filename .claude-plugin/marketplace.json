@@ -1,0 +1,15 @@
+{
+  "name": "xxthunder-skills",
+  "owner": {
+    "name": "Karsten A. M. Günther"
+  },
+  "description": "Shared Claude Code skills by xxthunder",
+  "plugins": [
+    {
+      "name": "xxthunder-dev-skills",
+      "description": "Reusable Claude Code skills: refinement, retrospective, commit-helper, tdd-workflow",
+      "version": "1.0.0",
+      "source": "./"
+    }
+  ]
+}

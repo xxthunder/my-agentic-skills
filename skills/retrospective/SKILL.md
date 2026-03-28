@@ -3,7 +3,7 @@ name: retrospective
 description: "Incident-driven learning and guideline improvement. Use when the user expresses dissatisfaction with Claude's work, approach, or decisions. Triggers include: 'I am not happy', 'this is not what I wanted', 'you shouldn't have done that', 'why did you...', 'that's wrong', or any indication of unmet expectations. Captures what went wrong and updates project guidelines to prevent recurrence."
 ---
 
-<!-- Source: https://github.com/xxthunder/my-agentic-skills/tree/develop/retrospective -->
+<!-- Source: https://github.com/xxthunder/xxthunder-dev-skills/tree/develop/skills/retrospective -->
 
 # Retrospective: Incident-Driven Learning
 

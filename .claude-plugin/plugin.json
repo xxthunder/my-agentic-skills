@@ -1,0 +1,10 @@
+{
+  "name": "xxthunder-dev-skills",
+  "description": "Reusable Claude Code skills: refinement, retrospective, commit-helper, tdd-workflow",
+  "version": "1.0.0",
+  "author": {
+    "name": "Karsten A. M. Günther"
+  },
+  "repository": "https://github.com/xxthunder/xxthunder-dev-skills",
+  "license": "MIT"
+}

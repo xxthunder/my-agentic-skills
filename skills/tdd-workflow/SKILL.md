@@ -3,7 +3,7 @@ name: tdd-workflow
 description: "Guide test-driven development workflow. Use when: (1) Implementing new features or functions, (2) Modifying existing functions, (3) Fixing bugs, (4) Refactoring code. This skill provides the Red-Green-Refactor cycle workflow and ensures tests and implementation are always committed together."
 ---
 
-<!-- Source: https://github.com/xxthunder/my-agentic-skills/tree/develop/tdd-workflow -->
+<!-- Source: https://github.com/xxthunder/xxthunder-dev-skills/tree/develop/skills/tdd-workflow -->
 
 # TDD Workflow
 
