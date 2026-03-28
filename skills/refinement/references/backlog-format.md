@@ -4,23 +4,20 @@ This defines the backlog structure, entry format, and conventions used by the re
 
 ## File Structure
 
-The backlog uses a folder-based layout with one file per item:
+The backlog uses a flat folder with one file per item. All items live in the same directory regardless of status:
 
 ```
 docs/backlog/
-├── index.md              # Status legend, TOC with links, Notes
-├── in_progress/
-│   ├── prefix-001.md     # Each item is a standalone file
-│   └── prefix-007.md
-├── todo/
-│   ├── prefix-002.md
-│   └── prefix-003.md
-└── done/
-    ├── prefix-004.md
-    └── prefix-005.md
+├── README.md             # Status legend, TOC grouped by status, Notes
+├── prefix-001.md         # Each item is a standalone file
+├── prefix-002.md
+├── prefix-003.md
+└── prefix-015.md
 ```
 
-### `index.md`
+`README.md` is the **single source of truth for item status** — an item's status is determined by which section its link appears in.
+
+### `README.md`
 
 Contains only metadata and navigation — no item content:
 
@@ -36,13 +33,13 @@ Contains only metadata and navigation — no item content:
 ## Table of Contents
 
 ### In Progress
-- [ID — Title](in_progress/id.md)
+- [ID — Title](prefix-001.md)
 
 ### TODO
-- [ID — Title](todo/id.md)
+- [ID — Title](prefix-002.md)
 
 ### Done
-- [ID — Title](done/id.md)
+- [ID — Title](prefix-003.md)
 
 ---
 
@@ -55,7 +52,7 @@ Contains only metadata and navigation — no item content:
 
 ### Item files
 
-Each item lives in the folder matching its status. The heading is `#` (top-level, since it's the only item in the file):
+Each item is a standalone file in the backlog folder. The heading is `#` (top-level, since it's the only item in the file):
 
 ```markdown
 # [PREFIX-015] Brief descriptive title
@@ -82,11 +79,11 @@ Format: `[PREFIX-###]` — project prefix + zero-padded sequential number.
 
 - The prefix is a short, memorable abbreviation of the repository/project name (e.g., `HSH` for HomeSweetHome).
 - Numbers are **global and sequential** across all items — no per-type numbering, no gaps intentional.
-- The prefix is stored in the **Notes** section of `index.md` so it is always discoverable.
+- The prefix is stored in the **Notes** section of `README.md` so it is always discoverable.
 
 Examples: `HSH-001`, `HSH-002`, `HSH-015`
 
-When adding a new item, scan all existing IDs across all folders to find the highest number, then increment by one.
+When adding a new item, scan all existing `prefix-*.md` files in the backlog folder to find the highest number, then increment by one.
 
 ## Entry Fields
 
@@ -114,7 +111,7 @@ When adding a new item, scan all existing IDs across all folders to find the hig
 
 ### Open / TODO entry
 
-File: `todo/prefix-015.md`
+File: `prefix-015.md`
 
 ```markdown
 # [HSH-015] Brief descriptive title
@@ -137,11 +134,11 @@ As a [user role], I want [feature] so that [benefit].
 
 ### In Progress entry
 
-Same as TODO but with `**Status**: Ongoing` and some criteria may be checked off. File lives in `in_progress/`.
+Same as TODO but with `**Status**: Ongoing` and some criteria may be checked off.
 
 ### Completed entry
 
-File: `done/prefix-001.md`
+File: `prefix-001.md`
 
 ```markdown
 # [HSH-001] ✅ COMPLETED - Brief descriptive title
@@ -153,24 +150,24 @@ File: `done/prefix-001.md`
 [... all other fields with all acceptance criteria checked ...]
 ```
 
-### TOC entry format (in `index.md`)
+### TOC entry format (in `README.md`)
 
 ```markdown
 ### In Progress
-- [HSH-014 — Backlog refinement](in_progress/hsh-014.md)
+- [HSH-014 — Backlog refinement](hsh-014.md)
 
 ### TODO
-- [HSH-015 — Brief title](todo/hsh-015.md)
+- [HSH-015 — Brief title](hsh-015.md)
 
 ### Done
-- [HSH-001 — Brief title](done/hsh-001.md)
+- [HSH-001 — Brief title](hsh-001.md)
 ```
 
 ## Ongoing Refinement Item
 
 Every backlog should include an ongoing refinement item that is never completed. All refinement commits reference this ID:
 
-File: `in_progress/prefix-0xx.md`
+File: `prefix-0xx.md`
 
 ```markdown
 # [PREFIX-0XX] Backlog refinement
@@ -188,8 +185,9 @@ Ongoing backlog refinement — create, review, clarify, and update user stories.
 Open (TODO) → Ongoing (IN PROGRESS) → Completed (DONE)
 ```
 
-When moving items:
-1. Move the item file between folders: `git mv todo/prefix-015.md in_progress/prefix-015.md`
-2. Update the `**Status**` field inside the file
-3. Update the Table of Contents links in `index.md` (move the link to the correct section, update the relative path)
-4. For completed items: add date and `✅ COMPLETED -` prefix to heading
+When changing an item's status:
+1. Move the link in `README.md` to the correct section — this is the authoritative status
+2. Update the `**Status**` field inside the item file
+3. For completed items: add date and `✅ COMPLETED -` prefix to heading
+
+No file moves needed — all items stay in the same folder.
