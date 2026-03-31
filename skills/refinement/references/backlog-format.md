@@ -26,17 +26,17 @@ Contains only metadata and navigation — no item content:
 
 ## Status Legend
 
-- **IN PROGRESS** - Currently being worked on
-- **TODO** - Ready to be picked up
-- **DONE** - Completed
+- **Open** - Ready to be picked up
+- **In Progress** - Currently being worked on
+- **Done** - Completed
 
 ## Table of Contents
 
+### Open
+- [ID — Title](prefix-002.md)
+
 ### In Progress
 - [ID — Title](prefix-001.md)
-
-### TODO
-- [ID — Title](prefix-002.md)
 
 ### Done
 - [ID — Title](prefix-003.md)
@@ -91,7 +91,7 @@ When adding a new item, scan all existing `prefix-*.md` files in the backlog fol
 
 | Field                  | Description                                              |
 |------------------------|----------------------------------------------------------|
-| **Status**             | `Open` (TODO), `Ongoing` (IN PROGRESS), or completed format (see below) |
+| **Status**             | `Open`, `In Progress`, or `Done (YYYY-MM-DD)` |
 | **Priority**           | `High`, `Medium`, `Low`, or `—` (none)                  |
 | **Component**          | File path(s) affected (e.g., `roles/ssl-certify/`)       |
 | **Summary**            | User story: "As a [user], I want [feature] so that [benefit]" |
@@ -109,7 +109,7 @@ When adding a new item, scan all existing `prefix-*.md` files in the backlog fol
 | **Dependencies**         | External system prerequisites                        |
 | **Related Documentation**| Links to guides or external references               |
 
-### Open / TODO entry
+### Open entry
 
 File: `prefix-015.md`
 
@@ -134,16 +134,16 @@ As a [user role], I want [feature] so that [benefit].
 
 ### In Progress entry
 
-Same as TODO but with `**Status**: Ongoing` and some criteria may be checked off.
+Same as Open but with `**Status**: In Progress` and some criteria may be checked off.
 
 ### Completed entry
 
 File: `prefix-001.md`
 
 ```markdown
-# [HSH-001] ✅ COMPLETED - Brief descriptive title
+# [HSH-001] ✅ DONE - Brief descriptive title
 
-**Status**: Completed (YYYY-MM-DD)
+**Status**: Done (YYYY-MM-DD)
 **Priority**: Medium
 **Component**: `path/to/affected/file.ext`
 
@@ -153,11 +153,11 @@ File: `prefix-001.md`
 ### TOC entry format (in `README.md`)
 
 ```markdown
+### Open
+- [HSH-015 — Brief title](hsh-015.md)
+
 ### In Progress
 - [HSH-014 — Backlog refinement](hsh-014.md)
-
-### TODO
-- [HSH-015 — Brief title](hsh-015.md)
 
 ### Done
 - [HSH-001 — Brief title](hsh-001.md)
@@ -172,7 +172,7 @@ File: `prefix-0xx.md`
 ```markdown
 # [PREFIX-0XX] Backlog refinement
 
-**Status**: Ongoing
+**Status**: In Progress
 **Priority**: —
 
 **Description**:
@@ -182,12 +182,12 @@ Ongoing backlog refinement — create, review, clarify, and update user stories.
 ## Status Transitions
 
 ```
-Open (TODO) → Ongoing (IN PROGRESS) → Completed (DONE)
+Open → In Progress → Done
 ```
 
 When changing an item's status:
 1. Move the link in `README.md` to the correct section — this is the authoritative status
 2. Update the `**Status**` field inside the item file
-3. For completed items: add date and `✅ COMPLETED -` prefix to heading
+3. For done items: add date and `✅ DONE -` prefix to heading
 
 No file moves needed — all items stay in the same folder.

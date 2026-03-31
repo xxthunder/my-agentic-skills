@@ -44,7 +44,7 @@ When no backlog file is found, create one:
 2. Ask the user where the backlog should live (default: `docs/backlog/`)
 3. Ask the user for a **project ID prefix** — a short uppercase abbreviation of the repo/project name (e.g., `HSH` for HomeSweetHome). Store it in the Notes section of the backlog.
 4. Create `README.md` with the skeleton structure (Status Legend, TOC, empty sections, Notes)
-5. Create the ongoing refinement item (`[PREFIX-001]`) as a separate file and link it in IN PROGRESS
+5. Create the ongoing refinement item (`[PREFIX-001]`) as a separate file and link it in In Progress
 6. Ask the user if they have initial ideas to seed the backlog — draft entries using the format from the reference
 
 **Do NOT commit automatically.** Let the user review via `git diff` first.
@@ -63,11 +63,11 @@ When no backlog file is found, create one:
 
 ### Backlog Overview
 **In Progress**: [count and brief list]
-**TODO**: [count and brief list with IDs]
-**Recently Completed**: [count and last 1-2 completed items]
+**Open**: [count and brief list with IDs]
+**Recently Done**: [count and last 1-2 done items]
 
 ### Open Items for Discussion
-[List each TODO item with ID, title, priority, and a 1-line summary]
+[List each Open item with ID, title, priority, and a 1-line summary]
 ```
 
 ### Step 3: Facilitate Discussion
@@ -83,7 +83,7 @@ Use AskUserQuestion to let the user choose their focus area:
 ### Step 4: Topic-Specific Facilitation
 
 #### Prioritize
-- Walk through each TODO item
+- Walk through each Open item
 - Ask about relative priority and dependencies
 - Suggest ordering based on dependencies and value
 - Update backlog priorities if agreed
@@ -109,8 +109,8 @@ Use AskUserQuestion to let the user choose their focus area:
 - Document decisions in the backlog item's Scope Decisions field
 
 #### Cleanup
-- Review DONE items - any follow-up needed?
-- Check for stale TODO items
+- Review Done items - any follow-up needed?
+- Check for stale Open items
 - Update documentation if outdated
 - Propose items to archive or remove
 
