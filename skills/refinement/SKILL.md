@@ -93,6 +93,7 @@ Use AskUserQuestion to let the user choose their focus area:
 - Read related source files and tests
 - Identify open questions, risks, and dependencies
 - Discuss implementation approach
+- **Validate module placement** - Check whether the proposed file/module location fits the existing architecture. Ask: "Is this feature truly coupled to this module, or is it independently useful?" Challenge false coupling — just because feature A is often used alongside feature B doesn't mean A belongs in B's module.
 - Use EnterPlanMode if the discussion leads to implementation planning
 
 #### New Ideas
