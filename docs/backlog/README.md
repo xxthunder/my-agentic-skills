@@ -11,15 +11,8 @@
 ### Open
 
 **Epics**
-- [XAS-002 — Rename repo and restructure as agentic-skills marketplace](xas-002.md)
 - [XAS-003 — Multi-agent skill authoring (single source, multi-target)](xas-003.md)
 - [XAS-004 — Marketplace tooling and CI](xas-004.md)
-
-**Stories under XAS-002**
-- [XAS-005 — Phase 1 — Rename GitHub repo and update URL references](xas-005.md)
-- [XAS-006 — Phase 2 — Rename marketplace registry and update manifest descriptions](xas-006.md)
-- [XAS-007 — Phase 2 — Rewrite README to describe marketplace purpose](xas-007.md)
-- [XAS-014 — Phase 2 — Restructure to multi-plugin marketplace layout](xas-014.md)
 
 **Stories under XAS-003**
 - [XAS-008 — Define canonical skill source format](xas-008.md)
@@ -35,6 +28,11 @@
 - [XAS-001 — Backlog refinement](xas-001.md)
 
 ### Done
+- [XAS-002 — Rename repo and restructure as agentic-skills marketplace](xas-002.md)
+- [XAS-005 — Phase 1 — Rename GitHub repo and update URL references](xas-005.md)
+- [XAS-006 — Phase 2 — Rename marketplace registry and update manifest descriptions](xas-006.md)
+- [XAS-007 — Phase 2 — Rewrite README to describe marketplace purpose](xas-007.md)
+- [XAS-014 — Phase 2 — Restructure to multi-plugin marketplace layout](xas-014.md)
 
 ---
 
