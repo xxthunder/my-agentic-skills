@@ -13,6 +13,7 @@
 **Epics**
 - [XAS-003 — Multi-agent skill authoring (single source, multi-target)](xas-003.md)
 - [XAS-004 — Marketplace tooling and CI](xas-004.md)
+- [XAS-015 — Launch xxthunder-paperless-skills plugin](xas-015.md)
 
 **Stories under XAS-003**
 - [XAS-008 — Define canonical skill source format](xas-008.md)
@@ -23,6 +24,12 @@
 - [XAS-011 — Pre-commit validation of canonical source format](xas-011.md)
 - [XAS-012 — Auto-sync version between plugin.json and marketplace.json](xas-012.md)
 - [XAS-013 — CI check that generated artifacts match canonical sources](xas-013.md)
+
+**Stories under XAS-015**
+- [XAS-016 — Scaffold xxthunder-paperless-skills plugin and register in marketplace](xas-016.md)
+- [XAS-017 — Migrate simplex-merge from user-global skills into the plugin](xas-017.md)
+- [XAS-018 — Add naps2-scan skill (scan → OCR → merge → filename proposal)](xas-018.md)
+- [XAS-019 — Add auto-file skill (sort into configurable folder structure)](xas-019.md)
 
 ### In Progress
 - [XAS-001 — Backlog refinement](xas-001.md)
