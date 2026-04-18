@@ -16,9 +16,10 @@
 - [XAS-004 — Marketplace tooling and CI](xas-004.md)
 
 **Stories under XAS-002**
-- [XAS-005 — Rename repo and update references](xas-005.md)
-- [XAS-006 — Update plugin and marketplace manifests](xas-006.md)
-- [XAS-007 — Rewrite README to describe marketplace purpose](xas-007.md)
+- [XAS-005 — Phase 1 — Rename GitHub repo and update URL references](xas-005.md)
+- [XAS-006 — Phase 2 — Rename marketplace registry and update manifest descriptions](xas-006.md)
+- [XAS-007 — Phase 2 — Rewrite README to describe marketplace purpose](xas-007.md)
+- [XAS-014 — Phase 2 — Restructure to multi-plugin marketplace layout](xas-014.md)
 
 **Stories under XAS-003**
 - [XAS-008 — Define canonical skill source format](xas-008.md)
