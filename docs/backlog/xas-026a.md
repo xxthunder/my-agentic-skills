@@ -1,6 +1,6 @@
 # [XAS-026a] Pytest workflow on push/PR
 
-**Status**: Open
+**Status**: In Progress
 **Priority**: High
 **Component**: `.github/workflows/test.yml`
 

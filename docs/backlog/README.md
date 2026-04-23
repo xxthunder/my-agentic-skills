@@ -18,8 +18,6 @@
 - [XAS-004b — Auto-sync version between plugin.json and marketplace.json](xas-004b.md)
 - [XAS-004c — CI check that generated artifacts match canonical sources](xas-004c.md)
 - [XAS-015a — Add auto-file skill (sort into configurable folder structure)](xas-015a.md)
-- [XAS-026 — CI / GitHub Actions setup](xas-026.md)
-- [XAS-026a — Pytest workflow on push/PR (matrix: ubuntu + windows)](xas-026a.md)
 - [XAS-026b — Coverage upload + JUnit test report](xas-026b.md)
 - [XAS-026c — Claude Code interactive bot (`@claude` mentions)](xas-026c.md)
 - [XAS-026d — JSON schema validation for `marketplace.json` and `plugin.json`](xas-026d.md)
@@ -29,6 +27,8 @@
 - [XAS-001 — Backlog refinement](xas-001.md)
 - [XAS-015 — Launch xxthunder-paperless-skills plugin](xas-015.md)
 - [XAS-015b — Add split-batch skill (detect + split multi-document PDFs)](xas-015b.md)
+- [XAS-026 — CI / GitHub Actions setup](xas-026.md)
+- [XAS-026a — Pytest workflow on push/PR (matrix: ubuntu + windows)](xas-026a.md)
 
 ### Done
 - [XAS-002 — Rename repo and restructure as agentic-skills marketplace](xas-002.md)
