@@ -1,8 +1,7 @@
-# [XAS-012] Auto-sync version between plugin.json and marketplace.json
+# [XAS-004b] Auto-sync version between plugin.json and marketplace.json
 
 **Status**: Open
 **Priority**: Medium
-**Epic**: XAS-004
 **Component**: scripts/, .claude-plugin/
 
 **Summary**:

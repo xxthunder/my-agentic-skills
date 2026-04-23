@@ -138,3 +138,15 @@ For detailed testing execution guidance, use the project's test execution skill:
 - CI/CD integration patterns
 - Troubleshooting test failures
 - Advanced testing features
+
+## Integration with Backlog Items
+
+If the feature, change, or bug fix you're about to tackle is tracked by a backlog item, coordinate with the `backlog-ops` skill at the boundaries of the cycle — **not** mid-cycle:
+
+- **Before the RED phase** — if the backlog item is still `Open`, invoke `backlog-ops` to pull it (`Open` → `In Progress`). Example trigger: "pull XAS-025". The backlog edit is staged and will ride in your next commit.
+- **After the final GREEN (and any REFACTOR)** — if this cycle satisfies a specific AC or UAT in the item, invoke `backlog-ops` to tick that criterion. You name the AC; the skill does not guess which criterion a given red-green satisfied. Example trigger: "mark AC 2 done on XAS-025".
+- **When the item's ACs are all checked** — invoke `backlog-ops` to close the item (`In Progress` → `Done`). Example trigger: "close XAS-025". Epic cascade (if the item is a substory) is handled automatically.
+
+Do **not** auto-invoke `backlog-ops` in the middle of Red-Green-Refactor. Only the user knows which AC a specific cycle corresponds to, and speculative ticking causes drift. Bring it up at the boundaries and let the user decide.
+
+Backlog edits staged by `backlog-ops` should be committed alongside the code change — the same commit that turns a test green is the one that justifies ticking the AC.

@@ -1,8 +1,7 @@
-# [XAS-009] Build generator that emits Claude Code plugin artifacts
+# [XAS-003b] Build generator that emits Claude Code plugin artifacts
 
 **Status**: Open
 **Priority**: High
-**Epic**: XAS-003
 **Component**: scripts/, build/
 
 **Summary**:

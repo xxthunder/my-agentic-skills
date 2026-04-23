@@ -100,8 +100,14 @@ Use AskUserQuestion to let the user choose their focus area:
 - Help the user articulate the idea
 - Read **[references/backlog-format.md](references/backlog-format.md)** for the entry template and ID convention
 - Read the project prefix from the **Notes** section of the backlog
-- Determine the next available ID number (scan all `prefix-*.md` files in the backlog folder, take the highest number, increment by one)
-- Draft a backlog entry with all required fields using `[PREFIX-###]` format
+- Decide whether this is a **top-level item** or a **substory under an existing item**:
+  - If the idea naturally belongs under an existing top-level item as one of several related pieces of work, it's a substory — allocate the next letter suffix (`a`, `b`, `c`, …) under that parent.
+  - Otherwise it's top-level — allocate the next free three-digit number.
+- Determine the next available ID:
+  - **Top-level**: scan all `prefix-*.md` files, extract the numeric base from each, take the maximum, increment by one.
+  - **Substory of `PREFIX-NNN`**: scan for files matching `prefix-NNN<letter>.md`, take the latest letter used (or none), advance to the next letter.
+- Draft a backlog entry with all required fields using `[PREFIX-###]` or `[PREFIX-###<letter>]` format (no `**Epic**:` back-reference — the letter suffix encodes the parent)
+- If this is the **first substory** under a top-level item, that item is now implicitly an epic. No rename needed; optionally add a **Substories** list to the parent for readability. The parent's status cascade (see format reference) now governs when it can be marked Done.
 - Add to backlog after user approval
 
 #### Architecture
@@ -143,3 +149,4 @@ Use AskUserQuestion to let the user choose their focus area:
 - **Use the format reference** - New/modified entries must follow [references/backlog-format.md](references/backlog-format.md)
 - **Link to code** - Reference specific files and line numbers when discussing items
 - **Never auto-commit** - Always let the user review first
+- **Hand off state changes to `backlog-ops`** - Refinement is for discussion, prioritization, and entry authoring. When an item needs to be pulled, have an AC ticked, or be closed, invoke the `backlog-ops` skill rather than editing status fields by hand — it handles README TOC consistency and the epic-status cascade for you.

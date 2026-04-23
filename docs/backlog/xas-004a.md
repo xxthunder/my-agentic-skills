@@ -1,8 +1,7 @@
-# [XAS-011] Pre-commit validation of canonical source format
+# [XAS-004a] Pre-commit validation of canonical source format
 
 **Status**: Open
 **Priority**: Medium
-**Epic**: XAS-004
 **Component**: hooks/, scripts/
 
 **Summary**:

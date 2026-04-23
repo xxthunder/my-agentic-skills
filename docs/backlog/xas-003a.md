@@ -1,8 +1,7 @@
-# [XAS-008] Define canonical skill source format
+# [XAS-003a] Define canonical skill source format
 
 **Status**: Open
 **Priority**: High
-**Epic**: XAS-003
 **Component**: skills/, docs/
 
 **Summary**:

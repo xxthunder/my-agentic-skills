@@ -1,8 +1,7 @@
-# [XAS-019] Add `auto-file` skill (sort into configurable folder structure)
+# [XAS-015a] Add `auto-file` skill (sort into configurable folder structure)
 
 **Status**: Open
 **Priority**: Medium
-**Epic**: XAS-015
 **Component**: plugins/xxthunder-paperless-skills/skills/auto-file/
 
 **Summary**:
