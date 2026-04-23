@@ -1,0 +1,18 @@
+[project]
+name = "xxthunder-agentic-skills"
+version = "0.0.0"
+requires-python = ">=3.11"
+description = "Dev harness for the xxthunder-agentic-skills marketplace. Plugins install via `claude plugin install`; this pyproject exists only so `uv run --group dev pytest` can execute the plugin-script test suite."
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pypdf>=4",
+    "reportlab>=4",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
