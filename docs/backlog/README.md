@@ -9,30 +9,20 @@
 ## Table of Contents
 
 ### Open
-
-**Epics**
 - [XAS-003 — Multi-agent skill authoring (single source, multi-target)](xas-003.md)
+- [XAS-003a — Define canonical skill source format](xas-003a.md)
+- [XAS-003b — Build generator that emits Claude Code plugin artifacts](xas-003b.md)
+- [XAS-003c — Document how to add a new agent target](xas-003c.md)
 - [XAS-004 — Marketplace tooling and CI](xas-004.md)
-- [XAS-015 — Launch xxthunder-paperless-skills plugin](xas-015.md)
-
-**Stories under XAS-003**
-- [XAS-008 — Define canonical skill source format](xas-008.md)
-- [XAS-009 — Build generator that emits Claude Code plugin artifacts](xas-009.md)
-- [XAS-010 — Document how to add a new agent target](xas-010.md)
-
-**Stories under XAS-004**
-- [XAS-011 — Pre-commit validation of canonical source format](xas-011.md)
-- [XAS-012 — Auto-sync version between plugin.json and marketplace.json](xas-012.md)
-- [XAS-013 — CI check that generated artifacts match canonical sources](xas-013.md)
-
-**Stories under XAS-015**
-- [XAS-016 — Scaffold xxthunder-paperless-skills plugin and register in marketplace](xas-016.md)
-- [XAS-017 — Migrate simplex-merge from user-global skills into the plugin](xas-017.md)
-- [XAS-018 — Add naps2-scan skill (scan → OCR → merge → filename proposal)](xas-018.md)
-- [XAS-019 — Add auto-file skill (sort into configurable folder structure)](xas-019.md)
+- [XAS-004a — Pre-commit validation of canonical source format](xas-004a.md)
+- [XAS-004b — Auto-sync version between plugin.json and marketplace.json](xas-004b.md)
+- [XAS-004c — CI check that generated artifacts match canonical sources](xas-004c.md)
+- [XAS-015a — Add auto-file skill (sort into configurable folder structure)](xas-015a.md)
 
 ### In Progress
 - [XAS-001 — Backlog refinement](xas-001.md)
+- [XAS-015 — Launch xxthunder-paperless-skills plugin](xas-015.md)
+- [XAS-015b — Add split-batch skill (detect + split multi-document PDFs)](xas-015b.md)
 
 ### Done
 - [XAS-002 — Rename repo and restructure as agentic-skills marketplace](xas-002.md)
@@ -40,12 +30,27 @@
 - [XAS-006 — Phase 2 — Rename marketplace registry and update manifest descriptions](xas-006.md)
 - [XAS-007 — Phase 2 — Rewrite README to describe marketplace purpose](xas-007.md)
 - [XAS-014 — Phase 2 — Restructure to multi-plugin marketplace layout](xas-014.md)
+- [XAS-015c — Unit test harness + backfill for plugin Python scripts](xas-015c.md)
+- [XAS-015d — Privacy opt-in for LLM content analysis in naps2-scan and split-batch](xas-015d.md)
+- [XAS-016 — Scaffold xxthunder-paperless-skills plugin and register in marketplace](xas-016.md)
+- [XAS-017 — Migrate simplex-merge from user-global skills into the plugin](xas-017.md)
+- [XAS-018 — Add naps2-scan skill (scan → OCR → merge → filename proposal)](xas-018.md)
+- [XAS-020 — Document ExcludeBlankPages profile option in naps2-scan](xas-020.md)
+- [XAS-021 — Persist naps2-scan session settings across invocations](xas-021.md)
+- [XAS-022 — Migrate simplex-merge to uv-run script with PEP 723 deps](xas-022.md)
+- [XAS-023 — Fix skill trigger descriptions so new scans pick naps2-scan](xas-023.md)
+- [XAS-024 — Persist scanner type (simplex/duplex) in naps2-scan config](xas-024.md)
+- [XAS-025 — Scrum conventions and backlog-ops skill](xas-025.md)
 
 ---
 
 ## Notes
 
 - **ID prefix**: `XAS` (xxthunder-agentic-skills)
-- Epics group related stories; child stories reference their parent via the `**Epic**` field.
-- Keep items actionable with clear acceptance criteria
-- Do NOT list commit hashes in backlog entries — the backlog is part of the commit itself, so hashes are circular and go stale after squash/rebase
+- **Top-level items** use `XAS-###` (zero-padded sequential). **Substories** append a letter suffix: `XAS-003a`, `XAS-003b`, …
+- An item is an **epic** iff at least one substory (letter-suffixed sibling) exists. No explicit "epic" type field; no explicit back-reference from substories to the parent (the suffix encodes it).
+- Epic status is **derived** from its substories — an epic stays out of `Done` while any substory is not `Done`. The `backlog-ops` skill handles this cascade automatically.
+- TOC is **flat** — no "Stories under X" groupings. Each item sits in the section matching **its own** status, so an epic and its substories may appear in different sections at the same time (e.g., an In-Progress epic with one substory In Progress and two still Open). Natural sort by ID keeps related rows adjacent *within* a section when they happen to share a status.
+- Legacy Done substories under XAS-015 (XAS-016 through XAS-024, excluding XAS-015a) use bare sequential IDs — they predate the convention and are not renamed.
+- Keep items actionable with clear acceptance criteria.
+- Do NOT list commit hashes in backlog entries — the backlog is part of the commit itself, so hashes are circular and go stale after squash/rebase.
