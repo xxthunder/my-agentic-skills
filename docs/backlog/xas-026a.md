@@ -1,6 +1,6 @@
-# [XAS-026a] Pytest workflow on push/PR
+# [XAS-026a] ✅ DONE - Pytest workflow on push/PR
 
-**Status**: In Progress
+**Status**: Done (2026-04-23)
 **Priority**: High
 **Component**: `.github/workflows/test.yml`
 
@@ -19,13 +19,13 @@ Add a GitHub Actions workflow that runs the existing pytest suite (46 tests unde
 - `workflow_dispatch` (manual)
 
 **Acceptance Criteria**:
-- [ ] Workflow file at `.github/workflows/test.yml`
-- [ ] Matrix runs on `ubuntu-latest` and `windows-latest`
-- [ ] Uses `astral-sh/setup-uv@v6` (or current major) for uv installation, with cache enabled
-- [ ] Runs `uv run --group dev pytest` and fails the job on any test failure (until XAS-026b moves the pass/fail decision to the JUnit report step)
-- [ ] Workflow completes in under 5 minutes for typical changes on each leg
-- [ ] Required status check name(s) appear on PRs to `develop`
-- [ ] All 46 existing tests pass on both OSes
+- [x] Workflow file at `.github/workflows/test.yml`
+- [x] Matrix runs on `ubuntu-latest` and `windows-latest`
+- [x] Uses `astral-sh/setup-uv@v6` (or current major) for uv installation, with cache enabled
+- [x] Runs `uv run --group dev pytest` and fails the job on any test failure (until XAS-026b moves the pass/fail decision to the JUnit report step)
+- [x] Workflow completes in under 5 minutes for typical changes on each leg
+- [x] Required status check name(s) appear on PRs to `develop`
+- [x] All 46 existing tests pass on both OSes
 
 **Technical Notes**:
 - `permissions: contents: read` for now; XAS-026b will need `checks: write` and `pull-requests: write`.

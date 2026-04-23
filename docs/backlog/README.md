@@ -28,7 +28,6 @@
 - [XAS-015 — Launch xxthunder-paperless-skills plugin](xas-015.md)
 - [XAS-015b — Add split-batch skill (detect + split multi-document PDFs)](xas-015b.md)
 - [XAS-026 — CI / GitHub Actions setup](xas-026.md)
-- [XAS-026a — Pytest workflow on push/PR (matrix: ubuntu + windows)](xas-026a.md)
 
 ### Done
 - [XAS-002 — Rename repo and restructure as agentic-skills marketplace](xas-002.md)
@@ -47,6 +46,7 @@
 - [XAS-023 — Fix skill trigger descriptions so new scans pick naps2-scan](xas-023.md)
 - [XAS-024 — Persist scanner type (simplex/duplex) in naps2-scan config](xas-024.md)
 - [XAS-025 — Scrum conventions and backlog-ops skill](xas-025.md)
+- [XAS-026a — Pytest workflow on push/PR (matrix: ubuntu + windows)](xas-026a.md)
 
 ---
 
