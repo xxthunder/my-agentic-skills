@@ -78,11 +78,10 @@ def test_exe_is_valid_false_when_file_missing(tmp_path):
 
 
 def test_config_path_uses_appdata_on_windows(monkeypatch):
+    appdata = r"C:\Users\test\AppData\Roaming"
     monkeypatch.setattr(sys, "platform", "win32")
-    monkeypatch.setenv("APPDATA", r"C:\Users\test\AppData\Roaming")
-    assert read_config.config_path() == Path(
-        r"C:\Users\test\AppData\Roaming\naps2-scan\config.json"
-    )
+    monkeypatch.setenv("APPDATA", appdata)
+    assert read_config.config_path() == Path(appdata) / "naps2-scan" / "config.json"
 
 
 def test_config_path_uses_xdg_on_linux(monkeypatch, tmp_path):
