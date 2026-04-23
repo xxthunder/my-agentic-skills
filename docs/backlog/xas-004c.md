@@ -1,8 +1,7 @@
-# [XAS-013] CI check that generated artifacts match canonical sources
+# [XAS-004c] CI check that generated artifacts match canonical sources
 
 **Status**: Open
 **Priority**: Medium
-**Epic**: XAS-004
 **Component**: .github/workflows/
 
 **Summary**:

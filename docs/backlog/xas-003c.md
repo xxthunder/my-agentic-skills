@@ -1,8 +1,7 @@
-# [XAS-010] Document how to add a new agent target
+# [XAS-003c] Document how to add a new agent target
 
 **Status**: Open
 **Priority**: Low
-**Epic**: XAS-003
 **Component**: docs/
 
 **Summary**:
