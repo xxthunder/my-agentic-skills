@@ -1,0 +1,10 @@
+{
+  "name": "xxthunder-paperless-skills",
+  "description": "Skills for digitizing household paperwork: scan, OCR, merge, file",
+  "version": "0.1.3",
+  "author": {
+    "name": "Karsten A. M. Günther"
+  },
+  "repository": "https://github.com/xxthunder/xxthunder-agentic-skills",
+  "license": "MIT"
+}
