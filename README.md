@@ -1,5 +1,17 @@
 # xxthunder-agentic-skills
 
+<p align="center">
+  <a href="https://github.com/xxthunder/xxthunder-agentic-skills/actions/workflows/test.yml">
+    <img src="https://github.com/xxthunder/xxthunder-agentic-skills/actions/workflows/test.yml/badge.svg" alt="CI Status">
+  </a>
+  <a href="https://github.com/xxthunder/xxthunder-agentic-skills/blob/develop/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT">
+  </a>
+  <a href="https://github.com/xxthunder/xxthunder-agentic-skills">
+    <img src="https://img.shields.io/badge/Python-3.11%2B-blue.svg" alt="Python 3.11+">
+  </a>
+</p>
+
 Marketplace of agentic skill plugins by xxthunder. Hosts one or more plugins that extend coding agents with reusable skills. Claude Code is the initial supported target; additional agent targets (e.g. GitHub Copilot) are planned.
 
 ## Plugins
