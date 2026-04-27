@@ -1,6 +1,6 @@
 ---
 name: commit-helper
-description: "Guide conventional commit creation with mandatory pre-commit checks. Use when: (1) Creating commits, (2) Running pre-commit checks, (3) Following conventional commit format, (4) Ensuring tests pass before commit, (5) Co-authoring with AI (Claude Code)."
+description: "Create a conventional commit after running pre-commit checks (unit tests, plus integration tests when source dependencies change, plus linting). Use when the user asks to commit, says 'let's commit', 'commit this', 'create a commit', stages changes for commit, or finishes a unit of work that should land. Enforces conventional-commit format, atomic commits, and AI co-author attribution. Do not trigger on incidental mentions of 'commit' in unrelated conversation."
 ---
 
 <!-- Source: https://github.com/xxthunder/xxthunder-agentic-skills/tree/develop/plugins/xxthunder-dev-skills/skills/commit-helper -->
@@ -68,7 +68,7 @@ Component affected (project-specific, e.g., `api`, `auth`, `cli`, `test`).
 - Lowercase
 - No period at the end
 - Max 50 characters
-- If a JIRA or GitHub or any other backlog issue with a known id is associated, place the issue ID in parentheses at the end: `<type>(<scope>): <description> (<ISSUE-ID>)`
+- If a JIRA or GitHub or any other backlog issue with a known id is associated, place the issue ID in parentheses at the end: `<type>(<scope>): <description> (<ISSUE-ID>)`. Omit the parenthesized ID entirely when no tracker item applies — do not commit a literal `<ISSUE-ID>` placeholder.
 
 ### Body (Optional)
 
@@ -92,7 +92,7 @@ feat: add input validation function (<ISSUE-ID>)
 Add validateInput() to check user-supplied values.
 Returns false for null or empty strings.
 
-Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
+Co-Authored-By: Claude <model> <noreply@anthropic.com>
 ```
 
 ### Bug Fix
@@ -103,7 +103,7 @@ fix: handle names with spaces in lookup (<ISSUE-ID>)
 Properly quote name parameter to support values containing spaces.
 
 Closes #42
-Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
+Co-Authored-By: Claude <model> <noreply@anthropic.com>
 ```
 
 ### Refactoring
@@ -114,7 +114,7 @@ refactor: consolidate error handling in utils (<ISSUE-ID>)
 Extract common error handling pattern into helper function.
 No behavior change.
 
-Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
+Co-Authored-By: Claude <model> <noreply@anthropic.com>
 ```
 
 ### Multiple Changes
@@ -126,20 +126,23 @@ feat(api): add silent mode to command executor (<ISSUE-ID>)
 - Useful for background operations
 - Tests updated to verify behavior
 
-Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
+Co-Authored-By: Claude <model> <noreply@anthropic.com>
 ```
 
 ## Co-Authoring with AI
 
-When AI assists with the code, add co-author:
+When AI assists with the code, add a `Co-Authored-By` trailer naming the actual model in use — e.g., `Claude Opus 4.7`, `Claude Sonnet 4.6`. The examples in this skill use `<model>` as a placeholder; substitute the real model name when committing. This keeps attribution accurate as models evolve.
 
 ```
 feat: add new feature (<ISSUE-ID>)
 
 Description of feature.
 
-Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
+Co-Authored-By: Claude <model> <noreply@anthropic.com>
 ```
+
+For other AI assistants:
+
 ```
 Co-Authored-By: GitHub Copilot <noreply@github.com>
 ```
@@ -168,7 +171,7 @@ feat: add new feature (<ISSUE-ID>)
 
 Detailed description of the feature.
 
-Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
+Co-Authored-By: Claude <model> <noreply@anthropic.com>
 EOF
 )"
 ```
@@ -205,7 +208,7 @@ feat: add input validation helper (<ISSUE-ID>)
 
 Add validateInput function for common input validation patterns.
 
-Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
+Co-Authored-By: Claude <model> <noreply@anthropic.com>
 EOF
 )"
 ```
@@ -225,7 +228,7 @@ fix: handle null input in validation (<ISSUE-ID>)
 Add null check before string operations to prevent null reference error.
 
 Closes #123
-Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
+Co-Authored-By: Claude <model> <noreply@anthropic.com>
 EOF
 )"
 ```
@@ -248,46 +251,21 @@ git commit -m "test: add coverage for edge cases (<ISSUE-ID>)"
 
 See [commit-templates.md](references/commit-templates.md) for more examples.
 
-## Best Practices
-
-1. **Test before commit** - Always run tests
-2. **Atomic commits** - One logical change per commit
-3. **Descriptive subjects** - Clear, concise description
-4. **Include context** - Explain why in body
-5. **Reference issues** - Use `Closes #123` for fixes
-6. **Co-author AI contributions** - Credit AI assistance
-7. **Stage related files together** - Tests + implementation
-8. **Keep subject short** - Max 50 characters
-9. **Use imperative mood** - "add" not "added"
-10. **Proofread** - Check for typos
-
 ## Troubleshooting
 
 ### Tests Failing Before Commit
 
 Run tests using the project's test execution skill with detailed verbosity to see failures. Fix failing tests, run tests again, and commit once all tests pass.
 
-### Forgot to Stage Tests
+### Forgot to Stage Tests, or Forgot Co-Author
 
-```bash
-# Check what's staged
-git status
+Amending the most recent commit (`git commit --amend`) is allowed when **all** of the following hold:
 
-# Stage missing test files
-git add test/
+1. **You are amending only `HEAD`** — never reach further back. Use a follow-up commit if the omission is in an older commit.
+2. **You are on a feature / topic branch**, not a shared trunk (`main`, `master`, `develop`, `release/*`, or any branch others build on). Rewriting history on shared branches breaks every collaborator's local clone.
+3. **The previous commit actually exists** — i.e., it was not blocked by a failing pre-commit hook. A hook failure means no commit was made, so `--amend` would rewrite the commit *before* the one you thought you made. After a hook failure, fix the issue, re-stage, and create a new commit.
 
-# Amend previous commit (if not pushed)
-git commit --amend
-```
-
-### Forgot Co-Author
-
-```bash
-# Amend commit (if not pushed)
-git commit --amend
-
-# Add co-author line in editor
-```
+If the commit has already been pushed, the amend is still fine on a feature branch — push it back with `git push --force-with-lease` (preferred over plain `--force` because it refuses to overwrite work you haven't seen). If any of the conditions above don't hold, add a follow-up commit instead, such as `test: add missed coverage for <feature>` or `chore: attribute co-author for <commit-sha>`.
 
 ### Need to Run Integration Tests
 

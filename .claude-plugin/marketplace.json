@@ -8,7 +8,7 @@
     {
       "name": "xxthunder-dev-skills",
       "description": "Reusable Claude Code skills: refinement, retrospective, commit-helper, tdd-workflow, backlog-ops",
-      "version": "1.3.0",
+      "version": "1.4.0",
       "source": "./plugins/xxthunder-dev-skills/"
     },
     {
