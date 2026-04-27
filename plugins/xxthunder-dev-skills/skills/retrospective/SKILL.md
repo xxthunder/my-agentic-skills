@@ -1,6 +1,6 @@
 ---
 name: retrospective
-description: "Incident-driven learning and guideline improvement. Use when the user expresses dissatisfaction with Claude's work, approach, or decisions. Triggers include: 'I am not happy', 'this is not what I wanted', 'you shouldn't have done that', 'why did you...', 'that's wrong', or any indication of unmet expectations. Captures what went wrong and updates project guidelines to prevent recurrence."
+description: "Incident-driven learning and guideline improvement. Use when the user expresses dissatisfaction with Claude's recent work, approach, or decisions. Triggers include: 'I am not happy', 'this is not what I wanted', 'you shouldn't have done that', 'that's wrong', 'this is incorrect', or a 'why did you X?' question delivered with a clearly critical / corrective tone. Do NOT trigger on neutral 'why did you' clarifying questions where the user is simply curious about a decision. Captures what went wrong and updates project guidelines to prevent recurrence."
 ---
 
 <!-- Source: https://github.com/xxthunder/xxthunder-agentic-skills/tree/develop/plugins/xxthunder-dev-skills/skills/retrospective -->
@@ -16,9 +16,11 @@ Use this skill whenever the user indicates dissatisfaction or unmet expectations
 - "I am not happy with..."
 - "This is not what I wanted"
 - "You shouldn't have done that"
-- "Why did you [do X]?"
+- "Why did you [do X]?" — only when delivered with a corrective / critical tone (the user is challenging the decision, not just curious)
 - "That's wrong" or "This is incorrect"
 - Any indication that Claude's approach, decisions, or output didn't align with user expectations
+
+If the user is asking a neutral clarifying question ("why did you pick approach X?" with no negative cue), answer it directly without entering a retrospective.
 
 ## Workflow
 
@@ -123,7 +125,7 @@ Based on the root cause, identify the appropriate file to update. Look for:
 
 3. **Apply the update**:
    - Use Edit tool to update the appropriate file
-   - Commit the change with message: `docs: add guideline for [topic] based on retrospective`
+   - Leave the change staged but uncommitted. The user owns commits — when they're ready, hand off to the `commit-helper` skill with a message like `docs: add guideline for [topic] based on retrospective`. Never auto-commit a retrospective update; the user may want to refine wording or bundle it with related changes.
 
 4. **Confirm learning**:
    - Summarize: "I've updated [file] to include [guideline]. I'll follow this going forward."

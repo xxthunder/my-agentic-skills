@@ -14,8 +14,9 @@ Interactive backlog refinement session. Reviews project mission, current state, 
 
 - "Another refinement session" / "Let's refine" / "Refinement time"
 - "Backlog refinement" / "Let's discuss the backlog"
-- "What should we work on next?"
 - Any request to review project status and priorities
+
+Note: a bare "what should we work on next?" is **not** sufficient by itself — it often appears in casual prompts where the user just wants a one-line suggestion, not a structured session. Trigger only when the surrounding context indicates the user wants the full refinement flow (mission review, backlog walk, prioritization).
 
 ## Workflow
 

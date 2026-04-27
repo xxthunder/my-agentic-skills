@@ -62,7 +62,7 @@ Step-by-step test-driven development workflow following Red-Green-Refactor princ
 
 ### For Modifying Existing Functions
 
-**CRITICAL: Never modify implementation without updating tests!**
+When changing the behavior of an existing function, the existing tests encode the *old* contract. Modifying the implementation without first updating the tests means either (a) the tests still pass and silently no longer reflect reality, or (b) they fail and you can't tell whether the failure is the change you intended or a regression. Update the tests first so the failure tells you something meaningful.
 
 1. **Read existing tests**
    - Understand what behavior is currently tested
