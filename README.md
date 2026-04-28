@@ -121,6 +121,20 @@ any plugin and is not installed when users install a plugin via
 files invokable via `uv run <script>`; the test harness imports their
 top-level functions directly.
 
+To run with coverage and the JUnit report locally (matches CI):
+
+```bash
+uv run --group dev pytest --cov --cov-report=xml --junit-xml=junit.xml
+```
+
+### CI secrets
+
+CI uploads coverage and test results to [Codecov](https://about.codecov.io/) and
+fails the build if the upload errors. The repository must define a
+`CODECOV_TOKEN` secret (`Settings → Secrets and variables → Actions`) generated
+from the Codecov dashboard for this repo. Without it, every push and PR will
+fail at the Codecov upload step.
+
 ## License
 
 [MIT](LICENSE)
