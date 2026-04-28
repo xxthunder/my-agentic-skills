@@ -39,21 +39,45 @@ Skills for digitizing household paperwork:
 | [**naps2-scan**](plugins/xxthunder-paperless-skills/skills/naps2-scan/SKILL.md) | End-to-end scan pipeline — drives NAPS2.Console with OCR, chains into `simplex-merge` for double-sided documents on a simplex scanner, and proposes a content-derived filename |
 | [**simplex-merge**](plugins/xxthunder-paperless-skills/skills/simplex-merge/SKILL.md) | Post-processing merge of two existing PDFs (odd + even pages) into one correctly ordered document |
 
-## Installation (Claude Code)
+## Installation
 
-Add the marketplace, then install one or more plugins:
+Both Claude Code and GitHub Copilot expose the same `/plugin` slash command. Run these inside the agent's chat: add the marketplace, then install one or more plugins:
 
-```bash
-claude plugin marketplace add https://github.com/xxthunder/xxthunder-agentic-skills.git
-claude plugin install xxthunder-dev-skills
-claude plugin install xxthunder-paperless-skills
+```text
+/plugin marketplace add xxthunder/xxthunder-agentic-skills
+/plugin install xxthunder-dev-skills@xxthunder-agentic-skills
+/plugin install xxthunder-paperless-skills@xxthunder-agentic-skills
 ```
 
-Or test locally by pointing Claude Code at a plugin directory:
+To browse and toggle installed plugins interactively, run `/plugin` with no arguments.
 
-```bash
-claude --plugin-dir /path/to/xxthunder-agentic-skills/plugins/xxthunder-dev-skills
+### Updating
+
+Refresh the marketplace catalog (and pull new plugin versions if auto-update is on for the marketplace):
+
+```text
+/plugin marketplace update xxthunder-agentic-skills
+/reload-plugins
 ```
+
+`/reload-plugins` applies plugin changes in the current session without restarting the agent.
+
+### Managing installed plugins
+
+```text
+/plugin disable xxthunder-dev-skills@xxthunder-agentic-skills
+/plugin enable xxthunder-dev-skills@xxthunder-agentic-skills
+/plugin uninstall xxthunder-paperless-skills@xxthunder-agentic-skills
+```
+
+### Managing the marketplace
+
+```text
+/plugin marketplace list
+/plugin marketplace remove xxthunder-agentic-skills
+```
+
+Removing the marketplace also uninstalls any plugins installed from it.
 
 ### With claude-code-action (GitHub)
 
