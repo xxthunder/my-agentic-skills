@@ -48,6 +48,7 @@
 - [XAS-025 — Scrum conventions and backlog-ops skill](xas-025.md)
 - [XAS-026a — Pytest workflow on push/PR (matrix: ubuntu + windows)](xas-026a.md)
 - [XAS-026b — Coverage upload + JUnit test report](xas-026b.md)
+- [XAS-026g — Codecov status badge in README](xas-026g.md)
 
 ---
 
