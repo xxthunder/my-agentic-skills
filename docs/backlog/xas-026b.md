@@ -1,6 +1,6 @@
-# [XAS-026b] Coverage upload + JUnit test report
+# [XAS-026b] ✅ DONE - Coverage upload + JUnit test report
 
-**Status**: In Progress
+**Status**: Done (2026-04-28)
 **Priority**: Medium
 **Component**: `.github/workflows/test.yml`, `pyproject.toml`
 
@@ -20,16 +20,16 @@ Extend the workflow from XAS-026a to publish coverage and JUnit XML on every run
 **Depends on**: XAS-026a
 
 **Acceptance Criteria**:
-- [ ] `pytest-cov` added to `[dependency-groups].dev` in `pyproject.toml`
-- [ ] `[tool.coverage.run] source = ["plugins"]` added to `pyproject.toml` so local and CI runs measure the same code (helper scripts under `plugins/*/skills/*/scripts/`)
-- [ ] pytest invocation produces `coverage.xml` and `junit.xml` (paths captured as workflow outputs or fixed locations)
-- [ ] `codecov/codecov-action@v5` uploads coverage with `fail_ci_if_error: true`
-- [ ] `codecov/codecov-action@v5` uploads test results (`report_type: test_results`) with `fail_ci_if_error: true`
-- [ ] Codecov flags include the OS leg (`ubuntu`, `windows`) so matrix legs don't clobber each other
-- [ ] `mikepenz/action-junit-report@v6` publishes a check (e.g., `Test Results (uv pytest, ubuntu)`) per matrix leg with `fail_on_failure: true`, `fail_on_parse_error: true`, `require_tests: true`, `detailed_summary: true`, `include_passed: false`
-- [ ] All reporting steps run under `if: always()` so reports publish even on test failure
-- [ ] `CODECOV_TOKEN` repository secret is documented (README or CONTRIBUTING)
-- [ ] PR shows a Codecov comment summarizing coverage delta
+- [x] `pytest-cov` added to `[dependency-groups].dev` in `pyproject.toml`
+- [x] `[tool.coverage.run] source = ["plugins"]` added to `pyproject.toml` so local and CI runs measure the same code (helper scripts under `plugins/*/skills/*/scripts/`)
+- [x] pytest invocation produces `coverage.xml` and `junit.xml` (paths captured as workflow outputs or fixed locations)
+- [x] `codecov/codecov-action@v5` uploads coverage with `fail_ci_if_error: true`
+- [x] `codecov/codecov-action@v5` uploads test results (`report_type: test_results`) with `fail_ci_if_error: true`
+- [x] Codecov flags include the OS leg (`ubuntu`, `windows`) so matrix legs don't clobber each other
+- [x] `mikepenz/action-junit-report@v6` publishes a check (e.g., `Test Results (uv pytest, ubuntu)`) per matrix leg with `fail_on_failure: true`, `fail_on_parse_error: true`, `require_tests: true`, `detailed_summary: true`, `include_passed: false`
+- [x] All reporting steps run under `if: always()` so reports publish even on test failure
+- [x] `CODECOV_TOKEN` repository secret is documented (README or CONTRIBUTING)
+- [x] PR shows a Codecov comment summarizing coverage delta
 
 **Technical Notes**:
 - Match shortcuts' pattern: test step is `continue-on-error: true`; the JUnit report step decides PR pass/fail. This produces a single source of truth on the GitHub PR check page.

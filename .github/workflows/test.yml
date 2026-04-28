@@ -15,7 +15,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        include:
+          - os: ubuntu-latest
+            flag: ubuntu
+          - os: windows-latest
+            flag: windows
     permissions:
       contents: read
     steps:
@@ -30,4 +34,37 @@ jobs:
         run: uv python install 3.12
 
       - name: Run pytest
-        run: uv run --group dev pytest -q
+        id: pytest
+        continue-on-error: true
+        run: uv run --group dev pytest -q --cov --cov-report=xml --junit-xml=junit.xml
+
+      - name: Upload coverage to Codecov
+        if: always()
+        uses: codecov/codecov-action@v5
+        with:
+          files: coverage.xml
+          flags: ${{ matrix.flag }}
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload test results to Codecov
+        if: always()
+        uses: codecov/codecov-action@v5
+        with:
+          files: junit.xml
+          flags: ${{ matrix.flag }}
+          report_type: test_results
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Publish JUnit test results
+        if: always()
+        uses: mikepenz/action-junit-report@v6
+        with:
+          report_paths: junit.xml
+          check_name: Test Results (uv pytest, ${{ matrix.flag }})
+          fail_on_failure: true
+          fail_on_parse_error: true
+          require_tests: true
+          detailed_summary: true
+          include_passed: false

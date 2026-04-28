@@ -5,3 +5,9 @@
 __pycache__/
 *.pyc
 .pytest_cache/
+
+# Coverage / test reports
+.coverage
+coverage.xml
+htmlcov/
+junit.xml
