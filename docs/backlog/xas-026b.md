@@ -1,6 +1,6 @@
 # [XAS-026b] Coverage upload + JUnit test report
 
-**Status**: Open
+**Status**: In Progress
 **Priority**: Medium
 **Component**: `.github/workflows/test.yml`, `pyproject.toml`
 
@@ -21,6 +21,7 @@ Extend the workflow from XAS-026a to publish coverage and JUnit XML on every run
 
 **Acceptance Criteria**:
 - [ ] `pytest-cov` added to `[dependency-groups].dev` in `pyproject.toml`
+- [ ] `[tool.coverage.run] source = ["plugins"]` added to `pyproject.toml` so local and CI runs measure the same code (helper scripts under `plugins/*/skills/*/scripts/`)
 - [ ] pytest invocation produces `coverage.xml` and `junit.xml` (paths captured as workflow outputs or fixed locations)
 - [ ] `codecov/codecov-action@v5` uploads coverage with `fail_ci_if_error: true`
 - [ ] `codecov/codecov-action@v5` uploads test results (`report_type: test_results`) with `fail_ci_if_error: true`
@@ -32,3 +33,5 @@ Extend the workflow from XAS-026a to publish coverage and JUnit XML on every run
 
 **Technical Notes**:
 - Match shortcuts' pattern: test step is `continue-on-error: true`; the JUnit report step decides PR pass/fail. This produces a single source of truth on the GitHub PR check page.
+- Implementation order: `CODECOV_TOKEN` is added to repo secrets BEFORE the workflow PR is opened. With `fail_ci_if_error: true`, a missing token would break every push/PR.
+- Coverage thresholds and `codecov.yml` policy are intentionally out of scope here — see XAS-026f. Ship reporting first, let numbers stabilize over a few PRs, then enforce.
