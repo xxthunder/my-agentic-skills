@@ -41,43 +41,35 @@ Skills for digitizing household paperwork:
 
 ## Installation
 
-Both Claude Code and GitHub Copilot expose the same `/plugin` slash command. Run these inside the agent's chat: add the marketplace, then install one or more plugins:
+The `/plugin` slash command is supported across Claude Code, VS Code, and the GitHub Copilot CLI. Run these inside the agent's chat — each block is one command.
+
+Add the marketplace:
 
 ```text
 /plugin marketplace add xxthunder/xxthunder-agentic-skills
-/plugin install xxthunder-dev-skills@xxthunder-agentic-skills
-/plugin install xxthunder-paperless-skills@xxthunder-agentic-skills
 ```
 
-To browse and toggle installed plugins interactively, run `/plugin` with no arguments.
+Install a plugin (swap in `xxthunder-paperless-skills` for the other one):
 
-### Updating
+```text
+/plugin install xxthunder-dev-skills@xxthunder-agentic-skills
+```
 
-Refresh the marketplace catalog (and pull new plugin versions if auto-update is on for the marketplace):
+Update plugins — the command shape differs between hosts.
+
+In Claude Code (marketplace-level; bumps installed plugins from the refreshed catalog):
 
 ```text
 /plugin marketplace update xxthunder-agentic-skills
-/reload-plugins
 ```
 
-`/reload-plugins` applies plugin changes in the current session without restarting the agent.
-
-### Managing installed plugins
+In GitHub Copilot CLI (per-plugin):
 
 ```text
-/plugin disable xxthunder-dev-skills@xxthunder-agentic-skills
-/plugin enable xxthunder-dev-skills@xxthunder-agentic-skills
-/plugin uninstall xxthunder-paperless-skills@xxthunder-agentic-skills
+/plugin update xxthunder-dev-skills
 ```
 
-### Managing the marketplace
-
-```text
-/plugin marketplace list
-/plugin marketplace remove xxthunder-agentic-skills
-```
-
-Removing the marketplace also uninstalls any plugins installed from it.
+For everything else — enable/disable, uninstall, listing, removing a marketplace, reload — see the host's own `/plugin` documentation (Claude Code, VS Code, or GitHub Copilot CLI). Subcommand availability and flags differ slightly between hosts.
 
 ### With claude-code-action (GitHub)
 
