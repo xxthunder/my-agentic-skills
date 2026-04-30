@@ -4,14 +4,14 @@
   <a href="https://github.com/xxthunder/xxthunder-agentic-skills/actions/workflows/test.yml">
     <img src="https://github.com/xxthunder/xxthunder-agentic-skills/actions/workflows/test.yml/badge.svg" alt="CI Status">
   </a>
-  <a href="https://codecov.io/gh/xxthunder/xxthunder-agentic-skills">
-    <img src="https://codecov.io/gh/xxthunder/xxthunder-agentic-skills/branch/develop/graph/badge.svg" alt="Coverage">
-  </a>
   <a href="https://github.com/xxthunder/xxthunder-agentic-skills/blob/develop/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT">
   </a>
   <a href="https://github.com/xxthunder/xxthunder-agentic-skills">
     <img src="https://img.shields.io/badge/Python-3.11%2B-blue.svg" alt="Python 3.11+">
+  </a>
+  <a href="https://codecov.io/gh/xxthunder/xxthunder-agentic-skills">
+    <img src="https://codecov.io/gh/xxthunder/xxthunder-agentic-skills/branch/develop/graph/badge.svg" alt="Coverage">
   </a>
 </p>
 

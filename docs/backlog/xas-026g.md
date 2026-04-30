@@ -17,3 +17,6 @@ Follow-up to XAS-026b — the Codecov upload landed, but the status badge was mi
 - Badge URL: `https://codecov.io/gh/xxthunder/xxthunder-agentic-skills/branch/develop/graph/badge.svg`
 - Link target: `https://codecov.io/gh/xxthunder/xxthunder-agentic-skills`
 - Public repo, so the badge SVG works without a token query parameter.
+
+**Follow-up (2026-04-30)**:
+Badge cluster reordered to match the `xxthunder/shortcuts` repo convention: CI → license → language → Codecov. Platform badge was considered but dropped — OS is irrelevant here and a Claude Code badge would become incomplete as additional agent targets (e.g. GitHub Copilot) are added. Final order landed in this commit.
