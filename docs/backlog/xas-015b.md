@@ -1,6 +1,6 @@
-# [XAS-015b] Add `split-batch` skill (detect + split multi-document PDFs)
+# [XAS-015b] ✅ DONE - Add `split-batch` skill (detect + split multi-document PDFs)
 
-**Status**: In Progress
+**Status**: Done (2026-05-28)
 **Priority**: Medium
 **Component**: plugins/xxthunder-paperless-skills/skills/split-batch/, plugins/xxthunder-paperless-skills/skills/naps2-scan/SKILL.md
 

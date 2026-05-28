@@ -27,7 +27,6 @@
 ### In Progress
 - [XAS-001 — Backlog refinement](xas-001.md)
 - [XAS-015 — Launch xxthunder-paperless-skills plugin](xas-015.md)
-- [XAS-015b — Add split-batch skill (detect + split multi-document PDFs)](xas-015b.md)
 - [XAS-026 — CI / GitHub Actions setup](xas-026.md)
 
 ### Done
@@ -36,6 +35,7 @@
 - [XAS-006 — Phase 2 — Rename marketplace registry and update manifest descriptions](xas-006.md)
 - [XAS-007 — Phase 2 — Rewrite README to describe marketplace purpose](xas-007.md)
 - [XAS-014 — Phase 2 — Restructure to multi-plugin marketplace layout](xas-014.md)
+- [XAS-015b — Add split-batch skill (detect + split multi-document PDFs)](xas-015b.md)
 - [XAS-015c — Unit test harness + backfill for plugin Python scripts](xas-015c.md)
 - [XAS-015d — Privacy opt-in for LLM content analysis in naps2-scan and split-batch](xas-015d.md)
 - [XAS-016 — Scaffold xxthunder-paperless-skills plugin and register in marketplace](xas-016.md)
