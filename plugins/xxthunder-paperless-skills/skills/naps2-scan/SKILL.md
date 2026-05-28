@@ -7,6 +7,9 @@ description: >
   to scan paperwork or digitize a document, including conversational variants like
   "scan this", "let's scan", "scan another", "scan again", "scan the next one", "new scan",
   "start scanning", "digitize this receipt/letter/invoice/bill/statement", or "run NAPS2".
+  Also handles batch mode — scanning a whole stack of separate documents in one pass
+  ("scan this stack", "batch scan", "these are multiple documents") — by chaining into
+  `split-batch` after the scan to separate the bundle into one PDF per document.
   Also triggers when the user already has fresh scan output and wants to continue the
   pipeline (OCR, merge, name, rename). This is the starting-point skill for scanning;
   `simplex-merge` is post-processing only and should not be picked for new-scan requests.
@@ -24,6 +27,7 @@ Automate document scanning with [NAPS2](https://www.naps2.com/): **scan → OCR 
 - "Scan another" / "Scan again" / "Scan the next one" / "New scan"
 - "Run NAPS2" / "Scan with NAPS2"
 - "Scan this receipt/letter/invoice/bill/statement"
+- "Scan this stack" / "Batch scan" / "These are multiple documents" (batch mode — chains into `split-batch`)
 - Any request to start a new scan or digitize a physical document
 - User already has scan output (PDF files) and wants to continue the pipeline (OCR already done, or post-processing only)
 
@@ -154,6 +158,14 @@ NAPS2 runs interactively; the command blocks until scanning is done or cancelled
 If two files were produced from a simplex double-sided scan, invoke the **`simplex-merge`** skill to interleave odd/even pages into a single PDF. Let `simplex-merge` handle naming of the merged output; the current skill continues from there.
 
 For single-sided or duplex scans, the NAPS2 output is already the final PDF — skip the merge and continue.
+
+### 3b. Split (batch mode only)
+
+If the user signalled they scanned a **stack of separate documents** in one pass ("scan this stack", "batch scan", "these are multiple documents"), the single PDF from Step 2/3 actually bundles several documents. Hand it off to the **`split-batch`** skill to detect document boundaries and emit one PDF per document. `split-batch` presents a split map for confirmation and shares this conversation's LLM-consent answer (see **LLM Consent** above) for any boundary escalation.
+
+For a normal single-document scan, skip this step — the merged/scanned PDF is the one final document.
+
+When `split-batch` produces N PDFs, run Step 4–5 **per output file** (loop), proposing a filename for each. Otherwise continue with the single PDF.
 
 ### 4. Extract text for filename proposal (consent-gated)
 
