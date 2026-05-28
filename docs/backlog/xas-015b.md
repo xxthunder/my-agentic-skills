@@ -77,17 +77,17 @@ Version bump: `plugins/xxthunder-paperless-skills/.claude-plugin/plugin.json` an
 Commit: `feat(split-batch): add batch-PDF splitting skill` (conventional-commit scope matches skill name per CLAUDE.md).
 
 **Acceptance Criteria**:
-- [ ] `SKILL.md` created with trigger phrases ("split this batch", "these are multiple documents", "split this stack", etc.)
-- [ ] Accepts a PDF in the current working directory as input
-- [ ] Rule-based boundary detection implemented (page-number regex, letterhead/sender change, address-block heuristic)
-- [ ] LLM escalation for ambiguous cases, with OCR text as input — gated by the XAS-015d consent (on deny, degrades to user-prompt for boundaries)
-- [ ] Separator-sheet mode toggle (deterministic splitting on blank/marker pages)
-- [ ] Presents proposed split map to user and accepts edits (add/remove/move boundaries) before committing
-- [ ] Emits one PDF per detected document after confirmation
-- [ ] `naps2-scan` SKILL.md updated to chain into `split-batch` when the user signals batch mode
-- [ ] Plugin version bumped in both `plugin.json` and `marketplace.json`
-- [ ] All new Python helper scripts covered by unit tests per the XAS-015c harness (behavior coverage of exit codes, JSON schemas, CLI flags)
-- [ ] Manual end-to-end test: scan a real stack of 3-5 documents and verify correct splits (see UAT below)
+- [x] `SKILL.md` created with trigger phrases ("split this batch", "these are multiple documents", "split this stack", etc.)
+- [x] Accepts a PDF in the current working directory as input
+- [x] Rule-based boundary detection implemented (page-number regex, letterhead/sender change, address-block heuristic)
+- [x] LLM escalation for ambiguous cases, with OCR text as input — gated by the XAS-015d consent (on deny, degrades to user-prompt for boundaries)
+- [x] Separator-sheet mode toggle (deterministic splitting on blank/marker pages)
+- [x] Presents proposed split map to user and accepts edits (add/remove/move boundaries) before committing
+- [x] Emits one PDF per detected document after confirmation
+- [x] `naps2-scan` SKILL.md updated to chain into `split-batch` when the user signals batch mode
+- [x] Plugin version bumped in both `plugin.json` and `marketplace.json`
+- [x] All new Python helper scripts covered by unit tests per the XAS-015c harness (behavior coverage of exit codes, JSON schemas, CLI flags)
+- [x] Manual end-to-end test: scan a real stack of 3-5 documents and verify correct splits (see UAT below)
 
 **User Acceptance Test**:
 

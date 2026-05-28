@@ -18,6 +18,7 @@
 - [XAS-004b — Auto-sync version between plugin.json and marketplace.json](xas-004b.md)
 - [XAS-004c — CI check that generated artifacts match canonical sources](xas-004c.md)
 - [XAS-015a — Add auto-file skill (sort into configurable folder structure)](xas-015a.md)
+- [XAS-015e — Harden split-batch page-number rule: detect self-contained pages](xas-015e.md)
 - [XAS-026c — Claude Code interactive bot (`@claude` mentions)](xas-026c.md)
 - [XAS-026d — JSON schema validation for `marketplace.json` and `plugin.json`](xas-026d.md)
 - [XAS-026e — PR title conventional-commit linter](xas-026e.md)
