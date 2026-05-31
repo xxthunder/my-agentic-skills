@@ -41,6 +41,7 @@ Skills for digitizing household paperwork:
 |---|---|
 | [**naps2-scan**](plugins/xxthunder-paperless-skills/skills/naps2-scan/SKILL.md) | End-to-end scan pipeline — drives NAPS2.Console with OCR, chains into `simplex-merge` for double-sided documents on a simplex scanner, and proposes a content-derived filename |
 | [**simplex-merge**](plugins/xxthunder-paperless-skills/skills/simplex-merge/SKILL.md) | Post-processing merge of two existing PDFs (odd + even pages) into one correctly ordered document |
+| [**split-batch**](plugins/xxthunder-paperless-skills/skills/split-batch/SKILL.md) | Post-processing split of a single multi-document PDF into one PDF per detected document — boundary detection from page content or blank separator sheets |
 
 ## Installation
 
@@ -101,10 +102,11 @@ Skills trigger automatically based on conversation context, or can be invoked ex
 **xxthunder-paperless-skills**
 - [**naps2-scan**](plugins/xxthunder-paperless-skills/skills/naps2-scan/SKILL.md): "scan this", "scan another", "digitize this letter/invoice", "run NAPS2"
 - [**simplex-merge**](plugins/xxthunder-paperless-skills/skills/simplex-merge/SKILL.md): "merge these two PDFs", or filenames containing "ungerade"/"gerade", "odd"/"even", "front"/"back"
+- [**split-batch**](plugins/xxthunder-paperless-skills/skills/split-batch/SKILL.md): "split this batch", "split this stack", "these are multiple documents", "I scanned a pile", "separate these documents"
 
 ## Roadmap
 
-See `docs/backlog/` for current epics and stories. Near-term focus:
+See the [backlog](docs/backlog/README.md) for current epics and stories. Near-term focus:
 
 - Canonical skill source format enabling multi-agent emission
 - GitHub Copilot target
