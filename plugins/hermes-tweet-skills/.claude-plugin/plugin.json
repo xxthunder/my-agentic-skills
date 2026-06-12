@@ -1,0 +1,10 @@
+{
+  "name": "hermes-tweet-skills",
+  "description": "Hermes Tweet setup and safe operation for Hermes Agent X/Twitter workflows",
+  "version": "0.1.0",
+  "author": {
+    "name": "Xquik"
+  },
+  "repository": "https://github.com/Xquik-dev/hermes-tweet",
+  "license": "MIT"
+}

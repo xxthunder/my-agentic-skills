@@ -43,6 +43,14 @@ Skills for digitizing household paperwork:
 | [**simplex-merge**](plugins/xxthunder-paperless-skills/skills/simplex-merge/SKILL.md) | Post-processing merge of two existing PDFs (odd + even pages) into one correctly ordered document |
 | [**split-batch**](plugins/xxthunder-paperless-skills/skills/split-batch/SKILL.md) | Post-processing split of a single multi-document PDF into one PDF per detected document — boundary detection from page content or blank separator sheets |
 
+### `hermes-tweet-skills`
+
+Skills for Hermes Agent X/Twitter workflows:
+
+| Skill | Description |
+|---|---|
+| [**hermes-tweet**](plugins/hermes-tweet-skills/skills/hermes-tweet/SKILL.md) | Install, configure, diagnose, and safely operate Hermes Tweet with XQUIK_API_KEY setup, tweet_explore/read/action ordering, remote runtime guidance, and action gating |
+
 ## Installation
 
 The `/plugin` slash command is supported across Claude Code, VS Code, and the GitHub Copilot CLI. Run these inside the agent's chat — each block is one command.
@@ -57,6 +65,12 @@ Install a plugin (swap in `xxthunder-paperless-skills` for the other one):
 
 ```text
 /plugin install xxthunder-dev-skills@xxthunder-agentic-skills
+```
+
+For Hermes Tweet:
+
+```text
+/plugin install hermes-tweet-skills@xxthunder-agentic-skills
 ```
 
 Update plugins — the command shape differs between hosts.
@@ -103,6 +117,9 @@ Skills trigger automatically based on conversation context, or can be invoked ex
 - [**naps2-scan**](plugins/xxthunder-paperless-skills/skills/naps2-scan/SKILL.md): "scan this", "scan another", "digitize this letter/invoice", "run NAPS2"
 - [**simplex-merge**](plugins/xxthunder-paperless-skills/skills/simplex-merge/SKILL.md): "merge these two PDFs", or filenames containing "ungerade"/"gerade", "odd"/"even", "front"/"back"
 - [**split-batch**](plugins/xxthunder-paperless-skills/skills/split-batch/SKILL.md): "split this batch", "split this stack", "these are multiple documents", "I scanned a pile", "separate these documents"
+
+**hermes-tweet-skills**
+- [**hermes-tweet**](plugins/hermes-tweet-skills/skills/hermes-tweet/SKILL.md): "install Hermes Tweet", "connect Hermes to X/Twitter", "configure XQUIK_API_KEY", "run tweet_explore", "use tweet_read", "gate tweet_action"
 
 ## Roadmap
 

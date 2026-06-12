@@ -3,7 +3,9 @@
   "owner": {
     "name": "Karsten A. M. Günther"
   },
-  "description": "Marketplace of agentic skill plugins by xxthunder",
+  "metadata": {
+    "description": "Marketplace of agentic skill plugins by xxthunder"
+  },
   "plugins": [
     {
       "name": "xxthunder-dev-skills",
@@ -16,6 +18,12 @@
       "description": "Skills for digitizing household paperwork: scan, OCR, merge, file",
       "version": "0.2.0",
       "source": "./plugins/xxthunder-paperless-skills/"
+    },
+    {
+      "name": "hermes-tweet-skills",
+      "description": "Hermes Tweet setup and safe operation for Hermes Agent X/Twitter workflows",
+      "version": "0.1.0",
+      "source": "./plugins/hermes-tweet-skills/"
     }
   ]
 }
