@@ -23,7 +23,14 @@
 - [XAS-026d — JSON schema validation for `marketplace.json` and `plugin.json`](xas-026d.md)
 - [XAS-026e — PR title conventional-commit linter](xas-026e.md)
 - [XAS-026f — Coverage thresholds via `codecov.yml`](xas-026f.md)
-- [XAS-027 — Make "the backlog item is the design of record" a plugin-level rule](xas-027.md)
+- [XAS-027 — Agentic Engineering-as-Code — durable design record](xas-027.md)
+- [XAS-027a — `design-record` skill: ADR authoring, numbering, index](xas-027a.md)
+- [XAS-027b — `design-record` skill: `architecture.md` slots and diagram editing](xas-027b.md)
+- [XAS-027c — `SessionStart` orientation hook](xas-027c.md)
+- [XAS-027d — `architecture-scan` skill: bootstrap and drift report](xas-027d.md)
+- [XAS-027e — Wire-up: `refinement`, `tdd-workflow`, `commit-helper`](xas-027e.md)
+- [XAS-027f — Dogfood: this repo's own `architecture.md` and ADRs](xas-027f.md)
+- [XAS-027g — Verify in a consuming repo; retire the per-repo `AGENTS.md` text](xas-027g.md)
 
 ### In Progress
 - [XAS-001 — Backlog refinement](xas-001.md)
