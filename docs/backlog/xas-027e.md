@@ -1,0 +1,58 @@
+# [XAS-027e] Wire-up: `refinement`, `tdd-workflow`, `commit-helper`
+
+**Status**: Open
+**Priority**: Medium
+**Component**: `plugins/xxthunder-dev-skills/skills/refinement/SKILL.md`,
+`plugins/xxthunder-dev-skills/skills/tdd-workflow/SKILL.md`,
+`plugins/xxthunder-dev-skills/skills/commit-helper/SKILL.md`,
+`plugins/xxthunder-dev-skills/.claude-plugin/plugin.json`,
+`.claude-plugin/marketplace.json`
+
+**Depends on**: [XAS-027a](xas-027a.md), [XAS-027b](xas-027b.md)
+
+**Summary**:
+As a maintainer, I want the existing skills to point at `design-record` at the
+moments that actually produce record changes, so that decisions and structural
+moves get captured when they happen rather than when someone remembers.
+
+**Description**:
+Three of the four capture moments are covered by skills that already exist and
+already sit at the right boundary — they simply do not know about the record
+yet:
+
+- **A decision is made.** `refinement`'s Architecture topic currently ends with
+  "document decisions in the backlog item's Scope Decisions field". That is
+  right for decisions local to one change and wrong for decisions that outlive
+  it, so it should apply the three-part test and hand off to `design-record`
+  when the decision passes.
+- **Structure changes.** A TDD cycle that moves a module boundary, or a
+  pre-commit check on a diff that adds or removes one, is the moment
+  `architecture.md` becomes stale.
+- **On demand** is `design-record` invoked directly and needs no wiring.
+
+All three **suggest and never block**. Gating was ranked last among the goals
+for this epic; friction on small changes is a worse failure than a slightly
+stale document, because a workflow people route around protects nothing.
+
+**Scope Decisions**:
+- Suggestions only. No skill refuses to proceed because the record is stale.
+- `refinement` keeps `Scope Decisions` for change-local rationale — the
+  escalation ladder is: trivial → nothing; local to this change → `Scope
+  Decisions`; outlives the change → ADR.
+- Detection of "structure changed" stays deliberately crude — added, deleted or
+  moved directories and manifest entries. Chasing a precise definition of a
+  boundary change is not worth it for a suggestion that a human confirms.
+
+**Acceptance Criteria**:
+- [ ] `refinement`'s Architecture topic applies the three-part test and hands
+      off to `design-record` for decisions that pass it, keeping `Scope
+      Decisions` for those that do not.
+- [ ] `tdd-workflow` suggests `design-record` at cycle end when the cycle moved
+      a module boundary, and does not block the cycle.
+- [ ] `commit-helper` suggests `design-record` during pre-commit checks when the
+      staged diff adds, removes or moves a module, and does not block the
+      commit.
+- [ ] None of the three skills introduces a refusal or gate.
+- [ ] `plugin.json` and `marketplace.json` bumped (minor — behaviour change in
+      three skills).
+- [ ] All existing tests continue to pass.
