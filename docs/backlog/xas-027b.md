@@ -1,6 +1,6 @@
-# [XAS-027b] `design-record` skill — `architecture.md` slots and diagram editing
+# [XAS-027b] ✅ DONE - `design-record` skill — `architecture.md` slots and diagram editing
 
-**Status**: Open
+**Status**: Done (2026-08-14)
 **Priority**: High
 **Component**: `plugins/xxthunder-dev-skills/skills/design-record/SKILL.md`,
 `plugins/xxthunder-dev-skills/skills/design-record/references/architecture-format.md` (new),
@@ -59,23 +59,23 @@ empty heading and never a fabricated box.
   domain-heavy repos and is dead weight elsewhere.
 
 **Acceptance Criteria**:
-- [ ] `references/architecture-format.md` documents the slot list, the canonical
+- [x] `references/architecture-format.md` documents the slot list, the canonical
       order, the mermaid convention, and the honest-degradation rule.
-- [ ] The skill resolves the document's location by discovery — `docs/architecture.md`,
+- [x] The skill resolves the document's location by discovery — `docs/architecture.md`,
       then root `ARCHITECTURE.md` — adopting an existing file over creating a new
       one, and asking only when both exist.
-- [ ] The skill creates the `architecture.md` skeleton when the file is absent,
+- [x] The skill creates the `architecture.md` skeleton when the file is absent,
       at `docs/architecture.md`.
-- [ ] The skill edits a named slot in place; when the slot is missing it is
+- [x] The skill edits a named slot in place; when the slot is missing it is
       inserted in canonical order rather than appended at the end of the file.
-- [ ] Structural slots are edited and never appended to; new diagrams are added
+- [x] Structural slots are edited and never appended to; new diagrams are added
       only under `Key flows`.
-- [ ] A slot with nothing to say carries an explicit one-line note (e.g.
+- [x] A slot with nothing to say carries an explicit one-line note (e.g.
       "Single container; see Components"), never an empty heading and never a
       fabricated diagram.
-- [ ] The `Decisions` slot links to the ADR index and does not duplicate it.
-- [ ] The skill's trigger phrases cover "update the architecture doc", "redraw
+- [x] The `Decisions` slot links to the ADR index and does not duplicate it.
+- [x] The skill's trigger phrases cover "update the architecture doc", "redraw
       the container diagram", "document this module".
-- [ ] Stages edits only; never commits.
-- [ ] `plugin.json` and `marketplace.json` bumped (minor).
-- [ ] All existing tests continue to pass.
+- [x] Stages edits only; never commits.
+- [x] `plugin.json` and `marketplace.json` bumped (minor).
+- [x] All existing tests continue to pass.

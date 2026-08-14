@@ -155,7 +155,45 @@ three-part test, and the one-way linking rule.
 
 ## Editing architecture.md
 
-See [references/architecture-format.md](references/architecture-format.md).
+Format, slot list and canonical order live in
+[references/architecture-format.md](references/architecture-format.md). This
+section is the workflow.
+
+### Step 1: Locate or create the document
+
+Resolve the path by discovery, in the order given in the format reference:
+`docs/architecture.md`, then root `ARCHITECTURE.md`, then create
+`docs/architecture.md` if neither exists, and ask if both do.
+
+If it is absent, create the skeleton with **every** slot present, each either
+populated or carrying an honest one-line note. Do not create a partial document
+intending to fill it in later — the missing slots are what a later session
+appends to instead of editing.
+
+### Step 2: Identify the slot
+
+Map the change to exactly one slot. A change that seems to touch several
+usually means the structural change is larger than described — say so and ask,
+rather than editing four slots on an assumption.
+
+### Step 3: Edit in place
+
+- If the slot exists, **edit its content**. Do not append a second diagram to a
+  structural slot.
+- If the slot is missing, insert it at its **canonical position** in the order
+  above — never at the end of the file.
+- If the change is a new behavioural flow, add a diagram under `## Key flows`.
+  This is the only slot that grows.
+
+### Step 4: Degrade honestly
+
+If the slot has nothing real to say for this repository, write the one-line
+note. Never leave an empty heading, and never invent a box to fill a diagram.
+
+### Step 5: Report
+
+State which slot changed, whether it was edited or inserted, and that the
+change is staged and uncommitted.
 
 ## What This Skill Does NOT Do
 
