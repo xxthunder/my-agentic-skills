@@ -1,7 +1,13 @@
 {
   "name": "xxthunder-dev-skills",
   "description": "Reusable Claude Code skills: refinement, retrospective, commit-helper, tdd-workflow, backlog-ops",
-  "version": "1.4.0",
+  "version": "1.5.0",
+  "dependencies": [
+    {
+      "name": "superpowers",
+      "marketplace": "claude-plugins-official"
+    }
+  ],
   "author": {
     "name": "Karsten A. M. Günther"
   },
