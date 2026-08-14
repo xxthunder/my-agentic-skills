@@ -3,8 +3,9 @@
 **Status**: Open
 **Priority**: High
 **Component**: `plugins/xxthunder-dev-skills/hooks/hooks.json` (new),
-`plugins/xxthunder-dev-skills/hooks/session-start.sh` (new),
-`tests/` (new test module), `CLAUDE.md`,
+`plugins/xxthunder-dev-skills/hooks/session-start` (new, extensionless),
+`plugins/xxthunder-dev-skills/hooks/run-hook.cmd` (new),
+`tests/dev/hooks/` (new test module), `CLAUDE.md`, `CONTRIBUTING.md`,
 `plugins/xxthunder-dev-skills/.claude-plugin/plugin.json`,
 `.claude-plugin/marketplace.json`
 
@@ -49,6 +50,22 @@ skill's explicit instruction will win against.
   session in every consuming repo; a hook that errors because a tool is missing
   is worse than no hook. Notably not `uv`, despite it being this repo's standard
   for helper scripts.
+- **The hook script is extensionless and reached through a polyglot
+  `run-hook.cmd` wrapper**, following the `superpowers` precedent rather than the
+  plain `session-start.sh` this story originally specified. Two reasons, both
+  from `superpowers` 6.2.0's own `hooks/`: Claude Code's Windows handling
+  prepends `bash` to any command containing `.sh`, which breaks the invocation;
+  and on Windows the wrapper must locate a Git-for-Windows `bash` itself and
+  exit 0 silently when there is none. A plain `.sh` cannot satisfy this story's
+  own windows-latest acceptance criterion.
+- **`hooks/hooks.json` is auto-discovered; `plugin.json` needs no `hooks`
+  field.** Confirmed by inspection of `superpowers` 6.2.0, whose `plugin.json`
+  declares no such key while its `SessionStart` hook fires. This turns the
+  open confirmation below into a check rather than an experiment.
+- Tests live under `tests/dev/`, a tree that does not exist yet — everything
+  under `tests/` today belongs to `xxthunder-paperless-skills`. The hook is
+  exercised as a subprocess, so it needs no `conftest.py` path injection and
+  should not be modelled on the paperless script-import harness.
 - The payload stays short — it is injected into every session — and points at
   the skills for mechanics rather than restating any format.
 - The ID prefix is read from the backlog README's Notes section, not configured.
@@ -58,6 +75,8 @@ skill's explicit instruction will win against.
       `SessionStart` hook using matcher `startup|clear|compact`.
 - [ ] The hook script is POSIX `sh`, has no external dependencies, and exits 0
       on every path including malformed input.
+- [ ] The script is extensionless and invoked via a polyglot `run-hook.cmd`
+      wrapper that finds `bash` on Windows and exits 0 silently when it cannot.
 - [ ] The hook is a no-op in a repo with none of `docs/backlog/`, `docs/adr/`,
       `docs/architecture.md` (verified in a scratch repo).
 - [ ] The payload lists only the artifacts that exist, with discovered paths,
@@ -71,6 +90,10 @@ skill's explicit instruction will win against.
 - [ ] `CLAUDE.md`'s version-bump rule widened from
       `plugins/<plugin-name>/skills/` to the whole plugin directory — a hook
       lives under `hooks/` and today's wording would not require a bump for it.
+- [ ] `CONTRIBUTING.md`'s acceptance bar (point 6) widened identically. It
+      carries the same narrow `plugins/<plugin-name>/skills/` wording, so
+      fixing only `CLAUDE.md` leaves the two documents contradicting each
+      other on the one rule this repo states twice.
 - [ ] Confirmed whether `plugin.json` needs a `hooks` field or whether
       `hooks/hooks.json` is auto-discovered; manifest updated if required.
 - [ ] `plugin.json` and `marketplace.json` bumped (minor).

@@ -40,5 +40,8 @@ resolution belongs in whichever is wrong.
       resolved by fixing the skill, the format reference, or the ADR, and the
       choice is recorded.
 - [ ] At least one new decision made during this epic is recorded through the
-      skill rather than by hand, exercising the full path.
+      skill rather than by hand, exercising the full path. The nominated
+      decision is the architecture-document discovery rule held in
+      [XAS-027b](xas-027b.md)'s `Scope Decisions` precisely so that it is
+      available for this — it earns an ADR and was left unwritten on purpose.
 - [ ] The ADR index at `docs/adr/README.md` matches the files on disk.
