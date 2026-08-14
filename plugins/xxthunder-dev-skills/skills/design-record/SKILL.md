@@ -1,0 +1,188 @@
+---
+name: design-record
+description: "Record a design decision as an ADR, or update the living architecture document, in a repo that keeps a durable design record. Drafts the ADR body from the conversation, allocates the next number, maintains the ADR index, and edits named sections of architecture.md. Stages file edits only; never produces its own commit. Trigger with: 'record an ADR', 'document this decision', 'we decided X — write it up', 'why did we choose Y — capture it', 'update the architecture doc'."
+user_invocable: true
+---
+
+<!-- Source: https://github.com/xxthunder/xxthunder-agentic-skills/tree/develop/plugins/xxthunder-dev-skills/skills/design-record -->
+
+# Design Record
+
+Writes the two artifacts that outlive a unit of work: the **ADR log** at
+`docs/adr/`, and the living **`architecture.md`**. Formats live in
+[references/adr-format.md](references/adr-format.md) and
+[references/architecture-format.md](references/architecture-format.md).
+
+This skill **stages file edits only**. It never creates a commit. Commits are
+the user's call — typically via `commit-helper` — so a record change can ride in
+the same commit as the code change that justifies it.
+
+## Why this skill authors prose, unlike `backlog-ops`
+
+`backlog-ops` refuses to author content: it applies mechanical lifecycle
+operations and leaves all writing to `refinement`. This skill deliberately
+breaks that seam and drafts ADR bodies itself.
+
+The reason is frequency. Most decisions worth recording produce both an ADR and
+an architecture edit, so splitting authorship across a conversation skill and a
+mechanics skill would make recording a decision a two-invocation ritual on the
+highest-frequency path in the whole design — and a two-step ritual on the common
+path is how a practice quietly stops being followed.
+
+**Do not "fix" this inconsistency.** It is a considered divergence, recorded in
+ADR-0003 of this skill's home repository. Removing it reintroduces the friction
+it exists to avoid.
+
+## When This Skill Triggers
+
+| Trigger phrase | Operation | Section |
+|----------------|-----------|---------|
+| "record an ADR", "document this decision", "write up why we chose X" | record decision | [Recording a decision](#recording-a-decision) |
+| "supersede ADR-0004", "we're changing our mind about X" | supersede | [Superseding](#superseding-an-adr) |
+| "regenerate the ADR index", "the index is out of date" | reindex | [The index](#maintaining-the-index) |
+| "update the architecture doc", "redraw the container diagram", "document this module" | edit architecture | [Editing architecture.md](#editing-architecturemd) |
+
+Do **not** trigger on:
+- "let's refine", "add a new story", "prioritise the backlog" — that is `refinement`.
+- "start XAS-025", "close XAS-025", "tick AC 2" — that is `backlog-ops`.
+- "check the docs against reality", "is the architecture doc still true" — that
+  is `architecture-scan`, which is read-only and proposes changes this skill
+  then applies.
+
+## The three-part test
+
+Not every decision earns an ADR. A log that records everything is a log nobody
+reads. **All three must hold:**
+
+1. **The consequences outlive the change.** After the story is Done and its
+   backlog item is closed, does this still constrain what the repo can do?
+2. **A competent engineer could have chosen otherwise.** If there was only one
+   sensible option, there was no decision — just work.
+3. **The reason is not recoverable from the code.** If reading the
+   implementation makes the rationale obvious, the code is already the record.
+
+**When a request fails the test, decline and redirect.** Say which part it fails
+and point at the alternative:
+
+- Fails (1) — rationale local to this change → the backlog item's
+  `**Scope Decisions**:` field.
+- Fails (2) or (3) → nowhere. Not every choice needs a paper trail, and saying
+  so is part of this skill's job.
+
+The escalation ladder, in full: trivial → nothing; local to this change →
+`Scope Decisions`; outlives the change → ADR.
+
+## Recording a decision
+
+### Step 1: Apply the three-part test
+
+Run the test above before doing anything else. If it fails, redirect and stop.
+
+### Step 2: Locate the log and allocate a number
+
+1. Find the ADR directory — `docs/adr/` by convention. If it is absent, say so
+   and offer to bootstrap it (Step 6 handles the index).
+2. List `docs/adr/NNNN-*.md`. Take the **maximum** leading number, increment by
+   one, zero-pad to four digits.
+3. Never reuse a number, including numbers belonging to Rejected or Superseded
+   ADRs. If the directory is empty, the first ADR is `0001`.
+
+### Step 3: Draft the body from the conversation
+
+Draft `## Context`, `## Decision`, `## Alternatives considered` and
+`## Consequences` from what was actually said.
+
+**Never invent rationale.** This is the guardrail that matters most in this
+skill. If the conversation does not contain why an alternative lost, **ask** —
+do not fill the section in with something plausible. A fabricated
+"Alternatives considered" reads as history and is not, which is strictly worse
+than an absent one, because a reader cannot tell the difference.
+
+Specifically, ask rather than infer when:
+- An alternative is named but the reason it lost was never stated.
+- The `## Consequences` would otherwise list only benefits — a decision with no
+  accepted cost usually means the cost was not discussed.
+- The `## Context` would have to assert a constraint nobody mentioned.
+- The decision was reached before this conversation started, so the reasoning
+  exists only in someone's memory. Ask for it; do not reconstruct it from the
+  state of the code.
+
+### Step 4: Set the header block
+
+`**Status**: Proposed` unless the user has clearly already agreed, in which case
+`Accepted`. `**Date**` is today's — read it from the environment or ask; never
+fabricate it. `**Related**` links the backlog item that produced the decision,
+if there is one.
+
+### Step 5: Write the file
+
+`docs/adr/NNNN-kebab-title.md`. The title is sentence case, kebab-cased for the
+filename, and short enough to read in an index row.
+
+### Step 6: Update the index
+
+Add the row to `docs/adr/README.md` per
+[Maintaining the index](#maintaining-the-index). Create that file if absent.
+
+### Step 7: Report
+
+State the path written, the number allocated, the status, and that the change is
+staged and uncommitted.
+
+## Superseding an ADR
+
+1. Write the **new** ADR through the normal flow, adding a `**Supersedes**:`
+   line linking the old one.
+2. Edit the old ADR's `**Status**` line to
+   `Superseded by [ADR-NNNN](NNNN-....md)`.
+3. **Touch nothing else in the old file.** Its body is history and stays wrong
+   if it was wrong.
+4. Update both rows in the index.
+
+## Maintaining the index
+
+`docs/adr/README.md` carries a table of all ADRs and a `## Notes` section
+stating the conventions.
+
+**The index is derived from the files.** Where they disagree, the files win —
+regenerate the table by scanning `docs/adr/NNNN-*.md` and reading each one's
+title, `**Status**` and `**Date**`. Do not resolve a disagreement the other way.
+
+When bootstrapping `docs/adr/` from nothing, create `README.md` with the table
+and a `## Notes` section covering: the derived-index rule, sequential
+non-reused numbering, immutability of Accepted ADRs, the status values, the
+three-part test, and the one-way linking rule.
+
+## Editing architecture.md
+
+See [references/architecture-format.md](references/architecture-format.md).
+
+## What This Skill Does NOT Do
+
+- **No commits.** Ever. The record edit rides in the user's next commit.
+- **No invented rationale.** It asks instead. See Step 3.
+- **No reconstructed ADRs for past decisions.** Rationale is not recoverable
+  from code, so an ADR inferred from a repo's current state is confident
+  fiction — the opposite of what this log is for.
+- **No editing an Accepted ADR's body.** Only its `**Status**` line, only at
+  supersede time.
+- **No reading the codebase to find drift.** That is `architecture-scan`.
+- **No backlog status changes.** That is `backlog-ops`.
+
+## Guidelines
+
+- **Ask rather than guess, every time.** The cost of one question is a
+  sentence; the cost of a fabricated alternative is a record nobody can trust.
+- **Decline decisions that fail the three-part test**, and say which part.
+- **Preserve file formatting.** Do not reflow prose, renumber, or touch lines
+  the operation does not require.
+- **Never auto-commit.** Always leave changes staged.
+
+## Integration Points
+
+- **`refinement`** applies the three-part test during its Architecture topic and
+  hands off here for decisions that pass; decisions that fail stay in the
+  backlog item's `Scope Decisions`.
+- **`architecture-scan`** is read-only and proposes; this skill applies what the
+  user approves.
+- **`commit-helper`** commits the staged record edit alongside the code change.

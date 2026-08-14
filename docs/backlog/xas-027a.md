@@ -1,6 +1,6 @@
-# [XAS-027a] `design-record` skill — ADR authoring, numbering, index
+# [XAS-027a] ✅ DONE - `design-record` skill — ADR authoring, numbering, index
 
-**Status**: Open
+**Status**: Done (2026-08-14)
 **Priority**: High
 **Component**: `plugins/xxthunder-dev-skills/skills/design-record/SKILL.md` (new),
 `plugins/xxthunder-dev-skills/skills/design-record/references/adr-format.md` (new),
@@ -49,33 +49,33 @@ which is worse than an absent one.
   rot silently.
 
 **Acceptance Criteria**:
-- [ ] `SKILL.md` exists with a description that triggers on "record an ADR",
+- [x] `SKILL.md` exists with a description that triggers on "record an ADR",
       "document this decision", "we decided X" and similar, and that does not
       overlap `refinement`'s or `backlog-ops`' trigger phrases.
-- [ ] `references/adr-format.md` documents the template, the status values, the
+- [x] `references/adr-format.md` documents the template, the status values, the
       numbering rule, immutability, the supersede path, and the
       index-is-derived rule.
-- [ ] The skill allocates the next number by scanning `docs/adr/NNNN-*.md`,
+- [x] The skill allocates the next number by scanning `docs/adr/NNNN-*.md`,
       taking the maximum and incrementing, zero-padded to four digits.
-- [ ] The skill drafts Context / Decision / Alternatives considered /
+- [x] The skill drafts Context / Decision / Alternatives considered /
       Consequences from the conversation, and **asks** for anything it cannot
       source rather than inventing it.
-- [ ] The skill applies the three-part test — consequences outlive the change, a
+- [x] The skill applies the three-part test — consequences outlive the change, a
       competent engineer could have chosen otherwise, the reason is not
       recoverable from the code — and when a request fails it, declines and
       points at the backlog item's `Scope Decisions` instead.
-- [ ] Supersede path works: the new ADR records `Supersedes ADR-NNNN`, the old
+- [x] Supersede path works: the new ADR records `Supersedes ADR-NNNN`, the old
       one's `**Status**` line becomes `Superseded by ADR-NNNN`, and the old
       body is untouched.
-- [ ] The skill creates `docs/adr/README.md` and adds the index row; it
+- [x] The skill creates `docs/adr/README.md` and adds the index row; it
       regenerates the index from the files when the two disagree.
-- [ ] The skill bootstraps `docs/adr/` when the directory is absent.
-- [ ] The skill stages edits only and never commits, matching `backlog-ops`.
-- [ ] `SKILL.md` states explicitly why this skill authors prose while
+- [x] The skill bootstraps `docs/adr/` when the directory is absent.
+- [x] The skill stages edits only and never commits, matching `backlog-ops`.
+- [x] `SKILL.md` states explicitly why this skill authors prose while
       `backlog-ops` does not.
-- [ ] `plugin.json` and `marketplace.json` bumped (minor), and `plugin.json`'s
+- [x] `plugin.json` and `marketplace.json` bumped (minor), and `plugin.json`'s
       `description` updated to list the new skill.
-- [ ] `README.md`'s `xxthunder-dev-skills` table gains a `design-record` row
+- [x] `README.md`'s `xxthunder-dev-skills` table gains a `design-record` row
       linking its `SKILL.md`. Every other skill in both plugins appears there;
       a new skill that does not is invisible to anyone browsing the repo.
-- [ ] All existing tests continue to pass.
+- [x] All existing tests continue to pass.

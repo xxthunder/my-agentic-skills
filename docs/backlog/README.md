@@ -23,8 +23,6 @@
 - [XAS-026d — JSON schema validation for `marketplace.json` and `plugin.json`](xas-026d.md)
 - [XAS-026e — PR title conventional-commit linter](xas-026e.md)
 - [XAS-026f — Coverage thresholds via `codecov.yml`](xas-026f.md)
-- [XAS-027 — Agentic Engineering-as-Code — durable design record](xas-027.md)
-- [XAS-027a — `design-record` skill: ADR authoring, numbering, index](xas-027a.md)
 - [XAS-027b — `design-record` skill: `architecture.md` slots and diagram editing](xas-027b.md)
 - [XAS-027c — `SessionStart` orientation hook](xas-027c.md)
 - [XAS-027d — `architecture-scan` skill: bootstrap and drift report](xas-027d.md)
@@ -37,6 +35,7 @@
 - [XAS-001 — Backlog refinement](xas-001.md)
 - [XAS-015 — Launch xxthunder-paperless-skills plugin](xas-015.md)
 - [XAS-026 — CI / GitHub Actions setup](xas-026.md)
+- [XAS-027 — Agentic Engineering-as-Code — durable design record](xas-027.md)
 - [XAS-028 — Declare the `superpowers` dependency in the marketplace](xas-028.md)
 
 ### Done
@@ -60,6 +59,7 @@
 - [XAS-026a — Pytest workflow on push/PR (matrix: ubuntu + windows)](xas-026a.md)
 - [XAS-026b — Coverage upload + JUnit test report](xas-026b.md)
 - [XAS-026g — Codecov status badge in README](xas-026g.md)
+- [XAS-027a — `design-record` skill: ADR authoring, numbering, index](xas-027a.md)
 
 ---
 
