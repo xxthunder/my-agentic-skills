@@ -13,7 +13,7 @@
 Copied from `CLAUDE.md` and the epic's Scope Decisions. Every task's requirements implicitly include this section.
 
 - **Version bump is mandatory.** Any change under `plugins/<plugin-name>/` bumps the version in **both** `plugins/xxthunder-dev-skills/.claude-plugin/plugin.json` (`"version"`) and `.claude-plugin/marketplace.json` (the matching `plugins[...].version`). These two values must never disagree in a commit.
-- **Semantic versioning.** A new skill is a **minor** bump. XAS-028 took `1.5.0` on this branch by declaring the `superpowers` dependency, so 027a lands `1.6.0` and 027b lands `1.7.0`. Confirm the baseline with `grep '"version"' plugins/xxthunder-dev-skills/.claude-plugin/plugin.json` before bumping rather than trusting these numbers — anything else landing on the branch first shifts them again.
+- **Semantic versioning.** A new skill is a **minor** bump. XAS-028 took `1.5.0` then `1.6.0` on this branch (manifest, then its skill-prose behaviour change), so 027a lands `1.7.0` and 027b lands `1.8.0`. Confirm the baseline with `grep '"version"' plugins/xxthunder-dev-skills/.claude-plugin/plugin.json` before bumping rather than trusting these numbers — anything else landing on the branch first shifts them again.
 - **Conventional commits.** Scope is the skill name: `feat(design-record): ...`. Body ends with `Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>`.
 - **Skills are portable.** No repo-specific logic, paths, or assumptions in any file under `skills/`. Paths like `docs/adr/` are discovered or documented as conventions with a fallback, never hardcoded as "this repo's layout".
 - **Stage, never commit.** The skill edits files and leaves them for the user. Only the implementing engineer commits, at the task boundaries below.
@@ -26,7 +26,7 @@ Copied from `CLAUDE.md` and the epic's Scope Decisions. Every task's requirement
 |------|----------------|------|
 | `plugins/xxthunder-dev-skills/skills/design-record/references/adr-format.md` | The ADR format: template, statuses, numbering, immutability, supersede path, index-is-derived rule | 1 |
 | `plugins/xxthunder-dev-skills/skills/design-record/SKILL.md` | Trigger phrases, the three-part test, the ADR workflow, the never-invent guardrail, the `backlog-ops` divergence statement | 2 |
-| `plugins/xxthunder-dev-skills/.claude-plugin/plugin.json` | Manifest: version `1.6.0` → `1.7.0`, `description` lists the new skill | 3, 6 |
+| `plugins/xxthunder-dev-skills/.claude-plugin/plugin.json` | Manifest: version `1.7.0` → `1.8.0`, `description` lists the new skill | 3, 6 |
 | `.claude-plugin/marketplace.json` | Registry: matching version and description | 3, 6 |
 | `README.md` | The `xxthunder-dev-skills` skill table gains a `design-record` row | 3 |
 | `plugins/xxthunder-dev-skills/skills/design-record/references/architecture-format.md` | The `architecture.md` format: slot list, canonical order, mermaid convention, honest-degradation rule | 4 |
@@ -381,7 +381,7 @@ No commit yet — Task 3 bumps the version and commits both files together, beca
 
 ---
 
-### Task 3: Rehearse the ADR half, bump to 1.6.0, commit (closes XAS-027a)
+### Task 3: Rehearse the ADR half, bump to 1.7.0, commit (closes XAS-027a)
 
 **Files:**
 - Modify: `plugins/xxthunder-dev-skills/.claude-plugin/plugin.json` (`version`, `description`)
@@ -392,7 +392,7 @@ No commit yet — Task 3 bumps the version and commits both files together, beca
 
 **Interfaces:**
 - Consumes: Tasks 1 and 2.
-- Produces: plugin version `1.6.0`, the baseline every later task bumps from.
+- Produces: plugin version `1.7.0`, the baseline every later task bumps from.
 
 - [ ] **Step 1: Rehearse the skill against a known-good ADR**
 
@@ -408,7 +408,7 @@ Record the outcome in the commit body. If any check fails, fix `SKILL.md` or `ad
 
 - [ ] **Step 2: Bump both version fields**
 
-`plugin.json` and `marketplace.json` both move `"version": "1.5.0"` → `"1.6.0"`, and both `description` strings gain the new skill:
+`plugin.json` and `marketplace.json` both move `"version": "1.6.0"` → `"1.7.0"`, and both `description` strings gain the new skill:
 
 ```
 Reusable Claude Code skills: refinement, retrospective, commit-helper, tdd-workflow, backlog-ops, design-record
@@ -418,7 +418,7 @@ Reusable Claude Code skills: refinement, retrospective, commit-helper, tdd-workf
 
 Run: `grep -h '"version"' plugins/xxthunder-dev-skills/.claude-plugin/plugin.json .claude-plugin/marketplace.json`
 
-Expected: `1.6.0` appears for the dev-skills plugin in both files. `xxthunder-paperless-skills` stays at `0.2.0` — a change in one plugin does not bump the other.
+Expected: `1.7.0` appears for the dev-skills plugin in both files. `xxthunder-paperless-skills` stays at `0.2.0` — a change in one plugin does not bump the other.
 
 - [ ] **Step 4: Add the README row**
 
@@ -668,7 +668,7 @@ Expected: every hit is a prohibition ("never appended to", "do not append") or t
 
 ---
 
-### Task 6: Bump to 1.7.0, commit (closes XAS-027b)
+### Task 6: Bump to 1.8.0, commit (closes XAS-027b)
 
 **Files:**
 - Modify: `plugins/xxthunder-dev-skills/.claude-plugin/plugin.json` (`version`)
@@ -677,7 +677,7 @@ Expected: every hit is a prohibition ("never appended to", "do not append") or t
 
 **Interfaces:**
 - Consumes: Tasks 4 and 5.
-- Produces: plugin version `1.7.0`. XAS-027d and XAS-027e bump from here.
+- Produces: plugin version `1.8.0`. XAS-027d and XAS-027e bump from here.
 
 - [ ] **Step 1: Rehearse the architecture half against this repository**
 
@@ -691,13 +691,13 @@ If any slot can only be filled by inventing a box, the honest-degradation rule i
 
 - [ ] **Step 2: Bump both version fields**
 
-`1.6.0` → `1.7.0` in `plugin.json` and `marketplace.json`. The `description` already lists `design-record` from Task 3 and does not change.
+`1.7.0` → `1.8.0` in `plugin.json` and `marketplace.json`. The `description` already lists `design-record` from Task 3 and does not change.
 
 - [ ] **Step 3: Verify the two versions agree**
 
 Run: `grep -h '"version"' plugins/xxthunder-dev-skills/.claude-plugin/plugin.json .claude-plugin/marketplace.json`
 
-Expected: `1.7.0` in both for the dev-skills plugin.
+Expected: `1.8.0` in both for the dev-skills plugin.
 
 - [ ] **Step 4: Run the existing test suite**
 

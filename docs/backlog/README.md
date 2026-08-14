@@ -32,12 +32,12 @@
 - [XAS-027f — Dogfood: this repo's own `architecture.md` and ADRs](xas-027f.md)
 - [XAS-027g — Verify in a consuming repo; retire the per-repo `AGENTS.md` text](xas-027g.md)
 - [XAS-027h — ADR-log invariant tests](xas-027h.md)
-- [XAS-028 — Declare the `superpowers` dependency in the marketplace](xas-028.md)
 
 ### In Progress
 - [XAS-001 — Backlog refinement](xas-001.md)
 - [XAS-015 — Launch xxthunder-paperless-skills plugin](xas-015.md)
 - [XAS-026 — CI / GitHub Actions setup](xas-026.md)
+- [XAS-028 — Declare the `superpowers` dependency in the marketplace](xas-028.md)
 
 ### Done
 - [XAS-002 — Rename repo and restructure as agentic-skills marketplace](xas-002.md)
