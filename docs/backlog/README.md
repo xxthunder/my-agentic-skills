@@ -33,6 +33,7 @@
 - [XAS-001 — Backlog refinement](xas-001.md)
 - [XAS-015 — Launch xxthunder-paperless-skills plugin](xas-015.md)
 - [XAS-026 — CI / GitHub Actions setup](xas-026.md)
+- [XAS-026h — Grant `checks: write` so the JUnit report can publish](xas-026h.md)
 - [XAS-027 — Agentic Engineering-as-Code — durable design record](xas-027.md)
 - [XAS-028 — Declare the `superpowers` dependency in the marketplace](xas-028.md)
 
