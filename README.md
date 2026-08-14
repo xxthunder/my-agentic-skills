@@ -43,6 +43,17 @@ Skills for digitizing household paperwork:
 | [**simplex-merge**](plugins/xxthunder-paperless-skills/skills/simplex-merge/SKILL.md) | Post-processing merge of two existing PDFs (odd + even pages) into one correctly ordered document |
 | [**split-batch**](plugins/xxthunder-paperless-skills/skills/split-batch/SKILL.md) | Post-processing split of a single multi-document PDF into one PDF per detected document — boundary detection from page content or blank separator sheets |
 
+## Requirements
+
+`xxthunder-dev-skills` requires [**superpowers**](https://github.com/obra/superpowers), from the `claude-plugins-official` marketplace. The dev skills are built around it: design work reached through `superpowers:brainstorming` lands in a backlog item, and `tdd-workflow` sits alongside its Red-Green-Refactor discipline.
+
+The dependency is declared in the plugin manifest, so installing `xxthunder-dev-skills` installs `superpowers` automatically. Two consequences worth knowing:
+
+- Enabling this plugin also enables `superpowers`.
+- `claude plugin disable superpowers` is refused while this plugin is enabled — Claude Code has no optional or peer dependency model, so the requirement is hard.
+
+`xxthunder-paperless-skills` has no such dependency and installs standalone.
+
 ## Installation
 
 The `/plugin` slash command is supported across Claude Code, VS Code, and the GitHub Copilot CLI. Run these inside the agent's chat — each block is one command.

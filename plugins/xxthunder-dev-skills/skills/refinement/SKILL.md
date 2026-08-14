@@ -115,6 +115,7 @@ Use AskUserQuestion to let the user choose their focus area:
 - Read relevant source files and architecture docs
 - Discuss technical decisions and trade-offs
 - Document decisions in the backlog item's Scope Decisions field
+- **Design work belongs to `superpowers:brainstorming`.** This plugin depends on `superpowers`, so hand off rather than re-deriving a design here. Its output belongs in the backlog item — the item *is* the design document for a unit of work, so a separate spec file duplicates it and then drifts from it.
 
 #### Cleanup
 - Review Done items - any follow-up needed?

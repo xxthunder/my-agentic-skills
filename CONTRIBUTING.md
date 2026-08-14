@@ -27,6 +27,12 @@ A pull request must meet all of these points:
    names, or repository-specific assumptions. Shell snippets must work on
    Windows and on Linux, because CI runs both. See the "Skills are portable"
    rule in [CLAUDE.md](CLAUDE.md).
+
+   Referring to another *plugin's* skill is not a portability violation.
+   `xxthunder-dev-skills` declares a dependency on `superpowers`, so its skills
+   may name `superpowers:brainstorming` and friends directly. What the rule
+   forbids is assuming something about the repository the skill is installed
+   into — a path, a layout, a project name.
 4. **Helper code has tests.** Python helper scripts use PEP 723 inline metadata
    and run with `uv run <script>`. Add pytest tests under `tests/`. Run
    `uv run --group dev pytest` before you push.

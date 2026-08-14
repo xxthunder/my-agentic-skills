@@ -131,6 +131,14 @@ Use the project's test execution skill for all test execution — unit tests, in
 6. **Writing too much code** - Implement only what's needed to pass tests
 7. **Ignoring failing tests** - All tests must pass before proceeding
 
+## Relationship to `superpowers:test-driven-development`
+
+This plugin depends on `superpowers`, which ships its own TDD skill. The two overlap: both teach Red-Green-Refactor, and neither supersedes the other.
+
+The practical split is that `superpowers:test-driven-development` covers the discipline itself — why the test comes first, what a failing test has to prove before you make it pass. This skill covers the discipline **as practised in a repo with a backlog**: the same cycle, plus where `backlog-ops` gets invoked at the boundaries and how a cycle maps to an acceptance criterion.
+
+If both are in play, follow the superpowers skill for the cycle and this one for the boundaries. Do not run two separate cycles.
+
 ## Integration with Test Execution Skill
 
 For detailed testing execution guidance, use the project's test execution skill:
