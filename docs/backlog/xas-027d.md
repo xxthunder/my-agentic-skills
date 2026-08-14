@@ -1,6 +1,6 @@
-# [XAS-027d] `architecture-scan` skill — bootstrap and drift report
+# [XAS-027d] ✅ DONE - `architecture-scan` skill — bootstrap and drift report
 
-**Status**: Open
+**Status**: Done (2026-08-14)
 **Priority**: Medium
 **Component**: `plugins/xxthunder-dev-skills/skills/architecture-scan/SKILL.md` (new),
 `plugins/xxthunder-dev-skills/.claude-plugin/plugin.json`,
@@ -52,24 +52,24 @@ See [ADR-0005](../adr/0005-bootstrap-architecture-never-reconstruct-adrs.md).
   a backlog rots. Revisit only if the sweep is measurably too costly.
 
 **Acceptance Criteria**:
-- [ ] `SKILL.md` exists, is read-only by contract, and says so explicitly.
-- [ ] The skill derives structure from directories, manifests, entry points and
+- [x] `SKILL.md` exists, is read-only by contract, and says so explicitly.
+- [x] The skill derives structure from directories, manifests, entry points and
       dependency edges.
-- [ ] No `architecture.md` → produces a bootstrap proposal covering the fixed
+- [x] No `architecture.md` → produces a bootstrap proposal covering the fixed
       slots, explicitly marked as proposed.
-- [ ] Populated `architecture.md` → produces a drift report covering:
+- [x] Populated `architecture.md` → produces a drift report covering:
       undocumented modules, documented modules that no longer exist, diagram
       nodes with no counterpart in the code, and ADRs whose referenced paths
       have disappeared.
-- [ ] A slot the scan cannot derive is reported as "not yet documented"; the
+- [x] A slot the scan cannot derive is reported as "not yet documented"; the
       skill never fabricates structure.
-- [ ] The skill explicitly does not reconstruct ADRs for past decisions.
-- [ ] Applying a proposal routes through `design-record`; nothing lands without
+- [x] The skill explicitly does not reconstruct ADRs for past decisions.
+- [x] Applying a proposal routes through `design-record`; nothing lands without
       user approval.
-- [ ] Trigger phrases cover "check the docs against reality", "is the
+- [x] Trigger phrases cover "check the docs against reality", "is the
       architecture doc still true", "bootstrap the architecture doc".
-- [ ] `plugin.json` and `marketplace.json` bumped (minor), and `plugin.json`'s
+- [x] `plugin.json` and `marketplace.json` bumped (minor), and `plugin.json`'s
       `description` updated to list the new skill.
-- [ ] `README.md`'s `xxthunder-dev-skills` table gains an `architecture-scan`
+- [x] `README.md`'s `xxthunder-dev-skills` table gains an `architecture-scan`
       row linking its `SKILL.md`.
-- [ ] All existing tests continue to pass.
+- [x] All existing tests continue to pass.
