@@ -34,7 +34,6 @@
 - [XAS-015 — Launch xxthunder-paperless-skills plugin](xas-015.md)
 - [XAS-026 — CI / GitHub Actions setup](xas-026.md)
 - [XAS-027 — Agentic Engineering-as-Code — durable design record](xas-027.md)
-- [XAS-027h — ADR-log invariant tests](xas-027h.md)
 - [XAS-028 — Declare the `superpowers` dependency in the marketplace](xas-028.md)
 
 ### Done
@@ -60,6 +59,7 @@
 - [XAS-026g — Codecov status badge in README](xas-026g.md)
 - [XAS-027a — `design-record` skill: ADR authoring, numbering, index](xas-027a.md)
 - [XAS-027b — `design-record` skill: `architecture.md` slots and diagram editing](xas-027b.md)
+- [XAS-027h — ADR-log invariant tests](xas-027h.md)
 
 ---
 
