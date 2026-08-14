@@ -27,6 +27,7 @@ Developer workflow skills:
 
 | Skill | Description |
 |---|---|
+| [**architecture-scan**](plugins/xxthunder-dev-skills/skills/architecture-scan/SKILL.md) | Read-only scan — derives real structure from the repo, proposes a bootstrap when `architecture.md` is absent, reports drift when it is not |
 | [**backlog-ops**](plugins/xxthunder-dev-skills/skills/backlog-ops/SKILL.md) | Lifecycle operations on backlog items — pull, tick acceptance/UAT criteria, close with epic-status cascade |
 | [**commit-helper**](plugins/xxthunder-dev-skills/skills/commit-helper/SKILL.md) | Conventional commit creation with mandatory pre-commit checks |
 | [**design-record**](plugins/xxthunder-dev-skills/skills/design-record/SKILL.md) | Durable design record — drafts ADRs with numbering and a derived index, and edits the slotted `architecture.md` |
@@ -105,6 +106,7 @@ For everything else — enable/disable, uninstall, listing, removing a marketpla
 Skills trigger automatically based on conversation context, or can be invoked explicitly. See each skill's `SKILL.md` (linked above) for the full trigger list. Common cues:
 
 **xxthunder-dev-skills**
+- [**architecture-scan**](plugins/xxthunder-dev-skills/skills/architecture-scan/SKILL.md): "check the docs against reality", "is the architecture doc still true", "bootstrap the architecture doc"
 - [**backlog-ops**](plugins/xxthunder-dev-skills/skills/backlog-ops/SKILL.md): "start XAS-025", "tick AC 2 on XAS-025", "close XAS-025"
 - [**commit-helper**](plugins/xxthunder-dev-skills/skills/commit-helper/SKILL.md): triggered when creating commits
 - [**design-record**](plugins/xxthunder-dev-skills/skills/design-record/SKILL.md): "record an ADR", "document this decision", "update the architecture doc"
