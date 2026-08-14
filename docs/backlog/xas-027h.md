@@ -1,6 +1,6 @@
 # [XAS-027h] ADR-log invariant tests
 
-**Status**: Open
+**Status**: In Progress
 **Priority**: Medium
 **Component**: `tests/dev/adr/test_adr_log.py` (new),
 `tests/dev/adr/conftest.py` (new, if fixtures are needed)
@@ -46,28 +46,28 @@ stops obeying the format the plugin ships.
   no such path injection.
 
 **Acceptance Criteria**:
-- [ ] Numbering: every file matches `NNNN-kebab-title.md`, four digits and
+- [x] Numbering: every file matches `NNNN-kebab-title.md`, four digits and
       zero-padded; no number appears twice.
-- [ ] Index agreement: every ADR file has exactly one row in
+- [x] Index agreement: every ADR file has exactly one row in
       `docs/adr/README.md`, and every row points at a file that exists. Row
       title, status and date match the file's header block.
-- [ ] Header block: every ADR carries `**Status**:` and `**Date**:` lines, and
+- [x] Header block: every ADR carries `**Status**:` and `**Date**:` lines, and
       the date parses as `YYYY-MM-DD`.
-- [ ] Status values are one of `Proposed`, `Accepted`, `Rejected`, or
+- [x] Status values are one of `Proposed`, `Accepted`, `Rejected`, or
       `Superseded by ADR-NNNN`.
-- [ ] Required sections present in every ADR: `## Context`, `## Decision`,
+- [x] Required sections present in every ADR: `## Context`, `## Decision`,
       `## Alternatives considered`, `## Consequences`.
-- [ ] Supersede pairs are symmetric: if A says `Supersedes ADR-B`, then B's
+- [x] Supersede pairs are symmetric: if A says `Supersedes ADR-B`, then B's
       status is `Superseded by ADR-A`, and vice versa. Neither half may dangle.
-- [ ] Relative links inside ADRs and the index resolve to files that exist —
+- [x] Relative links inside ADRs and the index resolve to files that exist —
       this catches a renamed backlog item breaking a `**Related**` link.
-- [ ] A malformed log built in `tmp_path` fails each check that is supposed to
+- [x] A malformed log built in `tmp_path` fails each check that is supposed to
       catch it; the negative cases are not assumed.
-- [ ] The suite skips rather than fails when `docs/adr/` does not exist.
+- [x] The suite skips rather than fails when `docs/adr/` does not exist.
 - [ ] Tests pass on both ubuntu and windows in CI. Watch for the path-separator
       and line-ending issues that already required a portability fix in the
       `naps2-scan` config test.
-- [ ] No plugin version bump — this substory touches only `tests/`, not
+- [x] No plugin version bump — this substory touches only `tests/`, not
       `plugins/`.
 
 **Out of scope**:
