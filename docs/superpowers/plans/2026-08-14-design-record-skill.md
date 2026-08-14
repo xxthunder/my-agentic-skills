@@ -401,7 +401,7 @@ This is the substitute for a unit test. Read `SKILL.md` as if invoked, and walk 
 Check four things:
 1. Number allocation on the real directory yields `0006` (max is `0005`).
 2. The four section headings produced match ADR-0003's exactly.
-3. The three-part test passes for this decision — confirm you can state which part each of the rejected alternatives fails.
+3. The three-part test passes for this decision — state how it satisfies each of the three parts. Note that the test judges whether *the decision* earns an ADR; it says nothing about the alternatives, which lose on their merits. Do not apply it to them.
 4. At least one section triggers the ask-don't-invent rule, since the source material is thinner than a live conversation. If nothing triggers it, the guardrail is too weak — strengthen Step 3's ask-list in `SKILL.md`.
 
 Record the outcome in the commit body. If any check fails, fix `SKILL.md` or `adr-format.md` before proceeding.
