@@ -1,6 +1,6 @@
-# [XAS-027h] ADR-log invariant tests
+# [XAS-027h] ✅ DONE - ADR-log invariant tests
 
-**Status**: In Progress
+**Status**: Done (2026-08-14)
 **Priority**: Medium
 **Component**: `tests/dev/adr/test_adr_log.py` (new),
 `tests/dev/adr/conftest.py` (new, if fixtures are needed)
@@ -64,7 +64,7 @@ stops obeying the format the plugin ships.
 - [x] A malformed log built in `tmp_path` fails each check that is supposed to
       catch it; the negative cases are not assumed.
 - [x] The suite skips rather than fails when `docs/adr/` does not exist.
-- [ ] Tests pass on both ubuntu and windows in CI. Watch for the path-separator
+- [x] Tests pass on both ubuntu and windows in CI. Watch for the path-separator
       and line-ending issues that already required a portability fix in the
       `naps2-scan` config test.
 - [x] No plugin version bump — this substory touches only `tests/`, not
