@@ -4,7 +4,7 @@
 **Priority**: Medium
 **Component**: `plugins/xxthunder-dev-skills/skills/architecture-scan/SKILL.md` (new),
 `plugins/xxthunder-dev-skills/.claude-plugin/plugin.json`,
-`.claude-plugin/marketplace.json`
+`.claude-plugin/marketplace.json`, `README.md`
 
 **Depends on**: [XAS-027b](xas-027b.md) — applying anything the scan proposes
 goes through `design-record`.
@@ -70,4 +70,6 @@ See [ADR-0005](../adr/0005-bootstrap-architecture-never-reconstruct-adrs.md).
       architecture doc still true", "bootstrap the architecture doc".
 - [ ] `plugin.json` and `marketplace.json` bumped (minor), and `plugin.json`'s
       `description` updated to list the new skill.
+- [ ] `README.md`'s `xxthunder-dev-skills` table gains an `architecture-scan`
+      row linking its `SKILL.md`.
 - [ ] All existing tests continue to pass.

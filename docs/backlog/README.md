@@ -31,6 +31,7 @@
 - [XAS-027e — Wire-up: `refinement`, `tdd-workflow`, `commit-helper`](xas-027e.md)
 - [XAS-027f — Dogfood: this repo's own `architecture.md` and ADRs](xas-027f.md)
 - [XAS-027g — Verify in a consuming repo; retire the per-repo `AGENTS.md` text](xas-027g.md)
+- [XAS-027h — ADR-log invariant tests](xas-027h.md)
 
 ### In Progress
 - [XAS-001 — Backlog refinement](xas-001.md)

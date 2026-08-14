@@ -5,7 +5,7 @@
 **Component**: `plugins/xxthunder-dev-skills/skills/design-record/SKILL.md` (new),
 `plugins/xxthunder-dev-skills/skills/design-record/references/adr-format.md` (new),
 `plugins/xxthunder-dev-skills/.claude-plugin/plugin.json`,
-`.claude-plugin/marketplace.json`
+`.claude-plugin/marketplace.json`, `README.md`
 
 **Summary**:
 As a maintainer, I want a skill that turns a decision reached in conversation
@@ -75,4 +75,7 @@ which is worse than an absent one.
       `backlog-ops` does not.
 - [ ] `plugin.json` and `marketplace.json` bumped (minor), and `plugin.json`'s
       `description` updated to list the new skill.
+- [ ] `README.md`'s `xxthunder-dev-skills` table gains a `design-record` row
+      linking its `SKILL.md`. Every other skill in both plugins appears there;
+      a new skill that does not is invisible to anyone browsing the repo.
 - [ ] All existing tests continue to pass.

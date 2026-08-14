@@ -30,6 +30,20 @@ markdown skills. A slot with nothing to say gets one line saying so, never an
 empty heading and never a fabricated box.
 
 **Scope Decisions**:
+- **The document's location is discovered, not hardcoded.** Look for
+  `docs/architecture.md`, then root `ARCHITECTURE.md`; adopt whichever exists.
+  Create `docs/architecture.md` when neither does. Ask only in the ambiguous
+  case where both exist — and never create a second document alongside one that
+  is already there, which would reintroduce the "third place for design to hide"
+  this epic exists to remove. Root `ARCHITECTURE.md` is a convention in its own
+  right and consuming repos will already have it.
+  This rule is shared: [XAS-027c](xas-027c.md)'s payload states where the record
+  lives and [XAS-027d](xas-027d.md) diffs against whatever the rule resolves to,
+  so all three must use the same discovery order.
+  **Deliberately not hand-written as an ADR.** It passes the three-part test and
+  earns one, but [XAS-027f](xas-027f.md) requires at least one decision recorded
+  *through* `design-record` rather than by hand — this is that decision. It
+  lives here until the skill can write it.
 - Canonical slot order: Purpose, System context, Containers, Components,
   Key flows, Glossary (optional), Decisions.
 - Diagrams are mermaid, inline in `architecture.md`. One document that reads top
@@ -47,7 +61,11 @@ empty heading and never a fabricated box.
 **Acceptance Criteria**:
 - [ ] `references/architecture-format.md` documents the slot list, the canonical
       order, the mermaid convention, and the honest-degradation rule.
-- [ ] The skill creates the `architecture.md` skeleton when the file is absent.
+- [ ] The skill resolves the document's location by discovery — `docs/architecture.md`,
+      then root `ARCHITECTURE.md` — adopting an existing file over creating a new
+      one, and asking only when both exist.
+- [ ] The skill creates the `architecture.md` skeleton when the file is absent,
+      at `docs/architecture.md`.
 - [ ] The skill edits a named slot in place; when the slot is missing it is
       inserted in canonical order rather than appended at the end of the file.
 - [ ] Structural slots are edited and never appended to; new diagrams are added
