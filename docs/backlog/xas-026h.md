@@ -41,13 +41,13 @@ number hardest to reach.
 **Acceptance Criteria**:
 - [x] The `test` job's `permissions:` block grants `contents: read` and
       `checks: write`, and nothing else.
-- [ ] On a pull request, `Test Results (uv pytest, ubuntu)` and
+- [x] On a pull request, `Test Results (uv pytest, ubuntu)` and
       `Test Results (uv pytest, windows)` appear as check runs.
-- [ ] Those check runs carry the pass / fail / skip counts, so a reviewer can
+- [x] Those check runs carry the pass / fail / skip counts, so a reviewer can
       read them without opening job logs.
 - [ ] A failing test still fails the check — `fail_on_failure: true` keeps
       working once the action can publish.
-- [ ] Both `Tests` jobs and both Codecov checks still pass.
+- [x] Both `Tests` jobs and both Codecov checks still pass.
 
 **Out of scope**:
 - Granting `pull-requests: write` or enabling PR comments from the action.
