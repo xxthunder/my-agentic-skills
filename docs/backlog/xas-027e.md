@@ -1,6 +1,6 @@
-# [XAS-027e] Wire-up: `refinement`, `tdd-workflow`, `commit-helper`
+# [XAS-027e] ✅ DONE - Wire-up: `refinement`, `tdd-workflow`, `commit-helper`
 
-**Status**: Open
+**Status**: Done (2026-08-15)
 **Priority**: Medium
 **Component**: `plugins/xxthunder-dev-skills/skills/refinement/SKILL.md`,
 `plugins/xxthunder-dev-skills/skills/tdd-workflow/SKILL.md`,
@@ -44,15 +44,15 @@ stale document, because a workflow people route around protects nothing.
   boundary change is not worth it for a suggestion that a human confirms.
 
 **Acceptance Criteria**:
-- [ ] `refinement`'s Architecture topic applies the three-part test and hands
+- [x] `refinement`'s Architecture topic applies the three-part test and hands
       off to `design-record` for decisions that pass it, keeping `Scope
       Decisions` for those that do not.
-- [ ] `tdd-workflow` suggests `design-record` at cycle end when the cycle moved
+- [x] `tdd-workflow` suggests `design-record` at cycle end when the cycle moved
       a module boundary, and does not block the cycle.
-- [ ] `commit-helper` suggests `design-record` during pre-commit checks when the
+- [x] `commit-helper` suggests `design-record` during pre-commit checks when the
       staged diff adds, removes or moves a module, and does not block the
       commit.
-- [ ] None of the three skills introduces a refusal or gate.
-- [ ] `plugin.json` and `marketplace.json` bumped (minor — behaviour change in
+- [x] None of the three skills introduces a refusal or gate.
+- [x] `plugin.json` and `marketplace.json` bumped (minor — behaviour change in
       three skills).
-- [ ] All existing tests continue to pass.
+- [x] All existing tests continue to pass.
