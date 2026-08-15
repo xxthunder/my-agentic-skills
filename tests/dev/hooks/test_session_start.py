@@ -5,14 +5,17 @@ matter most are negative ones: it must stay silent where these conventions are
 not in use, and it must never fail. Every test here asserts `returncode == 0`,
 including the malformed-input cases.
 
-The script is invoked through `bash` rather than `sh`. It is written to POSIX
-`sh` rules so either works, but `bash` is what `run-hook.cmd` actually calls on
-both platforms, and it is the interpreter guaranteed to exist on the Windows
-runner.
+The script is invoked through bash rather than `sh`. It is written to POSIX `sh`
+rules so either works, but bash is what `run-hook.cmd` actually calls on both
+platforms.
+
+Which bash matters — see `resolve_bash`. A bare `bash` is *not* safe on the
+Windows runner: PATH resolves it to the WSL launcher, not Git for Windows.
 """
 from __future__ import annotations
 
 import json
+import shutil
 import subprocess
 from pathlib import Path
 
@@ -28,9 +31,31 @@ HOOK = PLUGIN_ROOT / "hooks" / "session-start"
 # would let the whole suite pass green if the hook were deleted.
 
 
+def resolve_bash() -> str:
+    """Find a real bash, the way `run-hook.cmd` does.
+
+    On the Windows runner a bare `bash` resolves through PATH to
+    `C:\\Windows\\System32\\bash.exe` — the WSL launcher. With no distribution
+    installed it prints a UTF-16 "no installed distributions" notice and exits
+    1, so every test asserting `returncode == 0` fails for a reason that has
+    nothing to do with the hook. Git for Windows is checked first, matching the
+    wrapper's own search order.
+    """
+    for candidate in (
+        r"C:\Program Files\Git\bin\bash.exe",
+        r"C:\Program Files (x86)\Git\bin\bash.exe",
+    ):
+        if Path(candidate).is_file():
+            return candidate
+    return shutil.which("bash") or "bash"
+
+
+BASH = resolve_bash()
+
+
 def run_hook(project_dir: Path) -> subprocess.CompletedProcess:
     return subprocess.run(
-        ["bash", str(HOOK)],
+        [BASH, str(HOOK)],
         cwd=str(project_dir),
         env={
             "PATH": __import__("os").environ.get("PATH", ""),
