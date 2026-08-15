@@ -40,7 +40,8 @@ A pull request must meet all of these points:
    `docs/backlog/` with the `XAS` prefix, with acceptance criteria. See the
    [backlog conventions](docs/backlog/README.md).
 6. **Versions match.** When you change any file under
-   `plugins/<plugin-name>/skills/`, bump the version in both
+   `plugins/<plugin-name>/` — skills, hooks, or the manifest — bump the version
+   in both
    `plugins/<plugin-name>/.claude-plugin/plugin.json` and the matching entry in
    `.claude-plugin/marketplace.json`. Use semantic versioning.
 7. **Commits follow the convention.** This repository uses conventional

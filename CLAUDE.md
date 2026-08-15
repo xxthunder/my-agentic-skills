@@ -22,13 +22,15 @@ Plugins version independently; a change in one plugin only bumps that plugin's v
 
 Skills under any plugin's `skills/` are installed into other repos via the plugin system. Never add repo-specific logic, paths, or assumptions to skill files. Keep them generic and reusable.
 
-### Version bump on every skill change
+### Version bump on every plugin change
 
-When any file under `plugins/<plugin-name>/skills/` is added, modified, or removed, you MUST bump the version in **both**:
+When any file under `plugins/<plugin-name>/` is added, modified, or removed, you MUST bump the version in **both**:
 - `plugins/<plugin-name>/.claude-plugin/plugin.json` → `"version"`
 - `.claude-plugin/marketplace.json` → the matching `plugins[...].version`
 
 Use semantic versioning: patch for fixes/wording, minor for behavior changes or new skills, major for breaking changes.
+
+The rule covers the whole plugin directory, not just `skills/` — hooks under `hooks/` and the manifest itself are shipped to consumers exactly as skills are, and a change to any of them changes what an installer receives.
 
 ### Conventional commits
 

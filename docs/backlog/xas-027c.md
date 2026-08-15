@@ -1,6 +1,6 @@
 # [XAS-027c] `SessionStart` orientation hook
 
-**Status**: Open
+**Status**: In Progress
 **Priority**: High
 **Component**: `plugins/xxthunder-dev-skills/hooks/hooks.json` (new),
 `plugins/xxthunder-dev-skills/hooks/session-start` (new, extensionless),
@@ -71,30 +71,32 @@ skill's explicit instruction will win against.
 - The ID prefix is read from the backlog README's Notes section, not configured.
 
 **Acceptance Criteria**:
-- [ ] `plugins/xxthunder-dev-skills/hooks/hooks.json` exists with a
+- [x] `plugins/xxthunder-dev-skills/hooks/hooks.json` exists with a
       `SessionStart` hook using matcher `startup|clear|compact`.
-- [ ] The hook script is POSIX `sh`, has no external dependencies, and exits 0
+- [x] The hook script is POSIX `sh`, has no external dependencies, and exits 0
       on every path including malformed input.
-- [ ] The script is extensionless and invoked via a polyglot `run-hook.cmd`
+- [x] The script is extensionless and invoked via a polyglot `run-hook.cmd`
       wrapper that finds `bash` on Windows and exits 0 silently when it cannot.
-- [ ] The hook is a no-op in a repo with none of `docs/backlog/`, `docs/adr/`,
+- [x] The hook is a no-op in a repo with none of `docs/backlog/`, `docs/adr/`,
       `docs/architecture.md` (verified in a scratch repo).
-- [ ] The payload lists only the artifacts that exist, with discovered paths,
+- [x] The payload lists only the artifacts that exist, with discovered paths,
       and the ID prefix read from the backlog README Notes section.
-- [ ] The payload names `superpowers:brainstorming`'s spec-writing step
+- [x] The payload names `superpowers:brainstorming`'s spec-writing step
       explicitly and states where that output goes instead.
-- [ ] The payload contains no refusal or gating language.
-- [ ] pytest coverage via `subprocess`: no backlog → silent, exit 0; backlog
+- [x] The payload contains no refusal or gating language.
+- [x] pytest coverage via `subprocess`: no backlog → silent, exit 0; backlog
       present → payload carries prefix and paths; malformed backlog README →
       still exit 0.
-- [ ] `CLAUDE.md`'s version-bump rule widened from
+- [x] `CLAUDE.md`'s version-bump rule widened from
       `plugins/<plugin-name>/skills/` to the whole plugin directory — a hook
       lives under `hooks/` and today's wording would not require a bump for it.
-- [ ] `CONTRIBUTING.md`'s acceptance bar (point 6) widened identically. It
+- [x] `CONTRIBUTING.md`'s acceptance bar (point 6) widened identically. It
       carries the same narrow `plugins/<plugin-name>/skills/` wording, so
       fixing only `CLAUDE.md` leaves the two documents contradicting each
       other on the one rule this repo states twice.
-- [ ] Confirmed whether `plugin.json` needs a `hooks` field or whether
+- [x] Confirmed whether `plugin.json` needs a `hooks` field or whether
       `hooks/hooks.json` is auto-discovered; manifest updated if required.
-- [ ] `plugin.json` and `marketplace.json` bumped (minor).
+      **Answer: auto-discovered.** `superpowers` 6.3.0 declares no `hooks` key
+      and its `SessionStart` hook fires, so no manifest change was needed.
+- [x] `plugin.json` and `marketplace.json` bumped (minor).
 - [ ] Tests pass on both ubuntu and windows in CI.
