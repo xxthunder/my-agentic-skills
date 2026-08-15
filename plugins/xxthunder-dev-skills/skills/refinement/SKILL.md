@@ -114,8 +114,14 @@ Use AskUserQuestion to let the user choose their focus area:
 #### Architecture
 - Read relevant source files and architecture docs
 - Discuss technical decisions and trade-offs
-- Document decisions in the backlog item's Scope Decisions field
 - **Design work belongs to `superpowers:brainstorming`.** This plugin depends on `superpowers`, so hand off rather than re-deriving a design here. Its output belongs in the backlog item — the item *is* the design document for a unit of work, so a separate spec file duplicates it and then drifts from it.
+- **Decide where each decision belongs.** Apply the three-part test — all three must hold for a decision to earn an ADR:
+  1. The consequences **outlive the change**: after the item closes, does this still constrain the repo?
+  2. A competent engineer **could have chosen otherwise**: if there was one sensible option, there was no decision.
+  3. The reason is **not recoverable from the code**: if the implementation makes it obvious, the code is already the record.
+- **Passes all three** → hand off to `design-record` to write the ADR while the losing alternatives are still in the conversation. They are not recoverable later.
+- **Fails any** → the backlog item's `Scope Decisions` field, as before. The ladder is: trivial → nothing; local to this change → `Scope Decisions`; outlives the change → ADR.
+- Suggest, do not insist. If the user would rather keep it in `Scope Decisions`, that is their call — a stale document beats a workflow people route around.
 
 #### Cleanup
 - Review Done items - any follow-up needed?

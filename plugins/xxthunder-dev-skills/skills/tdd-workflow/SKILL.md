@@ -158,3 +158,15 @@ If the feature, change, or bug fix you're about to tackle is tracked by a backlo
 Do **not** auto-invoke `backlog-ops` in the middle of Red-Green-Refactor. Only the user knows which AC a specific cycle corresponds to, and speculative ticking causes drift. Bring it up at the boundaries and let the user decide.
 
 Backlog edits staged by `backlog-ops` should be committed alongside the code change — the same commit that turns a test green is the one that justifies ticking the AC.
+
+## Integration with the Design Record
+
+A TDD cycle that **moves a module boundary** leaves the architecture document stale. At cycle end — after the final GREEN and any REFACTOR — check whether the cycle did that, and if so suggest `design-record`.
+
+Detection stays deliberately crude: a directory added, deleted or moved; a manifest entry added or removed; a module renamed. Chasing a precise definition of "boundary change" is not worth it for a suggestion a human confirms in one word.
+
+- **Suggest once, at cycle end.** Never mid-cycle — Red-Green-Refactor is not the moment to stop and write documentation.
+- **Never block.** The cycle completes and the commit proceeds whether or not the record is updated. Friction on small changes is a worse failure than a slightly stale document, because a workflow people route around protects nothing.
+- **The user decides.** If they say no, drop it and do not ask again for the same change.
+
+Refactoring that stays inside a module is not a boundary change. Extracting a helper, renaming a local, splitting a function — none of these touch the architecture document.

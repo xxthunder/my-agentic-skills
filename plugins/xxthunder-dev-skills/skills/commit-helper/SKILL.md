@@ -28,6 +28,10 @@ Guide for creating conventional commits with mandatory pre-commit checks.
 3. **Verify linting** (runs automatically via the project's test execution skill)
    - Fix any Error/Warning severity issues
 
+4. **Check whether the staged diff moves a module boundary** — a directory added, deleted or moved, or a manifest entry added or removed. If it does, and the repo keeps an architecture document, mention that `design-record` can update it.
+   - **This is a suggestion, never a gate.** The commit proceeds either way. Do not withhold the commit, do not ask twice, and do not treat a declined suggestion as a problem.
+   - Changes inside a module — a new function, a renamed local, a widened test — are not boundary changes and warrant no mention.
+
 **Never commit if:**
 - Any unit test fails
 - Any integration test fails
