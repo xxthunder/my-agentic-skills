@@ -1,6 +1,6 @@
-# [XAS-027c] `SessionStart` orientation hook
+# [XAS-027c] ✅ DONE - `SessionStart` orientation hook
 
-**Status**: In Progress
+**Status**: Done (2026-08-15)
 **Priority**: High
 **Component**: `plugins/xxthunder-dev-skills/hooks/hooks.json` (new),
 `plugins/xxthunder-dev-skills/hooks/session-start` (new, extensionless),
@@ -99,4 +99,4 @@ skill's explicit instruction will win against.
       **Answer: auto-discovered.** `superpowers` 6.3.0 declares no `hooks` key
       and its `SessionStart` hook fires, so no manifest change was needed.
 - [x] `plugin.json` and `marketplace.json` bumped (minor).
-- [ ] Tests pass on both ubuntu and windows in CI.
+- [x] Tests pass on both ubuntu and windows in CI.
