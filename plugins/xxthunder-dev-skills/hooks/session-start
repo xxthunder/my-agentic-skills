@@ -1,0 +1,98 @@
+#!/usr/bin/env sh
+# SessionStart orientation hook for xxthunder-dev-skills.
+#
+# States what design record exists *in this repository* and who writes it, so a
+# fresh session knows without anything being invoked. Orientation, not
+# enforcement: it never gates work.
+#
+# Written to POSIX sh rules with no dependency beyond sed and tr. This fires in
+# every session of every consuming repo, so it must never fail — there is no
+# `set -e`, every fallible step is guarded, and the script always exits 0.
+#
+# Extensionless on purpose: Claude Code's Windows handling prepends `bash` to
+# any command containing `.sh`, which breaks invocation. Reached through
+# run-hook.cmd, which locates a bash on Windows.
+
+project_dir="${CLAUDE_PROJECT_DIR:-$PWD}"
+[ -d "$project_dir" ] || exit 0
+
+# --- Discover which artifacts are actually present -------------------------
+
+backlog_dir=""
+adr_dir=""
+arch_doc=""
+
+[ -d "$project_dir/docs/backlog" ] && backlog_dir="docs/backlog"
+[ -d "$project_dir/docs/adr" ] && adr_dir="docs/adr"
+
+if [ -f "$project_dir/docs/architecture.md" ]; then
+    arch_doc="docs/architecture.md"
+elif [ -f "$project_dir/ARCHITECTURE.md" ]; then
+    arch_doc="ARCHITECTURE.md"
+fi
+
+# Repos that do not use these conventions get nothing at all.
+if [ -z "$backlog_dir" ] && [ -z "$adr_dir" ] && [ -z "$arch_doc" ]; then
+    exit 0
+fi
+
+# --- Discover the backlog ID prefix, never configured ----------------------
+
+prefix=""
+if [ -n "$backlog_dir" ] && [ -f "$project_dir/$backlog_dir/README.md" ]; then
+    prefix=$(
+        tr -d '\000-\010\013\014\016-\037' < "$project_dir/$backlog_dir/README.md" 2>/dev/null |
+        sed -n 's/.*\*\*ID prefix\*\*:[^`]*`\([^`]*\)`.*/\1/p' 2>/dev/null |
+        head -n 1
+    )
+fi
+
+# --- Build the payload -----------------------------------------------------
+
+nl='
+'
+payload="This repository keeps a durable design record — the structure of the product and the reasoning behind it. What exists here:"
+payload="$payload$nl"
+
+if [ -n "$backlog_dir" ]; then
+    payload="$payload$nl- Backlog: $backlog_dir/"
+    if [ -n "$prefix" ]; then
+        payload="$payload — items are ${prefix}-###, substories ${prefix}-###a"
+    fi
+    payload="$payload. A backlog item is the design document for a unit of work: its Summary, Description and Scope Decisions hold design that dies when the item closes."
+fi
+
+if [ -n "$adr_dir" ]; then
+    payload="$payload$nl- Decisions: $adr_dir/ — architecture decision records. Rationale that outlives the change lives here, one decision per file, numbered and never renumbered."
+fi
+
+if [ -n "$arch_doc" ]; then
+    payload="$payload$nl- Architecture: $arch_doc — the living picture of how this system is put together."
+fi
+
+payload="$payload$nl${nl}Who writes it: the \`design-record\` skill authors ADRs and edits the architecture document. \`architecture-scan\` derives structure from the code and proposes; it never writes. \`backlog-ops\` handles item lifecycle. All of them stage edits and leave committing to you."
+
+payload="$payload$nl${nl}If \`superpowers:brainstorming\` reaches its spec-writing step, the design belongs in the backlog item — not in a \`docs/superpowers/specs/\` file. A per-story spec duplicates the item that should already carry that design, and the duplicate drifts from it."
+
+payload="$payload$nl${nl}This is orientation. It tells you where the record lives; it does not gate your work."
+
+# --- Emit ------------------------------------------------------------------
+
+# Escape for embedding in a JSON string. Slurp the whole input into the pattern
+# space FIRST (:a N $!ba), then substitute — sed restarts its script per cycle,
+# so escaping before the N loop would only ever apply to the first line and
+# leave every later line raw. Backslashes before quotes, then real newlines
+# folded to \n. Control characters were stripped during discovery.
+escaped=$(
+    printf '%s' "$payload" |
+    sed -e ':a' -e 'N' -e '$!ba' -e 's/\\/\\\\/g' -e 's/"/\\"/g' -e 's/\n/\\n/g' 2>/dev/null
+)
+[ -n "$escaped" ] || exit 0
+
+if [ -n "${CLAUDE_PLUGIN_ROOT:-}" ] && [ -z "${COPILOT_CLI:-}" ]; then
+    printf '{\n  "hookSpecificOutput": {\n    "hookEventName": "SessionStart",\n    "additionalContext": "%s"\n  }\n}\n' "$escaped"
+else
+    printf '{\n  "additionalContext": "%s"\n}\n' "$escaped"
+fi
+
+exit 0

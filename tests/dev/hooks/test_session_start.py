@@ -16,15 +16,16 @@ import json
 import subprocess
 from pathlib import Path
 
-import pytest
+import pytest  # noqa: F401
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 PLUGIN_ROOT = REPO_ROOT / "plugins" / "xxthunder-dev-skills"
 HOOK = PLUGIN_ROOT / "hooks" / "session-start"
 
-pytestmark = pytest.mark.skipif(
-    not HOOK.is_file(), reason="session-start hook not present"
-)
+# Deliberately no skip guard. The ADR-log tests skip when `docs/adr/` is absent
+# because a consuming fork may legitimately not keep one — but the hook is part
+# of this plugin, so its absence is a defect, never a valid state. Skipping here
+# would let the whole suite pass green if the hook were deleted.
 
 
 def run_hook(project_dir: Path) -> subprocess.CompletedProcess:
