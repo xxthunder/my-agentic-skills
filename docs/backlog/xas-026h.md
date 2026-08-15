@@ -1,6 +1,6 @@
-# [XAS-026h] Grant `checks: write` so the JUnit report can publish
+# [XAS-026h] ✅ DONE - Grant `checks: write` so the JUnit report can publish
 
-**Status**: In Progress
+**Status**: Done (2026-08-15)
 **Priority**: Medium
 **Component**: `.github/workflows/test.yml`
 
@@ -45,9 +45,23 @@ number hardest to reach.
       `Test Results (uv pytest, windows)` appear as check runs.
 - [x] Those check runs carry the pass / fail / skip counts, so a reviewer can
       read them without opening job logs.
-- [ ] A failing test still fails the check — `fail_on_failure: true` keeps
+- [x] A failing test still fails the check — `fail_on_failure: true` keeps
       working once the action can publish.
 - [x] Both `Tests` jobs and both Codecov checks still pass.
+
+**Observed** (2026-08-15):
+- PR #13 publishes six checks instead of four. The two new ones carry the
+  counts on their face: `128 tests run, 128 passed, 0 skipped, 0 failed` for
+  both `ubuntu` and `windows`.
+- The `fail_on_failure` criterion was verified with a throwaway branch
+  carrying one deliberately failing assertion, dispatched via
+  `workflow_dispatch` so it needed no pull request. The run concluded
+  **failure** on both platforms, and both `Test Results` checks reported
+  failure. Branch deleted afterwards.
+- That last check mattered more than the visibility this item was filed for:
+  the pytest step is `continue-on-error: true`, so the JUnit action is what
+  fails the build. Had it been silently degraded, a red test would not have
+  failed CI at all. It is not degraded.
 
 **Out of scope**:
 - Granting `pull-requests: write` or enabling PR comments from the action.
