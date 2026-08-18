@@ -12,6 +12,7 @@ Why this repository looks the way it does. One decision per file, at
 | [0003](0003-one-writer-for-the-design-record.md) | The design record has exactly one writer | Accepted | 2026-08-12 |
 | [0004](0004-always-on-rule-is-orientation-not-enforcement.md) | The always-on rule is orientation, not enforcement | Accepted | 2026-08-12 |
 | [0005](0005-bootstrap-architecture-never-reconstruct-adrs.md) | Bootstrap architecture from code; never reconstruct ADRs | Accepted | 2026-08-12 |
+| [0006](0006-architecture-document-location-is-discovered.md) | The architecture document's location is discovered, not hardcoded | Accepted | 2026-08-18 |
 
 ---
 

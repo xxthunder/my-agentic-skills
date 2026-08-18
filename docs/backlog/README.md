@@ -23,7 +23,6 @@
 - [XAS-026d — JSON schema validation for `marketplace.json` and `plugin.json`](xas-026d.md)
 - [XAS-026e — PR title conventional-commit linter](xas-026e.md)
 - [XAS-026f — Coverage thresholds via `codecov.yml`](xas-026f.md)
-- [XAS-027f — Dogfood: this repo's own `architecture.md` and ADRs](xas-027f.md)
 - [XAS-027g — Verify in a consuming repo; retire the per-repo `AGENTS.md` text](xas-027g.md)
 
 ### In Progress
@@ -59,6 +58,7 @@
 - [XAS-027c — `SessionStart` orientation hook](xas-027c.md)
 - [XAS-027d — `architecture-scan` skill: bootstrap and drift report](xas-027d.md)
 - [XAS-027e — Wire-up: `refinement`, `tdd-workflow`, `commit-helper`](xas-027e.md)
+- [XAS-027f — Dogfood: this repo's own `architecture.md` and ADRs](xas-027f.md)
 - [XAS-027h — ADR-log invariant tests](xas-027h.md)
 - [XAS-028 — Declare the `superpowers` dependency in the marketplace](xas-028.md)
 
