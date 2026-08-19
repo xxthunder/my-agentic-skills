@@ -80,8 +80,9 @@ Run the test above before doing anything else. If it fails, redirect and stop.
 
 ### Step 2: Locate the log and allocate a number
 
-1. Find the ADR directory — `docs/adr/` by convention. If it is absent, say so
-   and offer to bootstrap it (Step 6 handles the index).
+1. Find the ADR directory — `docs/adr/`, then `docs/architecture/adr/` for a
+   repo that keeps a directory-based record. If neither exists, say so and
+   offer to bootstrap `docs/adr/` (Step 6 handles the index).
 2. List `docs/adr/NNNN-*.md`. Take the **maximum** leading number, increment by
    one, zero-pad to four digits.
 3. Never reuse a number, including numbers belonging to Rejected or Superseded

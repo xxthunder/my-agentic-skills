@@ -53,9 +53,13 @@ Same discovery order `design-record` uses, and it must stay the same:
 
 1. `docs/architecture.md`
 2. Root `ARCHITECTURE.md`
-3. Neither → this is a **bootstrap**.
-4. Both → **ask** which is authoritative. Do not scan against one and silently
-   ignore the other.
+3. `docs/architecture/README.md` — a directory-based record uses its README as
+   the entry point.
+4. None → this is a **bootstrap**.
+5. More than one → **ask** which is authoritative. Do not scan against one and
+   silently ignore the others.
+
+The ADR log follows the same shape: `docs/adr/`, then `docs/architecture/adr/`.
 
 ## Deriving the real structure
 

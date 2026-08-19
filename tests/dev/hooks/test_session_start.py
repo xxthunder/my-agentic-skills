@@ -278,3 +278,62 @@ def test_hook_script_is_extensionless_and_wrapper_exists():
     """Claude Code's Windows handling prepends bash to commands containing .sh."""
     assert HOOK.is_file() and HOOK.suffix == ""
     assert (PLUGIN_ROOT / "hooks" / "run-hook.cmd").is_file()
+
+
+# --------------------------------------------------------------------------
+# Nested layouts (XAS-027i)
+#
+# xxthunder/shortcuts keeps docs/architecture/{README.md,adr/}. The 1.11.0
+# order looked only at docs/adr/ and docs/architecture.md, so it reported a
+# real ADR log and a real architecture document as absent.
+# --------------------------------------------------------------------------
+
+
+def make_nested_adr(root: Path) -> None:
+    d = root / "docs" / "architecture" / "adr"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "0001-something.md").write_text("# ADR-0001 — Something\n", encoding="utf-8")
+
+
+def test_nested_adr_log_is_found(tmp_path):
+    make_backlog(tmp_path)
+    make_nested_adr(tmp_path)
+    payload = payload_of(run_hook(tmp_path))
+    assert "docs/architecture/adr" in payload
+
+
+def test_nested_architecture_readme_is_found(tmp_path):
+    make_backlog(tmp_path)
+    d = tmp_path / "docs" / "architecture"
+    d.mkdir(parents=True)
+    (d / "README.md").write_text("# Architecture\n", encoding="utf-8")
+    payload = payload_of(run_hook(tmp_path))
+    assert "docs/architecture/README.md" in payload
+
+
+def test_top_level_adr_dir_wins_over_nested(tmp_path):
+    make_backlog(tmp_path)
+    make_adr(tmp_path)
+    make_nested_adr(tmp_path)
+    payload = payload_of(run_hook(tmp_path))
+    assert "docs/adr/" in payload
+    assert "docs/architecture/adr" not in payload
+
+
+def test_architecture_md_wins_over_nested_readme(tmp_path):
+    make_backlog(tmp_path)
+    (tmp_path / "docs").mkdir(exist_ok=True)
+    (tmp_path / "docs" / "architecture.md").write_text("# A\n", encoding="utf-8")
+    (tmp_path / "docs" / "architecture").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "docs" / "architecture" / "README.md").write_text("# B\n", encoding="utf-8")
+    payload = payload_of(run_hook(tmp_path))
+    assert "docs/architecture.md" in payload
+    assert "docs/architecture/README.md" not in payload
+
+
+def test_guard_fires_when_only_artifact_is_nested(tmp_path):
+    """No backlog, no top-level ADR log — the hook must still speak up."""
+    make_nested_adr(tmp_path)
+    result = run_hook(tmp_path)
+    assert result.returncode == 0
+    assert "docs/architecture/adr" in payload_of(result)

@@ -23,12 +23,23 @@ adr_dir=""
 arch_doc=""
 
 [ -d "$project_dir/docs/backlog" ] && backlog_dir="docs/backlog"
-[ -d "$project_dir/docs/adr" ] && adr_dir="docs/adr"
+
+# Search order, first match wins. The nested forms exist because a repo that
+# keeps docs/architecture/ as a directory puts its ADR log inside it; missing
+# those reported a real record as absent. See ADR-0006, whose stated escape for
+# an insufficient search order is to extend it rather than add configuration.
+if [ -d "$project_dir/docs/adr" ]; then
+    adr_dir="docs/adr"
+elif [ -d "$project_dir/docs/architecture/adr" ]; then
+    adr_dir="docs/architecture/adr"
+fi
 
 if [ -f "$project_dir/docs/architecture.md" ]; then
     arch_doc="docs/architecture.md"
 elif [ -f "$project_dir/ARCHITECTURE.md" ]; then
     arch_doc="ARCHITECTURE.md"
+elif [ -f "$project_dir/docs/architecture/README.md" ]; then
+    arch_doc="docs/architecture/README.md"
 fi
 
 # Repos that do not use these conventions get nothing at all.
