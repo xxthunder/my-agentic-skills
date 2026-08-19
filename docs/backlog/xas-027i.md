@@ -1,6 +1,6 @@
-# [XAS-027i] Widen record discovery to nested layouts
+# [XAS-027i] ✅ DONE - Widen record discovery to nested layouts
 
-**Status**: In Progress
+**Status**: Done (2026-08-19)
 **Priority**: High
 **Component**: `plugins/xxthunder-dev-skills/hooks/session-start`,
 `plugins/xxthunder-dev-skills/skills/design-record/references/architecture-format.md`,
@@ -80,7 +80,7 @@ break it.
 - [x] Verified against the real `xxthunder/shortcuts` clone: the payload names
       `docs/architecture/adr/` and `docs/architecture/README.md`.
 - [x] `plugin.json` and `marketplace.json` bumped (minor) and in agreement.
-- [ ] All existing tests continue to pass on both platforms.
+- [x] All existing tests continue to pass on both platforms.
 
 **Observed** (2026-08-19), fixed hook against the real `xxthunder/shortcuts`
 clone — all three artifacts now named, with discovered paths:
