@@ -59,10 +59,40 @@ Both are arguments, not evidence. This is where they get tested.
   around silently. A rule that only works sometimes is worse than one that is
   honestly documented as needing local reinforcement.
 
+
+**Observed — orientation (2026-08-19, plugin 1.12.0 as shipped)**
+
+Fresh session in `xxthunder/shortcuts` on branch
+`experiment/xas-027g-remove-agents-paragraph`, asked what its context said about
+the design record before anything was invoked. It answered from the hook and
+attributed it unprompted: *"The SessionStart hook (not AGENTS.md) supplies it."*
+
+It named all three artifacts with discovered paths — `docs/backlog/` with the
+`SC-###` prefix, `docs/architecture/adr/`, and `docs/architecture/README.md` —
+plus which skill writes what, and the `superpowers:brainstorming` rule. It also
+noted on its own that the branch had removed the design-location sentences from
+`AGENTS.md` and that this "didn't cost me this knowledge, because the hook still
+injects it at session start."
+
+Two things this establishes:
+
+- The hook reaches a real consuming repo and is the *sole* source of the
+  knowledge. The `SC-###` prefix is the proof it ran rather than reconstructed:
+  that string exists nowhere in the plugin and is parsed from the consuming
+  repo's backlog README.
+- [XAS-027i](xas-027i.md)'s widened discovery works against the shipped version,
+  not only against a local working copy. The same session run at 1.11.0 reported
+  the ADR log and architecture document as absent.
+
+**Still unobserved — the contested case.** Orientation was never the hard part.
+Nothing here tests whether the hook outranks `brainstorming`'s spec-writing step
+when that skill is actively working through its checklist, which is the epic's
+actual open question. A brainstorming session in that repo has not yet been run.
+
 **Acceptance Criteria**:
-- [ ] The `AGENTS.md` paragraph is removed on a branch **before** the
+- [x] The `AGENTS.md` paragraph is removed on a branch **before** the
       observation, so the hook is the only always-on instruction in play.
-- [ ] A fresh session in the consuming repo shows the orientation text present
+- [x] A fresh session in the consuming repo shows the orientation text present
       without anything being invoked.
 - [ ] A brainstorming session in that repo produces a backlog item and, where
       the decision earns one, an ADR — not a `docs/superpowers/specs/` file.
