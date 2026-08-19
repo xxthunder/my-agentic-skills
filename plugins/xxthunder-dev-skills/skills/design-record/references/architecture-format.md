@@ -11,8 +11,15 @@ Discovered, not hardcoded. In order:
 1. `docs/architecture.md` — use it if it exists.
 2. Root `ARCHITECTURE.md` — use it if it exists. This is a widely used
    convention in its own right, and a consuming repo may already have one.
-3. Neither exists → create `docs/architecture.md`.
-4. Both exist → **ask**. Do not guess, and do not merge them unprompted.
+3. `docs/architecture/README.md` — use it if it exists. A repo keeping
+   `docs/architecture/` as a *directory* uses its README as the entry point,
+   the same way `docs/adr/README.md` indexes an ADR log.
+4. None exists → create `docs/architecture.md`.
+5. More than one exists → **ask**. Do not guess, and do not merge them
+   unprompted.
+
+The ADR log is discovered the same way: `docs/adr/`, then
+`docs/architecture/adr/`.
 
 **Never create a second document alongside one that already exists.** That is
 the "third place for design to hide" the whole record exists to prevent.
