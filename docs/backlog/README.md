@@ -23,6 +23,7 @@
 - [XAS-026d — JSON schema validation for `marketplace.json` and `plugin.json`](xas-026d.md)
 - [XAS-026e — PR title conventional-commit linter](xas-026e.md)
 - [XAS-026f — Coverage thresholds via `codecov.yml`](xas-026f.md)
+- [XAS-029 — Semantic release via Release Please](xas-029.md)
 
 ### In Progress
 - [XAS-001 — Backlog refinement](xas-001.md)
