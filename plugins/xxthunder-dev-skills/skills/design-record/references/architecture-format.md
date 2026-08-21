@@ -1,8 +1,10 @@
 # `architecture.md` Format
 
 One document, read top to bottom, describing how the product is put together.
-It has the same lifetime as the product — unlike a backlog item, which dies at
-Done.
+It has the same lifetime as the product, and is edited to stay current. A
+backlog item is different: it stays in the repo as history after Done, but
+nothing keeps it current, so it records what was decided then rather than what
+is true now.
 
 ## Where the document lives
 

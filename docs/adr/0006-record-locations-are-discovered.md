@@ -1,4 +1,4 @@
-# ADR-0006 — The architecture document's location is discovered, not hardcoded
+# ADR-0006 — Record locations are discovered, not hardcoded
 
 **Status**: Accepted
 **Date**: 2026-08-18
@@ -12,11 +12,11 @@ stating what record exists in a repo. If they disagree about where it lives,
 the record silently splits in two.
 
 The obvious answer is to pick one path and hardcode it. That works for this
-repository and fails for the ones the plugin is installed into. A root-level
+repository and fails for the ones `xxthunder-dev-skills` is installed into. A root-level
 `ARCHITECTURE.md` is a widely used convention in its own right, and a consuming
 repo may already keep one. A skill that only knows `docs/architecture.md` would
 walk past it and create a second document alongside — which is precisely the
-"third place for design to hide" that [ADR-0001](0001-two-durable-design-artifacts-split-by-lifetime.md)
+"third place for design to hide" that [ADR-0001](0001-two-design-artifacts-split-by-lifetime.md)
 exists to prevent.
 
 The epic already commits to discovery over configuration for the backlog ID
@@ -25,16 +25,19 @@ per-repo upkeep the epic removes. The same argument applies here.
 
 ## Decision
 
-The document's location is resolved by discovery, in this order:
+Record locations are resolved by **discovery**, never hardcoded and never
+configured, for both the architecture document and the ADR log. First match
+wins; an existing artifact is always adopted over creating a new one; an
+ambiguous repo is asked rather than guessed at.
 
-1. `docs/architecture.md` — use it if it exists.
-2. Root `ARCHITECTURE.md` — use it if it exists.
-3. Neither exists → create `docs/architecture.md`.
-4. Both exist → **ask** which is authoritative. Do not guess, and do not merge
-   them unprompted.
-
-An existing document is always adopted over creating a new one. All three
-components use this same order, and it must stay the same in all three.
+The concrete search orders are **not reproduced here**. They live once, in
+`design-record`'s `architecture-format.md`, and `architecture-scan` and the
+`SessionStart` hook follow that same list. This ADR fixes the principle; the
+list is a specification that can change without the decision changing, and it
+already has — [XAS-027i](../backlog/xas-027i.md) added a third document location
+and a second ADR-log location after the original pair failed on the first real
+consuming repo. That is this decision working as written rather than a reversal
+of it; see the last Consequence.
 
 ## Alternatives considered
 

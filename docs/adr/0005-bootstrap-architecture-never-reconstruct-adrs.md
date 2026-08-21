@@ -6,7 +6,8 @@
 
 ## Context
 
-Every repo this plugin targets already exists and already has an architecture —
+Every repo `xxthunder-dev-skills` targets already exists and already has an
+architecture —
 it just has no `architecture.md`. The capture triggers only fire on change, so
 without a bootstrap those repos would accrete documentation piecemeal and stay
 incoherent for a long time, in exactly the repos where durable context is worth
@@ -36,8 +37,8 @@ guessing. Omission beats invention.
 - **Bootstrap both**, harvesting rationale from git history and from the `Scope
   Decisions` field that backlog items already carry. Defensible in this
   repository specifically, because those fields hold real rationale written at
-  the time — they are genuine proto-ADRs. Rejected because the plugin must work
-  in repos without that history, where the same mechanism degrades into
+  the time — they are genuine proto-ADRs. Rejected because `xxthunder-dev-skills` must
+  work in repos without that history, where the same mechanism degrades into
   plausible fiction, and a log that is trustworthy in some repos and not others
   is not trustworthy.
 - **Forward-only, no bootstrap at all.** Cheapest and most honest: everything in
