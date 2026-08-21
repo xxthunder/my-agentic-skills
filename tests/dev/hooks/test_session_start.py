@@ -191,6 +191,35 @@ def test_names_the_brainstorming_spec_step(tmp_path):
     assert "docs/superpowers/specs" in payload
 
 
+def test_payload_frames_a_closed_item_as_history_not_deletion(tmp_path):
+    """XAS-027j — "dies at Done" read as if the repo throws closed work away.
+
+    Nothing is deleted; the file stays. What ends at Done is the item's
+    authority about the present, because nothing keeps it current.
+    """
+    make_backlog(tmp_path)
+    payload = payload_of(run_hook(tmp_path)).lower()
+    assert "dies" not in payload
+    assert "history" in payload
+    assert "not kept current" in payload
+
+
+def test_no_dangling_pointer_at_a_record_that_is_not_listed(tmp_path):
+    """XAS-027j — "belongs in the record below" must not appear with no record.
+
+    A repo adopting the backlog convention before it keeps an ADR log is the
+    common first case, and the one most likely to be misled.
+    """
+    make_backlog(tmp_path)
+    payload = payload_of(run_hook(tmp_path))
+    assert "record below" not in payload
+    assert "Decisions:" not in payload and "Architecture:" not in payload
+
+    make_adr(tmp_path)
+    payload = payload_of(run_hook(tmp_path))
+    assert "record below" in payload, "with a record present, the pointer belongs"
+
+
 def test_payload_carries_no_gating_language(tmp_path):
     """Orientation, not enforcement — ADR-0004."""
     make_backlog(tmp_path)

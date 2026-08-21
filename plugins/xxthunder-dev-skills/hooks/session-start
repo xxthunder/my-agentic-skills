@@ -62,7 +62,7 @@ fi
 
 nl='
 '
-payload="This repository keeps a durable design record — the structure of the product and the reasoning behind it. What exists here:"
+payload="This repository keeps a record of how it is built and why — artifacts that stay true of the product as it is now, not an account of past changes. What exists here:"
 payload="$payload$nl"
 
 if [ -n "$backlog_dir" ]; then
@@ -70,7 +70,12 @@ if [ -n "$backlog_dir" ]; then
     if [ -n "$prefix" ]; then
         payload="$payload — items are ${prefix}-###, substories ${prefix}-###a"
     fi
-    payload="$payload. A backlog item is the design document for a unit of work: its Summary, Description and Scope Decisions hold design that dies when the item closes."
+    payload="$payload. A backlog item is the design document for a unit of work: its Summary, Description and Scope Decisions describe that change. A closed item stays in the repo as history, and is not kept current after Done — so it records what was decided then, not what is true now."
+    # Only point at the record when this repo actually has one listed below;
+    # otherwise the sentence directs the reader at nothing.
+    if [ -n "$adr_dir" ] || [ -n "$arch_doc" ]; then
+        payload="$payload Design that still constrains the repo belongs in the record below before the item closes."
+    fi
 fi
 
 if [ -n "$adr_dir" ]; then

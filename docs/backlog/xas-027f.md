@@ -39,7 +39,7 @@ resolution belongs in whichever is wrong.
   the skill, the format reference, or the ADRs.
 - The nominated decision — the architecture-document discovery rule parked in
   [XAS-027b](xas-027b.md)'s Scope Decisions — is now
-  [ADR-0006](../adr/0006-architecture-document-location-is-discovered.md),
+  [ADR-0006](../adr/0006-record-locations-are-discovered.md),
   recorded through the skill rather than by hand.
 - The 24 ADR-log invariant tests from [XAS-027h](xas-027h.md) pass against the
   regenerated index, and every relative link in the ADRs and the architecture

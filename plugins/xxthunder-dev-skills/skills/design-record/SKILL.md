@@ -1,6 +1,6 @@
 ---
 name: design-record
-description: "Record a design decision as an ADR, or update the living architecture document, in a repo that keeps a durable design record. Drafts the ADR body from the conversation, allocates the next number, maintains the ADR index, and edits named sections of architecture.md. Stages file edits only; never produces its own commit. Trigger with: 'record an ADR', 'document this decision', 'we decided X — write it up', 'why did we choose Y — capture it', 'update the architecture doc'."
+description: "Record a design decision as an ADR, or update the living architecture document, in a repo that keeps a record of how it is built and why. Drafts the ADR body from the conversation, allocates the next number, maintains the ADR index, and edits named sections of architecture.md. Stages file edits only; never produces its own commit. Trigger with: 'record an ADR', 'document this decision', 'we decided X — write it up', 'why did we choose Y — capture it', 'update the architecture doc'."
 user_invocable: true
 ---
 
@@ -45,6 +45,9 @@ it exists to avoid.
 Do **not** trigger on:
 - "let's refine", "add a new story", "prioritise the backlog" — that is `refinement`.
 - "start XAS-025", "close XAS-025", "tick AC 2" — that is `backlog-ops`.
+  The exception is `backlog-ops`' binding-design check, which hands off *from*
+  a close: that arrives as a decision to record, not as a lifecycle request,
+  and is handled normally below.
 - "check the docs against reality", "is the architecture doc still true" — that
   is `architecture-scan`, which is read-only and proposes changes this skill
   then applies.
@@ -203,8 +206,10 @@ change is staged and uncommitted.
 - **No reconstructed ADRs for past decisions.** Rationale is not recoverable
   from code, so an ADR inferred from a repo's current state is confident
   fiction — the opposite of what this log is for.
-- **No editing an Accepted ADR's body.** Only its `**Status**` line, only at
-  supersede time.
+- **No editing an Accepted ADR's substance.** Its `**Status**` line at supersede
+  time, and meaning-preserving corrections (typo, broken link, wording that
+  misleads about what it already decided) — nothing else. If a reader would
+  decide differently after the change, it is a new ADR that supersedes.
 - **No reading the codebase to find drift.** That is `architecture-scan`.
 - **No backlog status changes.** That is `backlog-ops`.
 
@@ -224,4 +229,8 @@ change is staged and uncommitted.
   backlog item's `Scope Decisions`.
 - **`architecture-scan`** is read-only and proposes; this skill applies what the
   user approves.
+- **`backlog-ops`** hands off here from its binding-design check when closing an
+  item, having already applied the three-part test. Closing is the last moment
+  to lift design that outlives the item, because nothing keeps a closed item
+  current.
 - **`commit-helper`** commits the staged record edit alongside the code change.

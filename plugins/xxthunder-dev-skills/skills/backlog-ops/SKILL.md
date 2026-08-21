@@ -72,14 +72,29 @@ If the file's `**Status**:` and the README section disagree, **the README wins**
    - Current status is `In Progress` (or `Open` — warn that the item skipped `In Progress`, ask the user to confirm).
    - All Acceptance Criteria checkboxes are `- [x]`. If any remain unchecked, list them and ask the user whether to force-complete. Do not silently complete an item with open ACs.
    - If a UAT block exists and has unchecked boxes, apply the same rule.
-2. In the item file:
+2. **Binding-design check** (only if the repo keeps a record — an ADR directory or an architecture document). Read the item's `Description` and `Scope Decisions`, and look for statements that no linked ADR already covers and that pass the **same three-part test `design-record` applies**: the consequences outlive this item, a competent engineer could have chosen otherwise, and the reason is not recoverable from the code. A closed item stays in the repo but stops being kept current, so design left inside it stops being true of anything — findable, but no longer describing the product.
+
+   Apply all three parts, not just the first. `design-record` runs the same test on arrival and stops if it fails, so nominating on "this outlives the item" alone produces a hand-off that gets refused.
+
+   If you find candidates, name them and ask once:
+
+   > `PREFIX-###` states: "<the statement>". That looks like it outlives this item and no ADR covers it. Record it with `design-record` before closing?
+
+   - **Yes** → hand off to `design-record`, then return here and continue with the item-file edit below.
+   - **No**, or nothing found → continue with the item-file edit below.
+
+   ("Below" means the next numbered item in this Complete list — not the `### Step 3` heading further down the page.)
+
+   This check **prompts and hands off**. It never authors the ADR itself, and it never blocks the close — declining completes the item as normal. Enforcement is out of scope by design.
+
+3. In the item file:
    - Replace `**Status**: In Progress` with `**Status**: Done (YYYY-MM-DD)` using today's date (ask the user or read from the environment; never fabricate).
    - Prefix the top-level heading with `✅ DONE -` if not already present, e.g. `# [XAS-025] Title` → `# [XAS-025] ✅ DONE - Title`.
-3. In `README.md`: move the item's TOC line from its current section to `### Done`. Keep `### Done` sorted by ID.
-4. **Epic cascade**: if the item is a substory, re-evaluate the parent:
+4. In `README.md`: move the item's TOC line from its current section to `### Done`. Keep `### Done` sorted by ID.
+5. **Epic cascade**: if the item is a substory, re-evaluate the parent:
    - If **all** siblings (including this item's new Done state) are `Done`, prompt the user: "All substories of `PREFIX-###` are now Done. Close the epic too?" If yes, run the Complete operation recursively on the parent (its ACs still get the same precondition check — an epic may have its own ACs independent of substory completion).
    - Otherwise, leave the parent where it is. If the parent was incorrectly sitting in `### Open` while any substory was `In Progress` or `Done`, correct it to `### In Progress`.
-5. Report: status transition, which section of README was updated, and any cascade decisions (accepted or deferred).
+6. Report: status transition, which section of README was updated, any cascade decisions (accepted or deferred), and whether a binding-design candidate was found and what the user chose.
 
 ### Step 3: Summarize staged changes
 
@@ -92,6 +107,7 @@ Print a short summary: files edited, lines changed (conceptually — "ticked AC 
 - **No commits.** Ever. The backlog edit rides in the user's next commit.
 - **No new items.** Creating items is `refinement`'s job.
 - **No AC authoring.** Editing AC text is `refinement`'s job.
+- **No ADR authoring.** The binding-design check names a candidate and hands off. `design-record` is the record's only writer.
 - **No sprint / velocity / estimation concepts.** Out of scope by design.
 - **No guessing which AC a code change satisfied.** The user names the AC to tick; the skill does not infer.
 - **No reverse transitions without explicit confirmation.** Re-opening a Done item or moving In Progress back to Open requires the user to spell it out.
@@ -110,3 +126,4 @@ Print a short summary: files edited, lines changed (conceptually — "ticked AC 
 - **`tdd-workflow`** may suggest invoking this skill at the start (pull) and end (complete) of a TDD cycle that maps to a backlog item. It will not auto-check ACs mid-cycle — the user decides when a criterion is satisfied.
 - **`commit-helper`** commits the staged backlog edit alongside the code change. Mention the backlog ID in the commit subject or body per conventional-commit practice.
 - **`refinement`** hands off to this skill for any status mutation; it does not edit `**Status**:` fields directly.
+- **`design-record`** receives the hand-off from the binding-design check on Complete. Closing an item is the last moment to lift design that outlives it into the ADR log, because nothing keeps a closed item current.

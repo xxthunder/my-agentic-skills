@@ -16,9 +16,11 @@ overlapping diagrams nobody trusts. With a rigid structure, things that are
 genuinely flows get forced into box-and-line component diagrams and the insight
 worth documenting is lost.
 
-The target repos are also heterogeneous. C4's container concept fits
-`homesmarthome` well and barely applies to a marketplace of markdown skills, so
-any convention has to degrade gracefully rather than demand empty sections.
+The target repos are also heterogeneous. C4's container concept fits a
+multi-service system such as `xxthunder/homesmarthome` well, and barely applies
+to `xxthunder/xxthunder-agentic-skills` itself — a marketplace whose plugins are
+largely markdown. Any convention has to degrade gracefully rather than demand
+empty sections.
 
 ## Decision
 

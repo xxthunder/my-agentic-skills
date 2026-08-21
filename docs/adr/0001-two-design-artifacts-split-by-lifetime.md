@@ -1,4 +1,4 @@
-# ADR-0001 — Two durable design artifacts, split by lifetime
+# ADR-0001 — Two design artifacts, split by lifetime
 
 **Status**: Accepted
 **Date**: 2026-08-12
@@ -6,8 +6,9 @@
 
 ## Context
 
-The plugin needed somewhere for design to live. The obvious candidates all
-already existed in some form and none of them worked alone:
+A repository using `xxthunder-dev-skills` needs somewhere for design to live.
+The obvious candidates all already existed in some form and none of them worked
+alone:
 
 - Backlog items hold design, but they close. Anything written in one is gone as
   soon as the work is done, which is precisely when someone starts needing it.
@@ -21,24 +22,38 @@ The framing question — "should design live in the epic, the story, or a separa
 document?" — turned out to have no answer because it mixes two different axes.
 A.SPICE and the V-Model organise artifacts by **abstraction level**, describing
 the product, so they live as long as the product. Scrum organises by
-**increment of value**, describing a change to the product, so its artifacts die
-at Done. Sorting by lifetime instead of by item size makes the question
-answerable.
+**increment of value**, describing a change to the product, so its artifacts
+stop being maintained at Done: nothing is deleted, but nothing keeps them
+current either, so they become history rather than reference. Sorting by
+lifetime instead of by item size makes the question answerable.
 
 ## Decision
 
-The plugin maintains exactly two durable design artifacts:
+A repository using `xxthunder-dev-skills` keeps exactly two design artifacts
+that stay **binding on the present** — that is, still true of the product as it is now, rather than a true
+account of some past change:
 
-- **An ADR log** at `docs/adr/` — why a structural choice was made. Immutable;
-  superseded rather than edited.
+- **An ADR log** at `docs/adr/` — why a structural choice was made. Frozen per
+  decision and superseded rather than edited, yet each entry keeps binding
+  until something supersedes it.
 - **A living `architecture.md`** — what the structure currently is, with
-  diagrams inline.
+  diagrams inline. Edited in place to stay true.
+
+"Binding" is the property that matters, not persistence. Everything committed
+persists; a closed backlog item and a finished plan sit in git forever. They
+simply stop being true of anything once their change has landed, whereas these
+two keep describing the product.
 
 Everything else keeps its existing home. Design local to one change stays in the
 backlog item's `Scope Decisions`. Decomposition stays in the epic. How the code
 works stays in the code and its tests.
 
 There is deliberately **no third place** for design to live.
+
+The artifacts live in the consuming repository, never in the plugin directory.
+`xxthunder-dev-skills` ships the skills that write and read them —
+`design-record`, `architecture-scan` and a `SessionStart` hook — and owns none
+of the content.
 
 ## Alternatives considered
 
@@ -62,14 +77,16 @@ There is deliberately **no third place** for design to live.
   are its requirement, and its Acceptance Criteria and UAT blocks in the same
   file are that requirement's verification mirror. Only the middle band —
   architecture and its rationale — was missing, and these two artifacts are it.
-- ADR immutability follows from this choice: a changed mind is a new ADR, and
-  the only permitted edit to an accepted one is its status line at supersede
-  time.
+- ADR immutability follows from this choice: a changed mind is a new ADR that
+  supersedes, never an edit to the reasoning it replaces. The precise set of
+  permitted edits is stated once in `design-record`'s `adr-format.md` and not
+  restated here, so that tightening or loosening it does not leave this ADR
+  contradicting the rule it motivates.
 - `superpowers:brainstorming`'s spec-writing step now conflicts with this
   structure by design. Resolving that conflict is what
   [ADR-0004](0004-always-on-rule-is-orientation-not-enforcement.md) addresses.
-- Repos that adopt the plugin but have no architecture yet documented start with
-  an empty record, which is what
+- Repos that install `xxthunder-dev-skills` but have no architecture yet
+  documented start with an empty record, which is what
   [ADR-0005](0005-bootstrap-architecture-never-reconstruct-adrs.md) addresses.
 - The rule is easy to state and therefore easy to follow: if it outlives the
   work, it does not go in the backlog item.

@@ -10,7 +10,7 @@
 `.claude-plugin/marketplace.json`
 
 **Related**: Found by [XAS-027g](xas-027g.md) on first contact with a real
-consuming repo. Extends [ADR-0006](../adr/0006-architecture-document-location-is-discovered.md)
+consuming repo. Extends [ADR-0006](../adr/0006-record-locations-are-discovered.md)
 rather than reversing it.
 
 **Summary**:

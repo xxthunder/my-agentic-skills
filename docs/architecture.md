@@ -66,6 +66,7 @@ flowchart TB
         tdd["tdd-workflow"] --> backlog
         tdd --> record
         commit["commit-helper"] --> record
+        backlog -.at close.-> record
         retro["retrospective"]
         hook["hooks/session-start"]
     end
@@ -82,7 +83,7 @@ executable code the plugin ships: a `SessionStart` hook under `hooks/`
 that locates a bash on Windows).
 
 `refinement` and `retrospective` are conversation skills; `backlog-ops` is
-mechanics-only; `design-record` is the sole writer of the durable record;
+mechanics-only; `design-record` is the sole writer of the record;
 `architecture-scan` is read-only and proposes into it; `tdd-workflow` and
 `commit-helper` sit at the boundaries of a change.
 
@@ -110,6 +111,11 @@ sequenceDiagram
 
 A decision failing the three-part test stays in the backlog item's
 `Scope Decisions` and never reaches the ADR log.
+
+`backlog-ops` is the fourth route in. When completing an item it re-reads the
+`Description` and `Scope Decisions`, applies the same three-part test, and
+offers a hand-off for anything still binding that is sitting inside. Closing is the
+last moment that lift can happen, because nothing keeps a closed item current.
 
 ### Bootstrapping or auditing the architecture
 

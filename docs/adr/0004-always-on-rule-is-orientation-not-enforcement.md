@@ -34,9 +34,12 @@ The one place the payload is directive is the conflict with
 `brainstorming`'s spec-writing step, and there it **names that step explicitly**
 rather than stating a general rule.
 
-The hook is guarded on repo shape — silent unless `docs/backlog/`, `docs/adr/`
-or `docs/architecture.md` exists — and lists only the artifacts actually
-present.
+The hook is guarded on repo shape — silent unless the repo has at least one of
+a backlog directory, an ADR log or an architecture document — and lists only the
+artifacts actually present. The paths searched for each are given by
+[ADR-0006](0006-record-locations-are-discovered.md); this decision deliberately
+does not restate them, so that widening the search does not leave this ADR
+stating a list that is no longer true.
 
 ## Alternatives considered
 

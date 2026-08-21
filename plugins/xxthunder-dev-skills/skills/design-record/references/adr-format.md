@@ -56,10 +56,20 @@ a record as a yes, and deleting it guarantees the same idea is re-litigated.
 
 ## Immutability
 
-**An Accepted ADR is immutable.** The only permitted edit to an existing ADR is
-its `**Status**` line at supersede time. A changed mind is a new ADR, not an
-edit to the old one — an edited ADR silently rewrites history and destroys the
-only thing the log is for.
+**An Accepted ADR is immutable in substance.** A changed mind is a new ADR, not
+an edit to the old one — an edited ADR silently rewrites history and destroys
+the only thing the log is for.
+
+Exactly two edits are permitted:
+
+1. Its `**Status**` line, at supersede time.
+2. A correction that changes no meaning: a typo, a broken link, or wording that
+   misleads about what the ADR already decided.
+
+The test for the second is whether a reader would decide anything differently
+after the change. If they would, it is a new ADR that supersedes — not an edit.
+Note the correction in the backlog item that made it, so the change is
+traceable to a reason rather than appearing as silent drift.
 
 ## The supersede path
 

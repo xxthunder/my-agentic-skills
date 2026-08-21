@@ -7,12 +7,12 @@ Why this repository looks the way it does. One decision per file, at
 
 | ADR | Title | Status | Date |
 |-----|-------|--------|------|
-| [0001](0001-two-durable-design-artifacts-split-by-lifetime.md) | Two durable design artifacts, split by lifetime | Accepted | 2026-08-12 |
+| [0001](0001-two-design-artifacts-split-by-lifetime.md) | Two design artifacts, split by lifetime | Accepted | 2026-08-12 |
 | [0002](0002-architecture-doc-fixed-slots-for-structure.md) | `architecture.md` uses fixed slots for structure, free-form for behaviour | Accepted | 2026-08-12 |
 | [0003](0003-one-writer-for-the-design-record.md) | The design record has exactly one writer | Accepted | 2026-08-12 |
 | [0004](0004-always-on-rule-is-orientation-not-enforcement.md) | The always-on rule is orientation, not enforcement | Accepted | 2026-08-12 |
 | [0005](0005-bootstrap-architecture-never-reconstruct-adrs.md) | Bootstrap architecture from code; never reconstruct ADRs | Accepted | 2026-08-12 |
-| [0006](0006-architecture-document-location-is-discovered.md) | The architecture document's location is discovered, not hardcoded | Accepted | 2026-08-18 |
+| [0006](0006-record-locations-are-discovered.md) | Record locations are discovered, not hardcoded | Accepted | 2026-08-18 |
 
 ---
 

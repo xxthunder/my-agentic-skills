@@ -13,8 +13,9 @@ produces — the scanner applies its own bootstrap, the recorder applies its own
 ADR — but then two skills hold the format, and formats held in two places
 diverge.
 
-There is a countervailing force. The repo's existing seam, established by
-XAS-025, splits judgement (`refinement`) from mechanics (`backlog-ops`), and
+There is a countervailing force. The seam already established in
+`xxthunder-dev-skills` by XAS-025 splits judgement (`refinement`) from mechanics
+(`backlog-ops`), and
 `backlog-ops` explicitly refuses to author content. Following that seam strictly
 would mean recording a decision always takes two invocations: one skill to write
 the prose, another to place it. Recording decisions is the highest-frequency
