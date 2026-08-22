@@ -35,6 +35,16 @@ Developer workflow skills:
 | [**retrospective**](plugins/xxthunder-dev-skills/skills/retrospective/SKILL.md) | Incident-driven learning — captures lessons from unmet expectations and encodes them into project guidelines |
 | [**tdd-workflow**](plugins/xxthunder-dev-skills/skills/tdd-workflow/SKILL.md) | Test-driven development workflow following Red-Green-Refactor principles |
 
+Beyond skills, `xxthunder-dev-skills` ships a **`SessionStart` hook**. It runs
+at the start of every session and states where that repository keeps its design
+record — the backlog, the ADR log, the architecture document — naming only the
+artifacts that actually exist, with the paths it found them at.
+
+It is orientation, not enforcement: it never blocks work. It is also **silent in
+repositories that use none of these conventions**, so installing the plugin
+costs nothing in a repo without a backlog, an ADR log or an architecture
+document.
+
 ### `xxthunder-paperless-skills`
 
 Skills for digitizing household paperwork:
@@ -129,7 +139,10 @@ See the [backlog](docs/backlog/README.md) for current epics and stories. Near-te
 
 ## Development
 
-Plugin helper scripts (Python) are covered by a pytest suite at repo root.
+A pytest suite at repo root covers the plugin helper scripts, the
+`SessionStart` hook (exercised as a subprocess, including malformed input and
+CRLF), and the ADR log's structural invariants. Tests live under
+`tests/paperless/` and `tests/dev/` respectively.
 
 ```bash
 uv run --group dev pytest

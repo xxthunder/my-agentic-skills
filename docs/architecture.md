@@ -82,6 +82,11 @@ executable code the plugin ships: a `SessionStart` hook under `hooks/`
 (`hooks.json`, an extensionless `session-start`, and a polyglot `run-hook.cmd`
 that locates a bash on Windows).
 
+Five skills carry a `references/` file. Two of those are load-bearing beyond
+their own skill: `design-record`'s `adr-format.md` and `refinement`'s
+`backlog-format.md` state rules that other components read rather than restate,
+which is why a rule lives in exactly one of them.
+
 `refinement` and `retrospective` are conversation skills; `backlog-ops` is
 mechanics-only; `design-record` is the sole writer of the record;
 `architecture-scan` is read-only and proposes into it; `tdd-workflow` and
@@ -89,8 +94,10 @@ mechanics-only; `design-record` is the sole writer of the record;
 
 **`xxthunder-paperless-skills`** — three skills carrying eight PEP 723 helper
 scripts run via `uv run`: `naps2-scan` (3 scripts), `simplex-merge` (1),
-`split-batch` (4). This is where the repository's executable logic and its
-test suite live.
+`split-batch` (4). This is the bulk of the repository's executable code, but no
+longer all of it: the `SessionStart` hook above is shell, and `tests/` is split
+`tests/paperless/` for the helper scripts, `tests/dev/` for the hook and the
+ADR-log invariants.
 
 ## Key flows
 
