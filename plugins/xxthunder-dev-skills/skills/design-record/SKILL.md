@@ -111,6 +111,17 @@ Specifically, ask rather than infer when:
   exists only in someone's memory. Ask for it; do not reconstruct it from the
   state of the code.
 
+### Step 3b: Name specifications, do not copy them
+
+Before writing, check the draft for anything that could change without the
+decision changing — a path list, a search order, a schema, a set of permitted
+values. Name the artifact that owns it instead of reproducing it. The test is
+in [references/adr-format.md](references/adr-format.md): *if this detail
+changed tomorrow, would the decision still stand?*
+
+An ADR is never edited, so a copied specification is frozen at the moment it
+was written and starts drifting immediately.
+
 ### Step 4: Set the header block
 
 `**Status**: Proposed` unless the user has clearly already agreed, in which case

@@ -42,6 +42,36 @@ If `docs/adr/` does not exist, create it along with a `README.md` index.
     What follows from the decision — including the costs accepted and the
     cheap escape hatch if it turns out wrong. Not a list of benefits.
 
+## Record the decision, not the specification
+
+An ADR records **what was decided and why**. Anything that can change without
+the decision changing — a path list, a search order, a schema, a set of
+permitted values, a slot list — is **named, not reproduced**. Point at whatever
+owns it.
+
+The test: *if this detail changed tomorrow, would the decision still stand?*
+If yes, it is a specification and belongs wherever it is maintained. If no, it
+is part of the decision and belongs here.
+
+Worked example, from this repository's own log:
+
+- **Decision** — "record locations are discovered, never hardcoded or
+  configured". Still stands. Belongs in the ADR.
+- **Specification** — the search order `docs/architecture.md`, then
+  `ARCHITECTURE.md`, then `docs/architecture/README.md`. This changed within
+  days of being written, when a real consuming repo turned out to keep a
+  directory rather than a file. The decision was untouched by that change.
+  Belongs in the format reference the skills read.
+
+An ADR that copies the list ends up stating something untrue while remaining
+frozen, which is worse than vague: it is a permanent document lying with
+authority about how the system behaves. Three ADRs in this log did exactly
+that before the rule existed.
+
+Naming the owner in prose is enough — "the order is stated in
+`architecture-format.md`". A link is optional and often wrong: in a consuming
+repository, a link into the plugin directory does not resolve.
+
 ## Statuses
 
 | Status | Meaning |

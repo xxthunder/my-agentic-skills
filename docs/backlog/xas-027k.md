@@ -1,6 +1,6 @@
-# [XAS-027k] ADRs record decisions, not specifications
+# [XAS-027k] ✅ DONE - ADRs record decisions, not specifications
 
-**Status**: Open
+**Status**: Done (2026-08-22)
 **Priority**: Medium
 **Component**: `plugins/xxthunder-dev-skills/skills/design-record/references/adr-format.md`,
 `docs/adr/` (sweep), `plugins/xxthunder-dev-skills/.claude-plugin/plugin.json`,
@@ -64,37 +64,62 @@ never added. Prevention by format beats detection that cannot work.
 - **No supersedes.** Every correction here is meaning-preserving under
   `adr-format.md`'s existing test — a reader does not decide anything
   differently once an ADR points at a list instead of copying it.
-- **A related rule is currently mis-placed, and this item should decide where
-  it belongs.** [XAS-027](xas-027.md)'s `Scope Decisions` now say that a plan
-  reproducing the design is a spec under another name, and that a plan is
-  deleted once its stories close. That is a general statement about how plans
-  relate to backlog items, not something particular to XAS-027 — but it lives
-  in one epic in one repository, binds nothing else, and stops being visible
-  when that epic closes. It is the same failure this item exists to prevent,
-  one level out: a rule recorded where it cannot reach the thing it governs.
-  Candidates are `refinement`'s `backlog-format.md`, which already defines the
-  item format and ships to consumers, or an ADR if the plans-versus-items
-  boundary is judged to be a decision rather than a format rule. Deciding is in
-  scope here; the epic keeps the wording until then.
+- **The mis-placed plans rule is lifted, not left.** [XAS-027](xas-027.md)'s
+  `Scope Decisions` held a general statement about how plans relate to backlog
+  items — a plan reproducing the design is a spec under another name, and a plan
+  is deleted once its stories close — where it bound one epic in one repository
+  and would have stopped being visible when that epic closed.
+  It now lives in `refinement`'s `backlog-format.md` under *Plans Versus Items*,
+  which already defines the item format and ships to consumers, and the epic
+  points at it. An ADR was considered and rejected for consistency: the
+  decision-versus-specification rule this item adds went into `adr-format.md`
+  rather than into an ADR, on the same reasoning — a rule about how an artifact
+  is written belongs with that artifact's format, where the skills read it,
+  not in a per-repo record that consumers never see.
+
+**Sweep result** (2026-08-22), all six judged against the rule:
+
+| ADR | Verdict |
+|-----|---------|
+| 0001 | Compliant. Restated the immutability rule; corrected in [XAS-027j](xas-027j.md) to point at `adr-format.md`. |
+| 0002 | **Corrected here.** Its Decision enumerated four structural slots. |
+| 0003 | Compliant. Names `design-record` and `architecture-scan` as roles, reproduces no list. |
+| 0004 | Compliant. Listed the hook's guard paths; corrected in XAS-027j to delegate to ADR-0006. |
+| 0005 | Compliant. States a principle — structure is derivable, rationale is not — with no enumeration. |
+| 0006 | Compliant. Carried the full search order twice during XAS-027j before being reduced to the principle. |
+
+ADR-0002 was the open question this item carried, and the test settles it:
+adding or renaming a slot would leave "fixed slots for structure, free-form for
+behaviour" untouched, so the list is a specification. It was also already
+wrong — it named four slots where `architecture-format.md` owns seven, omitting
+`Glossary` entirely, which is the drift this rule exists to prevent arriving
+before anyone noticed.
+
+What stays in ADR-0002 is what was genuinely decided: the structure-versus-
+behaviour split, that structural slots are edited rather than appended to, that
+omission beats invention, and that diagrams are inline mermaid — the last of
+these having its own rejected alternative in the same ADR, which is what makes
+it a decision rather than a detail.
+
 
 **Acceptance Criteria**:
-- [ ] `adr-format.md` gains a rule distinguishing a decision from a
+- [x] `adr-format.md` gains a rule distinguishing a decision from a
       specification, stating that anything which can change without the decision
       changing is named rather than reproduced.
-- [ ] The rule gives at least one concrete example of each, drawn from the real
+- [x] The rule gives at least one concrete example of each, drawn from the real
       failures above rather than invented.
-- [ ] All six existing ADRs are swept against the rule; each is either compliant
+- [x] All six existing ADRs are swept against the rule; each is either compliant
       or corrected, and any judged compliant-on-purpose says why.
-- [ ] ADR-0002's slot enumeration is explicitly judged — kept as illustration or
+- [x] ADR-0002's slot enumeration is explicitly judged — kept as illustration or
       reduced to a pointer — and the reasoning recorded.
-- [ ] The plans-reproduce-the-design rule currently in XAS-027's `Scope
+- [x] The plans-reproduce-the-design rule currently in XAS-027's `Scope
       Decisions` is either lifted somewhere that ships, or deliberately left in
       the epic with the reason recorded.
-- [ ] `design-record` applies the rule when drafting: it does not copy a list
+- [x] `design-record` applies the rule when drafting: it does not copy a list
       into an ADR that another artifact owns.
-- [ ] `plugin.json` and `marketplace.json` bumped (minor — behaviour change in
+- [x] `plugin.json` and `marketplace.json` bumped (minor — behaviour change in
       `design-record`) and in agreement.
-- [ ] All existing tests continue to pass.
+- [x] All existing tests continue to pass.
 
 **Out of scope**:
 - Any change to `architecture-scan`. See the Description for why detection is

@@ -24,14 +24,18 @@ empty sections.
 
 ## Decision
 
-Structure gets **fixed, named slots** in a canonical order — Purpose, System
-context, Containers, Components — so that a structural update is an *edit to a
-known diagram* rather than an addition. Behaviour gets a **free-form** `Key
-flows` slot where sequence, state or flow diagrams are added as the subject
-demands.
+Structure gets **fixed, named slots** in a canonical order, so that a structural
+update is an *edit to a known diagram* rather than an addition. Behaviour gets a
+single **free-form** slot — `Key flows` — where sequence, state or flow diagrams
+are added as the subject demands.
 
-New diagrams may only be added under `Key flows`. Structural slots are edited,
-never appended to.
+New diagrams may only be added under the behavioural slot. Structural slots are
+edited, never appended to.
+
+Which slots exist, and their order, are stated once in `design-record`'s
+`architecture-format.md`. They are not listed here: adding or renaming a slot
+would leave this decision untouched, so the list is a specification rather than
+part of what was decided.
 
 A slot with nothing to say carries an explicit one-line note — "Single
 container; see Components" — never an empty heading and never a fabricated box.
