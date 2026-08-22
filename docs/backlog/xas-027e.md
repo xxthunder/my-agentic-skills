@@ -43,6 +43,13 @@ stale document, because a workflow people route around protects nothing.
   moved directories and manifest entries. Chasing a precise definition of a
   boundary change is not worth it for a suggestion that a human confirms.
 
+**Superseded in part by [XAS-030](xas-030.md)** (2026-08-22). The
+`tdd-workflow` half of this wire-up is gone with the skill. Its acceptance
+criterion was met when written; `commit-helper` now carries the design-record
+suggestion alone, and covers it better — it fires on every commit rather than
+only at the end of a cycle someone chose to run. `refinement`'s hand-off is
+unaffected.
+
 **Acceptance Criteria**:
 - [x] `refinement`'s Architecture topic applies the three-part test and hands
       off to `design-record` for decisions that pass it, keeping `Scope

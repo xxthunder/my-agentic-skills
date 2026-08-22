@@ -33,7 +33,6 @@ Developer workflow skills:
 | [**design-record**](plugins/xxthunder-dev-skills/skills/design-record/SKILL.md) | Durable design record — drafts ADRs with numbering and a derived index, and edits the slotted `architecture.md` |
 | [**refinement**](plugins/xxthunder-dev-skills/skills/refinement/SKILL.md) | Interactive backlog refinement sessions — review project state, prioritize work, add new items, discuss architecture |
 | [**retrospective**](plugins/xxthunder-dev-skills/skills/retrospective/SKILL.md) | Incident-driven learning — captures lessons from unmet expectations and encodes them into project guidelines |
-| [**tdd-workflow**](plugins/xxthunder-dev-skills/skills/tdd-workflow/SKILL.md) | Test-driven development workflow following Red-Green-Refactor principles |
 
 Beyond skills, `xxthunder-dev-skills` ships a **`SessionStart` hook**. It runs
 at the start of every session and states where that repository keeps its design
@@ -57,7 +56,7 @@ Skills for digitizing household paperwork:
 
 ## Requirements
 
-`xxthunder-dev-skills` requires [**superpowers**](https://github.com/obra/superpowers), from the `claude-plugins-official` marketplace. The dev skills are built around it: design work reached through `superpowers:brainstorming` lands in a backlog item, and `tdd-workflow` sits alongside its Red-Green-Refactor discipline.
+`xxthunder-dev-skills` requires [**superpowers**](https://github.com/obra/superpowers), from the `claude-plugins-official` marketplace. The dev skills are built around it: design work reached through `superpowers:brainstorming` lands in a backlog item, and the Red-Green-Refactor discipline comes from `superpowers:test-driven-development` rather than being duplicated here.
 
 The dependency is declared in the plugin manifest, so installing `xxthunder-dev-skills` installs `superpowers` automatically. Two consequences worth knowing:
 
@@ -122,7 +121,6 @@ Skills trigger automatically based on conversation context, or can be invoked ex
 - [**design-record**](plugins/xxthunder-dev-skills/skills/design-record/SKILL.md): "record an ADR", "document this decision", "update the architecture doc"
 - [**refinement**](plugins/xxthunder-dev-skills/skills/refinement/SKILL.md): "let's refine", "backlog refinement", "what should we work on next?"
 - [**retrospective**](plugins/xxthunder-dev-skills/skills/retrospective/SKILL.md): "I'm not happy with...", "that's wrong", "why did you...?"
-- [**tdd-workflow**](plugins/xxthunder-dev-skills/skills/tdd-workflow/SKILL.md): triggered when implementing features, fixing bugs, or refactoring
 
 **xxthunder-paperless-skills**
 - [**naps2-scan**](plugins/xxthunder-paperless-skills/skills/naps2-scan/SKILL.md): "scan this", "scan another", "digitize this letter/invoice", "run NAPS2"
