@@ -201,6 +201,29 @@ File: `prefix-001.md`
 
 An epic and its substories are not constrained to share a section. Each row sits in the section for **its own** status.
 
+## Plans Versus Items
+
+An implementation plan — `superpowers:writing-plans` output, or any equivalent —
+is a **task breakdown and a sequence**. The backlog item is the design; the plan
+is the order of work.
+
+Two rules keep them from collapsing into each other:
+
+- **A plan that reproduces the design is a spec under another name.** If it
+  carries the finished text of the files it is planning, or restates the
+  reasoning already in the item, that content belongs in the item. A second
+  copy of a design drifts from the first, and the plan is the copy nobody
+  maintains.
+- **A plan is deleted once its stories close.** It stops being true of anything
+  when the work lands. Leaving it turns a working document into a stale account
+  of a design, findable but wrong.
+
+Both were learned from a real failure rather than reasoned out: a plan written
+for two stories in this plugin's own repository ran 743 lines, 64% of it inside
+code fences holding the complete text of three files that then shipped. It
+duplicated the items it was planning from, and after those items were corrected
+it was the last place still carrying the superseded wording.
+
 ## Epics and Status Cascade
 
 An epic has no status of its own in the usual sense — its status is derived from its substories:

@@ -1,6 +1,6 @@
-# [XAS-027j] Correct the lifetime wording; lift durable design at close
+# [XAS-027j] ✅ DONE - Correct the lifetime wording; lift durable design at close
 
-**Status**: In Progress
+**Status**: Done (2026-08-22)
 **Priority**: High
 **Component**: `plugins/xxthunder-dev-skills/hooks/session-start`,
 `plugins/xxthunder-dev-skills/skills/design-record/references/architecture-format.md`,
