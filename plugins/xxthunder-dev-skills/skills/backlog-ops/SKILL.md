@@ -123,7 +123,7 @@ Print a short summary: files edited, lines changed (conceptually — "ticked AC 
 
 ## Integration Points
 
-- **`tdd-workflow`** may suggest invoking this skill at the start (pull) and end (complete) of a TDD cycle that maps to a backlog item. It will not auto-check ACs mid-cycle — the user decides when a criterion is satisfied.
+- **Boundary transitions come from this skill's own triggers** — "start XAS-025" at the beginning of a unit of work, "tick AC 2 on XAS-025" as criteria are met, "close XAS-025" at the end. No other skill needs to drive them, and none should auto-check ACs mid-flight: only the user knows which criterion a given change satisfied.
 - **`commit-helper`** commits the staged backlog edit alongside the code change. Mention the backlog ID in the commit subject or body per conventional-commit practice.
 - **`refinement`** hands off to this skill for any status mutation; it does not edit `**Status**:` fields directly.
 - **`design-record`** receives the hand-off from the binding-design check on Complete. Closing an item is the last moment to lift design that outlives it into the ADR log, because nothing keeps a closed item current.

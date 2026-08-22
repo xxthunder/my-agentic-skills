@@ -65,6 +65,7 @@
 - [XAS-027j — Correct the lifetime wording; lift durable design at close](xas-027j.md)
 - [XAS-027k — ADRs record decisions, not specifications](xas-027k.md)
 - [XAS-028 — Declare the `superpowers` dependency in the marketplace](xas-028.md)
+- [XAS-030 — Remove `tdd-workflow`](xas-030.md)
 
 ---
 

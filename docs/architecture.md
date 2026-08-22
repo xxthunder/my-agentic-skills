@@ -63,8 +63,6 @@ flowchart TB
         refinement --> backlog["backlog-ops"]
         refinement --> record["design-record"]
         scan["architecture-scan"] -.proposes.-> record
-        tdd["tdd-workflow"] --> backlog
-        tdd --> record
         commit["commit-helper"] --> record
         backlog -.at close.-> record
         retro["retrospective"]
@@ -77,7 +75,7 @@ flowchart TB
     end
 ```
 
-**`xxthunder-dev-skills`** — seven skills, all markdown, plus the only
+**`xxthunder-dev-skills`** — six skills, all markdown, plus the only
 executable code the plugin ships: a `SessionStart` hook under `hooks/`
 (`hooks.json`, an extensionless `session-start`, and a polyglot `run-hook.cmd`
 that locates a bash on Windows).
@@ -89,8 +87,8 @@ which is why a rule lives in exactly one of them.
 
 `refinement` and `retrospective` are conversation skills; `backlog-ops` is
 mechanics-only; `design-record` is the sole writer of the record;
-`architecture-scan` is read-only and proposes into it; `tdd-workflow` and
-`commit-helper` sit at the boundaries of a change.
+`architecture-scan` is read-only and proposes into it; `commit-helper` sits at
+the boundary of a change.
 
 **`xxthunder-paperless-skills`** — three skills carrying eight PEP 723 helper
 scripts run via `uv run`: `naps2-scan` (3 scripts), `simplex-merge` (1),
@@ -135,7 +133,7 @@ output is applied by `design-record`.
 
 `refinement` authors items; `backlog-ops` performs every status mutation and
 keeps the README table of contents and the epic cascade consistent;
-`tdd-workflow` and `commit-helper` invoke it at cycle and commit boundaries.
+`commit-helper` invokes it at commit boundaries.
 Neither authors content.
 
 ### Session orientation
