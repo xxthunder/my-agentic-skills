@@ -24,7 +24,6 @@
 - [XAS-026e — PR title conventional-commit linter](xas-026e.md)
 - [XAS-026f — Coverage thresholds via `codecov.yml`](xas-026f.md)
 - [XAS-029 — Semantic release via Release Please](xas-029.md)
-- [XAS-031 — `commit-helper` cites the verification gate instead of restating it](xas-031.md)
 - [XAS-032 — Establish whether `retrospective` triggers in practice](xas-032.md)
 
 ### In Progress
@@ -68,6 +67,7 @@
 - [XAS-027k — ADRs record decisions, not specifications](xas-027k.md)
 - [XAS-028 — Declare the `superpowers` dependency in the marketplace](xas-028.md)
 - [XAS-030 — Remove `tdd-workflow`](xas-030.md)
+- [XAS-031 — `commit-helper` cites the verification gate instead of restating it](xas-031.md)
 
 ---
 
