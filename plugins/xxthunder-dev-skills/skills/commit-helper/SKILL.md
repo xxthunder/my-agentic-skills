@@ -9,6 +9,23 @@ description: "Create a conventional commit after running pre-commit checks (unit
 
 Guide for creating conventional commits with mandatory pre-commit checks.
 
+## Tests Ship With Code
+
+A change that alters behaviour arrives with its tests, in the same commit. The
+checklist below enforces the consequence — the suite passes, and a changed
+function has a changed test — but the expectation is worth stating outright,
+because by commit time the choice has already been made.
+
+**Write the test first.** The cycle comes from
+`superpowers:test-driven-development`, which this plugin depends on. It is not
+restated here.
+
+One limitation worth knowing: this skill is pull-based, so it states the
+expectation at the last possible moment rather than the right one. A repo that
+wants the expectation present *before* implementation starts should put it in
+its own always-on context — `CLAUDE.md`, `AGENTS.md`, or the equivalent. This
+plugin's own repository does exactly that.
+
 ## Pre-Commit Checklist
 
 **Before every commit, you MUST:**
