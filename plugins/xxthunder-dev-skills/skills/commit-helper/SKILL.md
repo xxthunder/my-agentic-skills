@@ -28,6 +28,18 @@ plugin's own repository does exactly that.
 
 ## Pre-Commit Checklist
 
+**What "verified" means here is not defined in this skill.** It is
+`superpowers:verification-before-completion`'s gate function: identify the
+command that would prove the claim, run it in full, read the whole output and
+the exit code, confirm it actually supports the claim, and only then say so.
+Invoke that skill for the discipline; this checklist only says *which* commands
+this marketplace needs.
+
+That skill is stronger than anything written here, and it triggers on a state —
+being about to claim success — rather than on a phrase. This one triggers when
+a human says "let's commit". Pairing them is deliberate: the reliable trigger
+pulls in the better discipline.
+
 **Before every commit, you MUST:**
 
 1. **Run unit tests** using the project's test execution skill
