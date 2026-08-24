@@ -24,7 +24,6 @@
 - [XAS-026e — PR title conventional-commit linter](xas-026e.md)
 - [XAS-026f — Coverage thresholds via `codecov.yml`](xas-026f.md)
 - [XAS-029 — Semantic release via Release Please](xas-029.md)
-- [XAS-032 — Establish whether `retrospective` triggers in practice](xas-032.md)
 
 ### In Progress
 - [XAS-001 — Backlog refinement](xas-001.md)
@@ -32,6 +31,7 @@
 - [XAS-026 — CI / GitHub Actions setup](xas-026.md)
 - [XAS-027 — Agentic Engineering-as-Code — durable design record](xas-027.md)
 - [XAS-027g — Verify in a consuming repo; retire the per-repo `AGENTS.md` text](xas-027g.md)
+- [XAS-032 — Establish whether `retrospective` triggers in practice](xas-032.md)
 
 ### Done
 - [XAS-002 — Rename repo and restructure as agentic-skills marketplace](xas-002.md)

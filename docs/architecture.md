@@ -80,7 +80,7 @@ executable code the plugin ships: a `SessionStart` hook under `hooks/`
 (`hooks.json`, an extensionless `session-start`, and a polyglot `run-hook.cmd`
 that locates a bash on Windows).
 
-Five skills carry a `references/` file. Two of those are load-bearing beyond
+Four skills carry a `references/` file. Two of those are load-bearing beyond
 their own skill: `design-record`'s `adr-format.md` and `refinement`'s
 `backlog-format.md` state rules that other components read rather than restate,
 which is why a rule lives in exactly one of them.
