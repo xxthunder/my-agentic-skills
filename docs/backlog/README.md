@@ -32,6 +32,7 @@
 - [XAS-027 — Agentic Engineering-as-Code — durable design record](xas-027.md)
 - [XAS-027g — Verify in a consuming repo; retire the per-repo `AGENTS.md` text](xas-027g.md)
 - [XAS-032 — Establish whether `retrospective` triggers in practice](xas-032.md)
+- [XAS-033 — Backlog TOC invariant tests](xas-033.md)
 
 ### Done
 - [XAS-002 — Rename repo and restructure as agentic-skills marketplace](xas-002.md)
